@@ -15,14 +15,13 @@ int main() {
     cin.tie(NULL);
     
     srand(1000);
-    int r;
-    float a=0, b=0;
+    int r, a=0, b=0;
     for (int i = 0; i < 100; i++) {
-        r = rand() % 1000 + 1;
-        if (r <= 700) a++;
+        r = rand() % 100 + 1;
+        if (r <= 70) a++;
         else b++;
         cout << r << endl;
     }
-    cout << "# < 7: " << a / 100 << endl;
-    cout << "# >= 7: " << b / 100<< endl;
+    cout << "# < 7: " << a << endl;
+    cout << "# >= 7: " << b << endl;
 }
