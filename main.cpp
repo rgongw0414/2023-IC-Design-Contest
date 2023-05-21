@@ -15,6 +15,7 @@ int main() {
     cin.tie(NULL);
     
     srand(1000);
+    // test
     int r, a=0, b=0;
     for (int i = 0; i < 100; i++) {
         r = rand() % 100 + 1;
