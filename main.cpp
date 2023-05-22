@@ -44,9 +44,7 @@ int main() {
     for (int i = 0; i < 16; i++) cout << "--"; cout << endl;
     for (auto &row: map) {
         cout << std::hex << tmp++ << "|";
-        for (auto &elem: row) {
-            cout << elem << " ";
-        }
+        for (auto &elem: row) cout << elem << " ";
         cout << endl;
     }
 }
