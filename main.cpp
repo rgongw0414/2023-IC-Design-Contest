@@ -82,7 +82,7 @@ int main() {
     int max1 = max; // max1: the max coverage found of circle_1
     int max2 = 0; // max2: the max coverage found of circle_2
     
-    float T0 = 1000; // T0 = 5
+    float T0 = 10; // T0 = 5
     float T = T0;
     int n = 1, x2 = 15, y2 = 15;
     vector<bool> detected_2(40, false);
@@ -110,9 +110,7 @@ int main() {
                     max2 = cnt;
                     max = max1 + max2;
                     x2 = i; y2 = j;
-                    for (int k = 0; k < 40; k++) detected_2[k] = false;
-                    for (int k = 0; k < 40; k++) 
-                        detected_2[k] = detected_2_tmp[k];
+                    for (int k = 0; k < 40; k++) detected_2[k] = detected_2_tmp[k];
                 }
                 else {
                     srand(std::time(nullptr));
@@ -123,11 +121,7 @@ int main() {
                         max2 = cnt;
                         max = max1 + max2;
                         x2 = i; y2 = j;
-                        for (int k = 0; k < 40; k++) {
-                            detected_2[k] = false;
-                            detected_2[k] = detected_2_tmp[k];
-                        }
-                            
+                        for (int k = 0; k < 40; k++) detected_2[k] = detected_2_tmp[k];
                     }
                 }
             }
@@ -143,8 +137,10 @@ int main() {
         cout << endl;
 
         //Third step: fix circle_2, find the best covering central point for circle_2
-        for (int i = 0; i < 16; i++) {
-            for (int j = 15; j >= 0; j--) {
+        for (int i = 15; i >= 0; i--) {
+        // for (int i = 0; i < 16; i++) {
+            for (int j = 0; j < 16; j++) {
+          //  for (int j = 15; j >= 0; j--) {
                 for (int k = 0; k < 40; k++) detected_tmp[k] = false;
                 int cnt = 0;
                 for (int k = 0; k < 40; k++) {
@@ -153,17 +149,14 @@ int main() {
                     int dist = (x-i)*(x-i) + (y-j)*(y-j);
                     if (dist < 16 || dist == 16) {
                         detected_tmp[k] = true;
-                        if (!detected_2[k])
-                            cnt++;
+                        if (!detected_2[k]) cnt++;
                     }
                 }
                 if (max2 + cnt > max || max2 + cnt == max) {                
                     max1 = cnt;
                     max = max1 + max2;
                     x1 = i; y1 = j;
-                    for (int k = 0; k < 40; k++) detected[k] = false;
-                    for (int k = 0; k < 40; k++) 
-                        detected[k] = detected_tmp[k];
+                    for (int k = 0; k < 40; k++) detected[k] = detected_tmp[k];
                 }
                 else {
                     srand(std::time(nullptr));
@@ -174,10 +167,7 @@ int main() {
                         max1 = cnt;
                         max = max1 + max2;
                         x1 = i; y1 = j;
-                        for (int k = 0; k < 40; k++) {
-                            detected[k] = false;
-                            detected[k] = detected_tmp[k];
-                        }
+                        for (int k = 0; k < 40; k++) detected[k] = detected_tmp[k];
                     }
                 }
             }
@@ -192,7 +182,7 @@ int main() {
         cout << "\tmax #coverage: " << std::dec << max << endl;
         cout << endl;   
 
-        T = T * 0.922; // Tn = r^n * T0, where T0 = 5
+        T = T * 0.9; // Tn = r^n * T0, where T0 = 5
         cout << "\tT: " << T << endl;
         cout << "\t" << sol_tmp << endl;
         if (max == sol) {
