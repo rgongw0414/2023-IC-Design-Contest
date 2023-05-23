@@ -70,20 +70,19 @@ int main() {
             }
         }
     }
-    cout << "Circle_1 detected points: \n";
-    for (int k = 0; k < 40; k++) {
-        if (detected[k])
-            cout << list[k].first << ", " << list[k].second << endl;
-    }
+    // cout << "Circle_1 detected points: \n";
+    // for (int k = 0; k < 40; k++) {
+    //     if (detected[k])
+    //         cout << list[k].first << ", " << list[k].second << endl;
+    // }
     cout << endl;
     cout << std::hex << "circle_1: (" << x1 << ", " << y1 << ")" << endl;
     cout << "max #coverage of circle_1: " << std::dec << max << endl;
-    cout << endl;
 
     int max1 = max; // max1: the max coverage found of circle_1
     int max2 = 0; // max2: the max coverage found of circle_2
     
-    float T0 = 10; // T0 = 5
+    float T0 = 1000; // T0 = 5
     float T = T0;
     int n = 1, x2 = 15, y2 = 15;
     vector<bool> detected_2(40, false);
@@ -91,7 +90,7 @@ int main() {
 
     while (T > 0.1) {
         // Second step: fix circle_1, find the best central point for circle_2        
-        cout << "\n-\nRound_" << n << ":\n\n";
+        cout << "\n-\nRound_" << n++ << ":\n";
 
         for (int i = 15; i >= 0; i--) {
             for (int j = 15; j >= 0; j--) {
@@ -124,21 +123,23 @@ int main() {
                         max2 = cnt;
                         max = max1 + max2;
                         x2 = i; y2 = j;
-                        for (int k = 0; k < 40; k++) detected_2[k] = false;
-                        for (int k = 0; k < 40; k++) 
+                        for (int k = 0; k < 40; k++) {
+                            detected_2[k] = false;
                             detected_2[k] = detected_2_tmp[k];
+                        }
+                            
                     }
                 }
             }
         }
-        cout << "Circle_2 detected points: \n" << std::hex;
-        for (int k = 0; k < 40; k++) {
-            if (detected_2[k])
-                cout << list[k].first << ", " << list[k].second << endl;
-        }
+        // cout << "Circle_2 detected points: \n" << std::hex;
+        // for (int k = 0; k < 40; k++) {
+        //     if (detected_2[k])
+        //         cout << list[k].first << ", " << list[k].second << endl;
+        // }
         cout << endl;
-        cout << "circle_2: (" << x2 << ", " << y2 << ")" << endl;
-        cout << "max #coverage: " << std::dec << max << endl;
+        cout << "\tcircle_2: (" << x2 << ", " << y2 << ")" << endl;
+        cout << "\tmax #coverage: " << std::dec << max << endl;
         cout << endl;
 
         //Third step: fix circle_2, find the best covering central point for circle_2
@@ -173,29 +174,30 @@ int main() {
                         max1 = cnt;
                         max = max1 + max2;
                         x1 = i; y1 = j;
-                        for (int k = 0; k < 40; k++) detected[k] = false;
-                        for (int k = 0; k < 40; k++) 
+                        for (int k = 0; k < 40; k++) {
+                            detected[k] = false;
                             detected[k] = detected_tmp[k];
+                        }
                     }
                 }
             }
         }
-        cout << "Circle_1 detected points: \n";
-        for (int k = 0; k < 40; k++) {
-            if (detected[k])
-                cout << list[k].first << ", " << list[k].second << endl;
-        }
+        // cout << "Circle_1 detected points: \n";
+        // for (int k = 0; k < 40; k++) {
+        //     if (detected[k])
+        //         cout << list[k].first << ", " << list[k].second << endl;
+        // }
         cout << endl;
-        cout << "circle_1: (" << std::hex << x1 << ", " << y1 << ")" << endl;
-        cout << "max #coverage: " << std::dec << max << endl;
+        cout << "\tcircle_1: (" << std::hex << x1 << ", " << y1 << ")" << endl;
+        cout << "\tmax #coverage: " << std::dec << max << endl;
         cout << endl;   
 
         T = T * 0.922; // Tn = r^n * T0, where T0 = 5
-        cout << "n: " << n++ << ", T: " << T << endl;
-        cout << sol_tmp << endl;
+        cout << "\tT: " << T << endl;
+        cout << "\t" << sol_tmp << endl;
         if (max == sol) {
             cout << 
-            ">----------------------<\n|                      |\n|        Perfect       |\n|                      |\n>----------------------<\n";
+            "\t>----------------------<\n\t|                      |\n\t|        Perfect       |\n\t|                      |\n\t>----------------------<\n";
         }
     }
 }
