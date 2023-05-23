@@ -90,11 +90,11 @@ int main() {
     cout << "max #coverage of circle_1: " << std::dec << max << endl;
     cout << endl;
 
+    int max1 = max, max2 = 0;
     
     float T0 = 1; // T0 = 5
     float T = T0;
     int n = 1, x2 = 15, y2 = 15;
-    int max_tmp = max;
     vector<bool> detected_2(40, false);
     vector<bool> detected_2_tmp(40, false);
 
@@ -115,8 +115,9 @@ int main() {
                         cnt++;
                 }
             }
-            if (cnt > max) {                
-                max = cnt;
+            if (max1 + cnt > max) {                
+                max2 = cnt;
+                max = max1 + max2;
                 x2 = i; y2 = j;
                 for (int k = 0; k < 40; k++) detected_2[k] = false;
                 for (int k = 0; k < 40; k++) 
@@ -149,8 +150,9 @@ int main() {
                         cnt++;
                 }
             }
-            if (cnt > max) {                
-                max = cnt;
+            if (max2 + cnt > max) {                
+                max1 = cnt;
+                max = max1 + max2;
                 x1 = i; y1 = j;
                 for (int k = 0; k < 40; k++) detected[k] = false;
                 for (int k = 0; k < 40; k++) 
