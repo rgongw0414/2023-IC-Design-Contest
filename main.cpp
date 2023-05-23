@@ -83,7 +83,7 @@ int main() {
     int max1 = max; // max1: the max coverage found of circle_1
     int max2 = 0; // max2: the max coverage found of circle_2
     
-    float T0 = 100; // T0 = 5
+    float T0 = 10; // T0 = 5
     float T = T0;
     int n = 1, x2 = 15, y2 = 15;
     vector<bool> detected_2(40, false);
@@ -190,8 +190,12 @@ int main() {
         cout << "max #coverage: " << std::dec << max << endl;
         cout << endl;   
 
-
-        cout << "n: " << n << ", T: " << T << endl;
-        T = T0 * pow(0.922, n++); // Tn = r^n * T0, where T0 = 5
+        T = T * 0.922; // Tn = r^n * T0, where T0 = 5
+        cout << "n: " << n++ << ", T: " << T << endl;
+        cout << sol_tmp << endl;
+        if (max == sol) {
+            cout << 
+            ">----------------------<\n|                      |\n|        Perfect       |\n|                      |\n>----------------------<\n";
+        }
     }
 }
