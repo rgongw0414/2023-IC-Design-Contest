@@ -14,16 +14,6 @@ int main() {
     ios::sync_with_stdio(0);
     cin.tie(NULL);
     
-    srand(1000);
-    // int r, a=0, b=0;
-    // for (int i = 0; i < 100; i++) {
-    //     r = rand() % 100 + 1;
-    //     if (r <= 70) a++;
-    //     else b++;
-    //     cout << r << endl;
-    // }
-    // cout << "# < 7: " << a << endl;
-    // cout << "# >= 7: " << b << endl;
     string sol_tmp;
     cin >> sol_tmp;
     cout << sol_tmp << endl;
@@ -90,159 +80,118 @@ int main() {
     cout << "max #coverage of circle_1: " << std::dec << max << endl;
     cout << endl;
 
-    int max1 = max, max2 = 0;
+    int max1 = max; // max1: the max coverage found of circle_1
+    int max2 = 0; // max2: the max coverage found of circle_2
     
-    float T0 = 1; // T0 = 5
+    float T0 = 100; // T0 = 5
     float T = T0;
     int n = 1, x2 = 15, y2 = 15;
     vector<bool> detected_2(40, false);
     vector<bool> detected_2_tmp(40, false);
 
-    // Second step: fix circle_1, find the best central point for circle_2        
-    cout << "\n-\nRound_" << n << ":\n\n";
+    while (T > 0.1) {
+        // Second step: fix circle_1, find the best central point for circle_2        
+        cout << "\n-\nRound_" << n << ":\n\n";
 
-    for (int i = 15; i >= 0; i--) {
-        for (int j = 15; j >= 0; j--) {
-            for (int k = 0; k < 40; k++) detected_2_tmp[k] = false;
-            int cnt = 0;
-            for (int k = 0; k < 40; k++) {
-                // check whether the points are in the radius of 4 of the circle
-                x = list[k].first; y = list[k].second;
-                int dist = (x-i)*(x-i) + (y-j)*(y-j);
-                if (dist < 16 || dist == 16) {
-                    detected_2_tmp[k] = true;
-                    if (!detected[k])
-                        cnt++;
+        for (int i = 15; i >= 0; i--) {
+            for (int j = 15; j >= 0; j--) {
+                for (int k = 0; k < 40; k++) detected_2_tmp[k] = false;
+                int cnt = 0;
+                for (int k = 0; k < 40; k++) {
+                    // check whether the points are in the radius of 4 of the circle
+                    x = list[k].first; y = list[k].second;
+                    int dist = (x-i)*(x-i) + (y-j)*(y-j);
+                    if (dist < 16 || dist == 16) {
+                        detected_2_tmp[k] = true;
+                        if (!detected[k])
+                            cnt++;
+                    }
+                }
+                if (max1 + cnt > max || max1 + cnt == max) {                
+                    max2 = cnt;
+                    max = max1 + max2;
+                    x2 = i; y2 = j;
+                    for (int k = 0; k < 40; k++) detected_2[k] = false;
+                    for (int k = 0; k < 40; k++) 
+                        detected_2[k] = detected_2_tmp[k];
+                }
+                else {
+                    srand(std::time(nullptr));
+                    float r = rand();
+                    float sample = r / RAND_MAX;
+                    float prob = exp(-(max-(max1+cnt))/T);                    
+                    if (sample < prob) { // accept the worse solution
+                        max2 = cnt;
+                        max = max1 + max2;
+                        x2 = i; y2 = j;
+                        for (int k = 0; k < 40; k++) detected_2[k] = false;
+                        for (int k = 0; k < 40; k++) 
+                            detected_2[k] = detected_2_tmp[k];
+                    }
                 }
             }
-            if (max1 + cnt > max) {                
-                max2 = cnt;
-                max = max1 + max2;
-                x2 = i; y2 = j;
-                for (int k = 0; k < 40; k++) detected_2[k] = false;
-                for (int k = 0; k < 40; k++) 
-                    detected_2[k] = detected_2_tmp[k];
-            }
         }
-    }
-    cout << "Circle_2 detected points: \n" << std::hex;
-    for (int k = 0; k < 40; k++) {
-        if (detected_2[k])
-            cout << list[k].first << ", " << list[k].second << endl;
-    }
-    cout << endl;
-    cout << "circle_2: (" << x2 << ", " << y2 << ")" << endl;
-    cout << "max #coverage: " << std::dec << max << endl;
-    cout << endl;
+        cout << "Circle_2 detected points: \n" << std::hex;
+        for (int k = 0; k < 40; k++) {
+            if (detected_2[k])
+                cout << list[k].first << ", " << list[k].second << endl;
+        }
+        cout << endl;
+        cout << "circle_2: (" << x2 << ", " << y2 << ")" << endl;
+        cout << "max #coverage: " << std::dec << max << endl;
+        cout << endl;
 
-    //Third step: fix circle_2, find the best covering central point for circle_2
-    for (int i = 0; i < 16; i++) {
-        for (int j = 15; j >= 0; j--) {
-            for (int k = 0; k < 40; k++) detected_tmp[k] = false;
-            int cnt = 0;
-            for (int k = 0; k < 40; k++) {
-                // check whether the points are in the radius of 4 of the circle
-                x = list[k].first; y = list[k].second;
-                int dist = (x-i)*(x-i) + (y-j)*(y-j);
-                if (dist < 16 || dist == 16) {
-                    detected_tmp[k] = true;
-                    if (!detected_2[k])
-                        cnt++;
+        //Third step: fix circle_2, find the best covering central point for circle_2
+        for (int i = 0; i < 16; i++) {
+            for (int j = 15; j >= 0; j--) {
+                for (int k = 0; k < 40; k++) detected_tmp[k] = false;
+                int cnt = 0;
+                for (int k = 0; k < 40; k++) {
+                    // check whether the points are in the radius of 4 of the circle
+                    x = list[k].first; y = list[k].second;
+                    int dist = (x-i)*(x-i) + (y-j)*(y-j);
+                    if (dist < 16 || dist == 16) {
+                        detected_tmp[k] = true;
+                        if (!detected_2[k])
+                            cnt++;
+                    }
+                }
+                if (max2 + cnt > max || max2 + cnt == max) {                
+                    max1 = cnt;
+                    max = max1 + max2;
+                    x1 = i; y1 = j;
+                    for (int k = 0; k < 40; k++) detected[k] = false;
+                    for (int k = 0; k < 40; k++) 
+                        detected[k] = detected_tmp[k];
+                }
+                else {
+                    srand(std::time(nullptr));
+                    float r = rand();
+                    float sample = r / RAND_MAX;
+                    float prob = exp(-(max-(max1+cnt))/T);                    
+                    if (sample < prob) { // accept the worse solution
+                        max1 = cnt;
+                        max = max1 + max2;
+                        x1 = i; y1 = j;
+                        for (int k = 0; k < 40; k++) detected[k] = false;
+                        for (int k = 0; k < 40; k++) 
+                            detected[k] = detected_tmp[k];
+                    }
                 }
             }
-            if (max2 + cnt > max) {                
-                max1 = cnt;
-                max = max1 + max2;
-                x1 = i; y1 = j;
-                for (int k = 0; k < 40; k++) detected[k] = false;
-                for (int k = 0; k < 40; k++) 
-                    detected[k] = detected_tmp[k];
-            }
         }
+        cout << "Circle_1 detected points: \n";
+        for (int k = 0; k < 40; k++) {
+            if (detected[k])
+                cout << list[k].first << ", " << list[k].second << endl;
+        }
+        cout << endl;
+        cout << "circle_1: (" << std::hex << x1 << ", " << y1 << ")" << endl;
+        cout << "max #coverage: " << std::dec << max << endl;
+        cout << endl;   
+
+
+        cout << "n: " << n << ", T: " << T << endl;
+        T = T0 * pow(0.922, n++); // Tn = r^n * T0, where T0 = 5
     }
-    cout << "Circle_1 detected points: \n";
-    for (int k = 0; k < 40; k++) {
-        if (detected[k])
-            cout << list[k].first << ", " << list[k].second << endl;
-    }
-    cout << endl;
-    cout << "circle_1: (" << std::hex << x1 << ", " << y1 << ")" << endl;
-    cout << "max #coverage: " << std::dec << max << endl;
-    cout << endl;   
-
-    // while (T > 0.1) {
-    //     // Second step: fix circle_1, find the best central point for circle_2        
-    //     cout << "\n-\nRound_" << n << ":\n\n";
-
-    //     for (int i = 15; i >= 0; i--) {
-    //         for (int j = 15; j >= 0; j--) {
-    //             detected_2_tmp.assign(40, false);
-    //             int cnt = 0;
-    //             for (int k = 0; k < 40; k++) {
-    //                 // check whether the points are in the radius of 4 of the circle
-    //                 x = list[k].first; y = list[k].second;
-    //                 int dist = (x-i)*(x-i) + (y-j)*(y-j);
-    //                 if (dist < 16 || dist == 16) {
-    //                     detected_2_tmp[k] = true;
-    //                     if (!detected[k])
-    //                         cnt++;
-    //                 }
-    //             }
-    //             if (cnt > max) {                
-    //                 max = cnt;
-    //                 x2 = i; y2 = j;
-    //                 detected_2.assign(40, false);
-    //                 for (int k = 0; k < 40; k++) 
-    //                     detected_2[k] = detected_2_tmp[k];
-    //             }
-    //         }
-    //     }
-    //     cout << "detected points: \n" << std::hex;
-    //     for (int k = 0; k < 40; k++) {
-    //         if (detected_2[k])
-    //             cout << list[k].first << ", " << list[k].second << endl;
-    //     }
-    //     cout << endl;
-    //     cout << "circle_2: (" << x2 << ", " << y2 << ")" << endl;
-    //     cout << "max #coverage: " << std::dec << max << endl;
-    //     cout << endl;
-
-    //     // Third step: fix circle_2, find the best covering central point for circle_2
-    //     for (int i = 0; i < 16; i++) {
-    //         for (int j = 15; j >= 0; j--) {
-    //             detected_tmp.assign(40, false);
-    //             int cnt = 0;
-    //             for (int k = 0; k < 40; k++) {
-    //                 // check whether the points are in the radius of 4 of the circle
-    //                 x = list[k].first; y = list[k].second;
-    //                 int dist = (x-i)*(x-i) + (y-j)*(y-j);
-    //                 if (dist < 16 || dist == 16) {
-    //                     detected_tmp[k] = true;
-    //                     if (!detected_2[k])
-    //                         cnt++;
-    //                 }
-    //             }
-    //             if (cnt > max) {                
-    //                 max = cnt;
-    //                 x1 = i; y1 = j;
-    //                 detected.assign(40, false);
-    //                 for (int k = 0; k < 40; k++) 
-    //                     detected[k] = detected_tmp[k];
-    //             }
-    //         }
-    //     }
-    //     cout << "detected points: \n";
-    //     for (int k = 0; k < 40; k++) {
-    //         if (detected[k])
-    //             cout << list[k].first << ", " << list[k].second << endl;
-    //     }
-    //     cout << endl;
-    //     cout << "circle_1: (" << std::hex << x1 << ", " << y1 << ")" << endl;
-    //     cout << "max #coverage: " << std::dec << max << endl;
-    //     cout << endl;   
-
-
-    //     cout << "n: " << n << ", T: " << T << endl;
-    //     T = T0 * pow(0.9, n++); // Tn = r^n * T0, where T0 = 5
-    // }
 }
