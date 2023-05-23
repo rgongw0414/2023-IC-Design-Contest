@@ -56,12 +56,11 @@ int main() {
     // First step: find the max coverage of the first circle
     int max = 0;
     int x1 = 0, y1 = 0;
-    vector<bool> detected;
-    // detected.assign(40, false);
-    vector<bool> detected_tmp;
+    vector<bool> detected(40, false);
+    vector<bool> detected_tmp(40, false);
     for (int i = 0; i < 16; i++) {
         for (int j = 0; j < 16; j++) {
-            detected_tmp.assign(40, false);
+            for (int k = 0; k < 40; k++) detected_tmp[k] = false;
             int cnt = 0;
             for (int k = 0; k < 40; k++) {
                 // check whether the points are in the radius of 4 of the circle
@@ -75,7 +74,7 @@ int main() {
             if (cnt > max) {                
                 max = cnt;
                 x1 = i; y1 = j;
-                detected.assign(40, false);
+                for (int k = 0; k < 40; k++) detected[k] = false;
                 for (int k = 0; k < 40; k++) 
                     detected[k] = detected_tmp[k];
             }
@@ -96,16 +95,16 @@ int main() {
     float T = T0;
     int n = 1, x2 = 15, y2 = 15;
     int max_tmp = max;
-    vector<bool> detected_2;
-    vector<bool> detected_2_tmp;
+    vector<bool> detected_2; detected_2.reserve(40);
+    vector<bool> detected_2_tmp; detected_2_tmp.reserve(40);
 
     // Second step: fix circle_1, find the best central point for circle_2        
     cout << "\n-\nRound_" << n << ":\n\n";
 
     for (int i = 15; i >= 0; i--) {
         for (int j = 15; j >= 0; j--) {
-            detected_2_tmp.assign(40, false);
-            int cnt = max_tmp;
+            for (int k = 0; k < 40; k++) detected_2_tmp[k] = false;
+            int cnt = 0;
             for (int k = 0; k < 40; k++) {
                 // check whether the points are in the radius of 4 of the circle
                 x = list[k].first; y = list[k].second;
@@ -119,7 +118,7 @@ int main() {
             if (cnt > max) {                
                 max = cnt;
                 x2 = i; y2 = j;
-                detected_2.assign(40, false);
+                for (int k = 0; k < 40; k++) detected_2[k] = false;
                 for (int k = 0; k < 40; k++) 
                     detected_2[k] = detected_2_tmp[k];
             }
