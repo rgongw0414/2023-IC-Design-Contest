@@ -82,7 +82,7 @@ int main() {
         cout << "\n-\nRound_" << n++ << ":\n";
 
         // Second step: fix circle_1, find the best central point for circle_2        
-        for (int t = 0; t < 50; t++) {
+        for (int t = 0; t < 500; t++) {
 
             for (int k = 0; k < 40; k++) detected_2_tmp[k] = false; // reset the tmp; looks stupid, but effectively avoid segmentation fault 
             
@@ -109,7 +109,7 @@ int main() {
             float w_overlap = 5; // penalty weight for overlapping
             float dist12 = (x1-x2_tmp)*(x1-x2_tmp) + (y1-y2_tmp)*(y1-y2_tmp); // distance b/w two circles
             // float cost = w_fixed*max1 + w_search*(cnt-overlapped_n) - w_overlap*overlapped_n;
-            float cost = w_fixed*max1 + w_search*(cnt) - w_overlap*overlapped_n;
+            float cost = w_fixed*max1*max1 + w_search*(cnt-overlapped_n)*(cnt-overlapped_n) - w_overlap*overlapped_n;
             // float cost = max1 + cnt - overlapped_n;
             if (cost > max || cost == max) {                
                 max2 = cnt - overlapped_n;
@@ -156,7 +156,9 @@ int main() {
             }
 
             dist12 = (x2-x1_tmp)*(x2-x1_tmp) + (y2-y1_tmp)*(y2-y1_tmp); // distance b/w two circles
-            cost = w_fixed*max2 + w_search*(cnt-overlapped_n) - w_overlap*overlapped_n;
+            // cost = w_fixed*max2 + w_search*(cnt-overlapped_n) - w_overlap*overlapped_n;
+            // cost = w_fixed*max2 + w_search*(cnt) - w_overlap*overlapped_n;
+            cost = w_fixed*max2*max2 + w_search*(cnt-overlapped_n)*(cnt-overlapped_n) - w_overlap*overlapped_n;
             // cost = max2 + cnt - overlapped_n;
             if (cost > max || cost == max) {                
                 max1 = cnt - overlapped_n;
@@ -192,13 +194,13 @@ int main() {
         cout << "\t" << sol_tmp << endl;
     }
 
-    cout << "Circle_1 detected points: \n";
+    cout << "\nCircle_1 (" << x1 << ", " << y1 << ") detected points: \n";
     for (int k = 0; k < 40; k++) {
         if (detected[k])
             cout << "\t" << list[k].first << ", " << list[k].second << endl;
     }
 
-    cout << "\nCircle_2 detected points: \n";
+    cout << "\nCircle_2 (" << x2 << ", " << y2 << ") detected points: \n";
     for (int k = 0; k < 40; k++) {
         if (detected_2[k])
             cout << "\t" << list[k].first << ", " << list[k].second << endl;
