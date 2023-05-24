@@ -74,18 +74,29 @@ int main() {
     float max2 = 0; // max2: the max coverage found of circle_2
     
     float T = 100; // T0 = 10
+    srand(std::time(nullptr));
     int n = 1, x2 = rand() % 16, y2 = rand() % 16;
+
     vector<bool> detected_2(40, false);
     vector<bool> detected_2_tmp(40, false);
-    srand(std::time(nullptr));
+    
+    bool frozen = false;
+    int frozen_cnt = 0; // if 10 consecutive max values, froze the SA algo.
+    int prev_max = 0;
     while (T > 0.1) {
+        if (frozen) {
+            cout << "\n-\nFrozen!\n";
+            break;
+        }
         cout << "\n-\nRound_" << n++ << ":\n";
-
         // Second step: fix circle_1, find the best central point for circle_2        
-        for (int t = 0; t < 500; t++) {
+        for (int t = 0; t < 40; t++) {
+            if (frozen_cnt == 20) {
+                frozen = true;
+                break;
+            }
 
             for (int k = 0; k < 40; k++) detected_2_tmp[k] = false; // reset the tmp; looks stupid, but effectively avoid segmentation fault 
-            
             int x2_tmp = x2 + pow(-1, rand()%2) * (rand()%3); // x2 = x2 +- (1~2)
             if (x2_tmp < 0) x2_tmp = 0;
             else if (x2_tmp > 15) x2_tmp = 15;
@@ -188,6 +199,9 @@ int main() {
                 "\t>----------------------<\n\t|                      |\n\t|        Perfect       |\n\t|                      |\n\t>----------------------<\n";
             }
 
+            if (prev_max == max1+max2) frozen_cnt++;
+            else frozen_cnt = 0;
+            prev_max = max1+max2;
         }
         T = T * 0.9; // Tn = r^n * T0, where T0 = 5
         cout << "\tT: " << T << endl;
