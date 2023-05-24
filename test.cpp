@@ -3,6 +3,13 @@
 using namespace std;
 
 int main() {
-    int r = -1 + 16;
-    cout << r % 16 << endl;
+    srand(std::time(nullptr));
+    int r = rand();
+    cout << r << endl;
+    r = rand();
+    cout << r << endl;
+    r = rand();
+    cout << r << endl;
+    r = rand();
+    cout << r << endl;
 }
