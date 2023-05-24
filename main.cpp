@@ -37,14 +37,14 @@ int main() {
     }
 
     // First step: find the max coverage of the first circle
-    int max = 0;
+    float max = 0;
     int x1 = 0, y1 = 0;
     vector<bool> detected(40, false);
     vector<bool> detected_tmp(40, false);
     for (int i = 0; i < 16; i++) {
         for (int j = 0; j < 16; j++) {            
             for (int k = 0; k < 40; k++) detected_tmp[k] = false; // avoid segmentation fault
-            int cnt = 0;
+            float cnt = 0;
             for (int k = 0; k < 40; k++) {
                 // check whether the points are in the radius of 4 of the circle
                 x = list[k].first; y = list[k].second;
@@ -70,10 +70,10 @@ int main() {
     cout << std::dec << "circle_1: (" << x1 << ", " << y1 << ")" << endl;
     cout << "max #coverage of circle_1: " << max << endl;
 
-    int max1 = max; // max1: the max coverage found of circle_1
-    int max2 = 0; // max2: the max coverage found of circle_2
+    float max1 = max; // max1: the max coverage found of circle_1
+    float max2 = 0; // max2: the max coverage found of circle_2
     
-    float T = 10; // T0 = 10
+    float T = 100; // T0 = 10
     int n = 1, x2 = rand() % 16, y2 = rand() % 16;
     vector<bool> detected_2(40, false);
     vector<bool> detected_2_tmp(40, false);
@@ -91,7 +91,7 @@ int main() {
         if (y2_tmp < 0) y2_tmp = 0;
         else if (y2_tmp > 15) y2_tmp = 15;
 
-        int cnt = 0, overlapped_n = 0;
+        float cnt = 0, overlapped_n = 0;
         for (int k = 0; k < 40; k++) {
             // Check whether the points are in the radius of 4 of the circle
             x = list[k].first; y = list[k].second;
@@ -102,27 +102,31 @@ int main() {
                 cnt++; 
             }
         }
-        int cost = max1 + cnt - overlapped_n;
+        float weight = 2; // penalty weight for overlapping
+        float dist12 = (x1-x2_tmp)*(x1-x2_tmp) + (y1-y2_tmp)*(y1-y2_tmp); // distance b/w two circles
+        // float cost = 0.01*dist12 + max1 + cnt - weight*overlapped_n;
+        float cost = max1 + cnt - weight*overlapped_n;
+        // float cost = max1 + cnt - overlapped_n;
         if (cost > max || cost == max) {                
             max2 = cnt - overlapped_n;
-            max = max1 + max2;
+            max = cost;
             x2 = x2_tmp; y2 = y2_tmp;
             for (int k = 0; k < 40; k++) detected_2[k] = detected_2_tmp[k];
         }
         else {
             float r = rand();
             float sample = r / RAND_MAX;
-            float prob = exp(-(max-(max1+cnt))/T);                    
+            float prob = exp(-(max-cost)/T);                    
             if (sample < prob) { // accept the worse solution
                 max2 = cnt - overlapped_n;
-                max = max1 + max2;
+                max = cost;
                 x2 = x2_tmp; y2 = y2_tmp;
                 for (int k = 0; k < 40; k++) detected_2[k] = detected_2_tmp[k];
             }
         }
         cout << endl;
         cout << "\tcircle_2: (" << std::dec << x2 << ", " << y2 << ")" << endl;
-        cout << "\tmax #coverage: " << max << endl;
+        cout << "\tmax #coverage: " << max1+max2 << endl; // # of total covered points
         cout << endl;
 
         // Third step: fix circle_2, find the best covering central point for circle_1
@@ -147,20 +151,22 @@ int main() {
             }
         }
 
-        cost = max2 + cnt - overlapped_n;
+        dist12 = (x2-x1_tmp)*(x2-x1_tmp) + (y2-y1_tmp)*(y2-y1_tmp); // distance b/w two circles
+        cost = max2 + cnt - weight*overlapped_n;
+        // cost = max2 + cnt - overlapped_n;
         if (cost > max || cost == max) {                
             max1 = cnt - overlapped_n;
-            max = max1 + max2;
+            max = cost;
             x1 = x1_tmp; y1 = y1_tmp;
             for (int k = 0; k < 40; k++) detected[k] = detected_tmp[k];
         }
         else {
             float r = rand();
             float sample = r / RAND_MAX;
-            float prob = exp(-(max-(max1+cnt))/T);                    
+            float prob = exp(-(max-cost)/T);                    
             if (sample < prob) { // accept the worse solution
                 max1 = cnt - overlapped_n;
-                max = max1 + max2;
+                max = cost;
                 x1 = x1_tmp; y1 = y1_tmp;
                 for (int k = 0; k < 40; k++) detected[k] = detected_tmp[k];
             }
@@ -168,14 +174,14 @@ int main() {
 
       
         cout << endl;
-        cout << "\tcircle_1: (" << std::hex << x1 << ", " << y1 << ")" << endl;
-        cout << "\tmax #coverage: " << std::dec << max << endl;
+        cout << "\tcircle_1: (" << x1 << ", " << y1 << ")" << endl;
+        cout << "\tmax #coverage: " << max1+max2 << endl;
         cout << endl;   
 
-        T = T * 0.8787; // Tn = r^n * T0, where T0 = 5
+        T = T * 0.9; // Tn = r^n * T0, where T0 = 5
         cout << "\tT: " << T << endl;
         cout << "\t" << sol_tmp << endl;
-        if (max == sol) {
+        if ((int)(max1+max2) == sol) {
             cout << 
             "\t>----------------------<\n\t|                      |\n\t|        Perfect       |\n\t|                      |\n\t>----------------------<\n";
         }
