@@ -46,7 +46,7 @@ int main() {
             for (int k = 0; k < 40; k++) detected_tmp[k] = false; // avoid segmentation fault
             float cnt = 0;
             for (int k = 0; k < 40; k++) {
-                // check whether the points are in the radius of 4 of the circle
+                // Check whether the points are in the radius of 4 of the circle
                 x = list[k].first; y = list[k].second;
                 int dist = (x-i)*(x-i) + (y-j)*(y-j);
                 if (dist < 16 || dist == 16) {
@@ -61,40 +61,34 @@ int main() {
             }
         }
     }
-    // cout << "Circle_1 detected points: \n";
-    // for (int k = 0; k < 40; k++) {
-    //     if (detected[k])
-    //         cout << list[k].first << ", " << list[k].second << endl;
-    // }
-    cout << endl;
-    cout << std::dec << "circle_1: (" << x1 << ", " << y1 << ")" << endl;
+    cout << std::dec << "\ncircle_1: (" << x1 << ", " << y1 << ")" << endl;
     cout << "max #coverage of circle_1: " << max << endl;
 
-    float max1 = max; // max1: the max coverage found of circle_1
-    float max2 = 0; // max2: the max coverage found of circle_2
-    
+    // vvvvvvvvvvv Manual Parameters vvvvvvvvvvv //
     float T = 100, r = 0.8; // T0 = 10, r increases from 0.8 to 0.94 then decreases to 0.94
-    srand(std::time(nullptr));
-    int n = 1, x2 = rand() % 16, y2 = rand() % 16;
+    bool frozen = false;
+    int repeat_max = 100; // if reach repeat_max consecutive repeated values, froze the SA algo.
+    int frozen_cnt = 0; 
+    // ^^^^^^^^^^^ Manual Parameters ^^^^^^^^^^^ //
 
     vector<bool> detected_2(40, false);
     vector<bool> detected_2_tmp(40, false);
-    
-    bool frozen = false;
-    int frozen_cnt = 0; // if 10 consecutive max values, froze the SA algo.
+    float max1 = max; // max1: the max coverage found of circle_1
+    float max2 = 0; // max2: the max coverage found of circle_2
+    float max_global = max1;
+    srand(std::time(nullptr));
+    int n = 1, x2 = rand() % 16, y2 = rand() % 16;
+    int x1_ans = x1, y1_ans = y1, x2_ans = x2, y2_ans = y2;
     int prev_max = 0;
     while (T > 0.1) {
         if (frozen) {
-            cout << "\n-\nFrozen!\n";
+            cout << "\n\tFrozen!\n";
             break;
         }
         cout << "\n-\nRound_" << n++ << ":\n";
         // Second step: fix circle_1, find the best central point for circle_2        
-        for (int t = 0; t < 10; t++) {
-            if (frozen_cnt == 50) {
-                frozen = true;
-                break;
-            }
+        for (int t = 0; t < 15; t++) {
+            
 
             for (int k = 0; k < 40; k++) detected_2_tmp[k] = false; // reset the tmp; looks stupid, but effectively avoid segmentation fault 
             int x2_tmp = x2 + pow(-1, rand()%2) * (rand()%3); // x2 = x2 +- (1~2)
@@ -126,6 +120,13 @@ int main() {
                 max2 = cnt - overlapped_n;
                 max = cost;
                 x2 = x2_tmp; y2 = y2_tmp;
+                if (max1+max2 > max_global) {
+                    max_global = max1 + max2;
+                    x1_ans = x1;
+                    y1_ans = y1;
+                    x2_ans = x2;
+                    y2_ans = y2;
+                }
                 for (int k = 0; k < 40; k++) detected_2[k] = detected_2_tmp[k];
             }
             else {
@@ -139,10 +140,20 @@ int main() {
                     for (int k = 0; k < 40; k++) detected_2[k] = detected_2_tmp[k];
                 }
             }
-            cout << endl;
             cout << "\tcircle_2: (" << std::dec << x2 << ", " << y2 << ")" << endl;
-            cout << "\tmax #coverage: " << max1+max2 << endl; // # of total covered points
-            cout << endl;
+            cout << "\tmax #coverage: " << max1+max2 << "\n\n";
+            if ((int)(max1+max2) == sol) {
+                cout << 
+                "\t>----------------------<\n\t|                      |\n\t|        Perfect       |\n\t|                      |\n\t>----------------------<\n";
+            }
+            
+            if (prev_max == max1+max2) frozen_cnt++;
+            else frozen_cnt = 0;
+            prev_max = max1+max2;
+            if (frozen_cnt == repeat_max) {
+                frozen = true;
+                break;
+            }
 
             // Third step: fix circle_2, find the best covering central point for circle_1
             for (int k = 0; k < 40; k++) detected_tmp[k] = false; // avoid segmentation fault
@@ -175,6 +186,13 @@ int main() {
                 max1 = cnt - overlapped_n;
                 max = cost;
                 x1 = x1_tmp; y1 = y1_tmp;
+                if (max1+max2 > max_global) {
+                    max_global = max1 + max2;
+                    x1_ans = x1;
+                    y1_ans = y1;
+                    x2_ans = x2;
+                    y2_ans = y2;
+                }
                 for (int k = 0; k < 40; k++) detected[k] = detected_tmp[k];
             }
             else {
@@ -188,41 +206,55 @@ int main() {
                     for (int k = 0; k < 40; k++) detected[k] = detected_tmp[k];
                 }
             }
-
         
-            cout << endl;
-            cout << "\tcircle_1: (" << x1 << ", " << y1 << ")" << endl;
-            cout << "\tmax #coverage: " << max1+max2 << endl;
-            cout << endl;   
+            cout << "\n\tcircle_1: (" << x1 << ", " << y1 << ")" << endl;
+            cout << "\tmax #coverage: " << max1+max2 << "\n\n";
             if ((int)(max1+max2) == sol) {
                 cout << 
                 "\t>----------------------<\n\t|                      |\n\t|        Perfect       |\n\t|                      |\n\t>----------------------<\n";
             }
+            cout << "-\n";
 
             if (prev_max == max1+max2) frozen_cnt++;
             else frozen_cnt = 0;
             prev_max = max1+max2;
+            if (frozen_cnt == repeat_max) {
+                frozen = true;
+                break;
+            }
         }
 
+        // vvvvvvvvvvv Manual Parameters vvvvvvvvvvv //
         T = T * r; // Tn = r^n * T0, where T0 = 5
         float tmpA = (float)0.94 / (float)0.8, tmpB = (float)1 / (float)23;
         float schedule = pow(tmpA, tmpB);
         if (n < 31) r = r * schedule;
         else r = r / schedule;
+        // ^^^^^^^^^^^ Manual Parameters ^^^^^^^^^^^ //
         cout << "-\nRound_" << n-1 << ":" << endl;
         cout << "\tT: " << T << ", r: " << r << endl;
         cout << "\t" << sol_tmp << endl;
     }
 
-    cout << "\nCircle_1 (" << x1 << ", " << y1 << ") detected points: \n";
+    cout << "\nCircle_1 (" << x1_ans << ", " << y1_ans << ") detected points: \n";
     for (int k = 0; k < 40; k++) {
-        if (detected[k])
+        x = list[k].first; y = list[k].second;
+        int dist = (x-x1_ans)*(x-x1_ans) + (y-y1_ans)*(y-y1_ans);
+        if (dist < 16 || dist == 16)
             cout << "\t" << list[k].first << ", " << list[k].second << endl;
     }
 
-    cout << "\nCircle_2 (" << x2 << ", " << y2 << ") detected points: \n";
+    cout << "\nCircle_2 (" << x2_ans << ", " << y2_ans << ") detected points: \n";
     for (int k = 0; k < 40; k++) {
-        if (detected_2[k])
+        x = list[k].first; y = list[k].second;
+        int dist = (x-x2_ans)*(x-x2_ans) + (y-x2_ans)*(y-x2_ans);
+        if (dist < 16 || dist == 16)
             cout << "\t" << list[k].first << ", " << list[k].second << endl;
+    }
+    cout << "\n\tmax #coverage: " << max_global << endl;
+    cout << "\t" << sol_tmp << endl;
+    if ((int)(max_global) == sol) {
+        cout << 
+        "\t>----------------------<\n\t|                      |\n\t|        Perfect       |\n\t|                      |\n\t>----------------------<\n";
     }
 }
