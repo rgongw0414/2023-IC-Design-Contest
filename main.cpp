@@ -76,8 +76,8 @@ int main() {
     //         cout << list[k].first << ", " << list[k].second << endl;
     // }
     cout << endl;
-    cout << std::hex << "circle_1: (" << x1 << ", " << y1 << ")" << endl;
-    cout << "max #coverage of circle_1: " << std::dec << max << endl;
+    cout << std::dec << "circle_1: (" << x1 << ", " << y1 << ")" << endl;
+    cout << "max #coverage of circle_1: " << max << endl;
 
     int max1 = max; // max1: the max coverage found of circle_1
     int max2 = 0; // max2: the max coverage found of circle_2
@@ -93,10 +93,12 @@ int main() {
         // Second step: fix circle_1, find the best central point for circle_2        
         for (int k = 0; k < 40; k++) detected_2_tmp[k] = false; // avoid segmentation fault
         int cnt = 0;
-        int x2_tmp = x2 + pow(-1, rand()%2) * (rand()%3)+16; // x2 = x2 +- (1~2)
-        x2_tmp = x2_tmp % 16;
-        int y2_tmp = y2 + pow(-1, rand()%2) * (rand()%3)+16; // y2 = y2 +- (1~2)
-        y2_tmp = y2_tmp % 16;
+        int x2_tmp = x2 + pow(-1, rand()%2) * (rand()%3); // x2 = x2 +- (1~2)
+        if (x2_tmp < 0) x2_tmp = 0;
+        else if (x2_tmp > 15) x2_tmp = 15;
+        int y2_tmp = y2 + pow(-1, rand()%2) * (rand()%3); // y2 = y2 +- (1~2)
+        if (y2_tmp < 0) y2_tmp = 0;
+        else if (y2_tmp > 15) y2_tmp = 15;
         for (int k = 0; k < 40; k++) {
             // Check whether the points are in the radius of 4 of the circle
             x = list[k].first; y = list[k].second;
@@ -163,17 +165,19 @@ int main() {
         //         cout << list[k].first << ", " << list[k].second << endl;
         // }
         cout << endl;
-        cout << "\tcircle_2: (" << x2 << ", " << y2 << ")" << endl;
-        cout << "\tmax #coverage: " << std::dec << max << endl;
+        cout << "\tcircle_2: (" << std::dec << x2 << ", " << y2 << ")" << endl;
+        cout << "\tmax #coverage: " << max << endl;
         cout << endl;
 
         // Third step: fix circle_2, find the best covering central point for circle_1
         for (int k = 0; k < 40; k++) detected_tmp[k] = false; // avoid segmentation fault
         cnt = 0;
-        int x1_tmp = x1 + pow(-1, rand()%2) * (rand()%3)+16; // x1 = x1 +- (1~2)
-        x1_tmp = x1_tmp % 16;
-        int y1_tmp = y1 + pow(-1, rand()%2) * (rand()%3)+16; // y2 = y1 +- (1~2)
-        y1_tmp = y1_tmp % 16;
+        int x1_tmp = x1 + pow(-1, rand()%2) * (rand()%3); // x1 = x1 +- (1~2)
+        if (x1_tmp < 0) x1_tmp = 0;
+        else if (x1_tmp > 15) x1_tmp = 15;
+        int y1_tmp = y1 + pow(-1, rand()%2) * (rand()%3); // y2 = y1 +- (1~2)
+        if (y1_tmp < 0) y1_tmp = 0;
+        else if (y1_tmp > 15) y1_tmp = 15;
         for (int k = 0; k < 40; k++) {
             // check whether the points are in the radius of 4 of the circle
             x = list[k].first; y = list[k].second;
