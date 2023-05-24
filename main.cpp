@@ -47,10 +47,9 @@ int main() {
     int max = 0;
     int x1 = 0, y1 = 0;
     vector<bool> detected(40, false);
-    vector<bool> detected_tmp(40, false);
     for (int i = 0; i < 16; i++) {
         for (int j = 0; j < 16; j++) {
-            for (int k = 0; k < 40; k++) detected_tmp[k] = false;
+            vector<bool> detected_tmp(40, false);
             int cnt = 0;
             for (int k = 0; k < 40; k++) {
                 // check whether the points are in the radius of 4 of the circle
@@ -84,9 +83,8 @@ int main() {
     
     float T0 = 10; // T0 = 5
     float T = T0;
-    int n = 1, x2 = 15, y2 = 15;
+    int n = 1, x2 = 7, y2 = 7;
     vector<bool> detected_2(40, false);
-    vector<bool> detected_2_tmp(40, false);
 
     while (T > 0.1) {
         // Second step: fix circle_1, find the best central point for circle_2        
@@ -94,7 +92,7 @@ int main() {
 
         for (int i = 15; i >= 0; i--) {
             for (int j = 15; j >= 0; j--) {
-                for (int k = 0; k < 40; k++) detected_2_tmp[k] = false;
+                vector<bool> detected_2_tmp(40, false);
                 int cnt = 0;
                 for (int k = 0; k < 40; k++) {
                     // check whether the points are in the radius of 4 of the circle
@@ -102,8 +100,7 @@ int main() {
                     int dist = (x-i)*(x-i) + (y-j)*(y-j);
                     if (dist < 16 || dist == 16) {
                         detected_2_tmp[k] = true;
-                        if (!detected[k])
-                            cnt++;
+                        if (!detected[k]) cnt++;
                     }
                 }
                 if (max1 + cnt > max || max1 + cnt == max) {                
@@ -141,7 +138,7 @@ int main() {
         // for (int i = 0; i < 16; i++) {
             for (int j = 0; j < 16; j++) {
           //  for (int j = 15; j >= 0; j--) {
-                for (int k = 0; k < 40; k++) detected_tmp[k] = false;
+                vector<bool> detected_tmp(40, false);
                 int cnt = 0;
                 for (int k = 0; k < 40; k++) {
                     // check whether the points are in the radius of 4 of the circle
