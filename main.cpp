@@ -82,7 +82,7 @@ int main() {
         cout << "\n-\nRound_" << n++ << ":\n";
 
         // Second step: fix circle_1, find the best central point for circle_2        
-        for (int t = 0; t < 3; t++) {
+        for (int t = 0; t < 20; t++) {
 
             for (int k = 0; k < 40; k++) detected_2_tmp[k] = false; // reset the tmp; looks stupid, but effectively avoid segmentation fault 
             
@@ -104,10 +104,12 @@ int main() {
                     cnt++; 
                 }
             }
-            float weight = 2; // penalty weight for overlapping
+            float w_fixed = 1;
+            float w_search = 1;
+            float w_overlap = 5; // penalty weight for overlapping
             float dist12 = (x1-x2_tmp)*(x1-x2_tmp) + (y1-y2_tmp)*(y1-y2_tmp); // distance b/w two circles
-            // float cost = 0.01*dist12 + max1 + cnt - weight*overlapped_n;
-            float cost = max1 + cnt - weight*overlapped_n;
+            // float cost = w_fixed*max1 + w_search*(cnt-overlapped_n) - w_overlap*overlapped_n;
+            float cost = w_fixed*max1 + w_search*(cnt) - w_overlap*overlapped_n;
             // float cost = max1 + cnt - overlapped_n;
             if (cost > max || cost == max) {                
                 max2 = cnt - overlapped_n;
@@ -154,7 +156,7 @@ int main() {
             }
 
             dist12 = (x2-x1_tmp)*(x2-x1_tmp) + (y2-y1_tmp)*(y2-y1_tmp); // distance b/w two circles
-            cost = max2 + cnt - weight*overlapped_n;
+            cost = w_fixed*max2 + w_search*(cnt-overlapped_n) - w_overlap*overlapped_n;
             // cost = max2 + cnt - overlapped_n;
             if (cost > max || cost == max) {                
                 max1 = cnt - overlapped_n;
