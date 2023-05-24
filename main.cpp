@@ -64,10 +64,7 @@ int main() {
             if (cnt > max) {                
                 max = cnt;
                 x1 = i; y1 = j;
-                for (int k = 0; k < 40; k++) detected[k] = false;
-                for (int k = 0; k < 40; k++) 
-                    detected[k] = detected_tmp[k];
-            }
+                for (int k = 0; k < 40; k++) detected[k] = detected_tmp[k];
         }
     }
     // cout << "Circle_1 detected points: \n";
