@@ -73,7 +73,7 @@ int main() {
     float max1 = max; // max1: the max coverage found of circle_1
     float max2 = 0; // max2: the max coverage found of circle_2
     
-    float T = 100; // T0 = 10
+    float T = 100, r = 0.8; // T0 = 10, r increases from 0.8 to 0.94 then decreases to 0.94
     srand(std::time(nullptr));
     int n = 1, x2 = rand() % 16, y2 = rand() % 16;
 
@@ -90,8 +90,8 @@ int main() {
         }
         cout << "\n-\nRound_" << n++ << ":\n";
         // Second step: fix circle_1, find the best central point for circle_2        
-        for (int t = 0; t < 40; t++) {
-            if (frozen_cnt == 20) {
+        for (int t = 0; t < 10; t++) {
+            if (frozen_cnt == 50) {
                 frozen = true;
                 break;
             }
@@ -203,8 +203,14 @@ int main() {
             else frozen_cnt = 0;
             prev_max = max1+max2;
         }
-        T = T * 0.9; // Tn = r^n * T0, where T0 = 5
-        cout << "\tT: " << T << endl;
+
+        T = T * r; // Tn = r^n * T0, where T0 = 5
+        float tmpA = (float)0.94 / (float)0.8, tmpB = (float)1 / (float)23;
+        float schedule = pow(tmpA, tmpB);
+        if (n < 31) r = r * schedule;
+        else r = r / schedule;
+        cout << "-\nRound_" << n-1 << ":" << endl;
+        cout << "\tT: " << T << ", r: " << r << endl;
         cout << "\t" << sol_tmp << endl;
     }
 
