@@ -113,11 +113,11 @@ int main() {
             float dist12 = (x1-x2_tmp)*(x1-x2_tmp) + (y1-y2_tmp)*(y1-y2_tmp); // distance b/w two circles
             float cost = w_fixed*max1*max1 + w_search*(cnt-overlapped_n)*(cnt-overlapped_n) - w_overlap*overlapped_n;
             // if (cost > max || cost == max) {     // need a MUX 
-            if (cost > max) {                // no MUXs needed
+            if (cost > max-1) {                // no MUXs needed
                 max2 = cnt - overlapped_n;
                 max = cost;
                 x2 = x2_tmp; y2 = y2_tmp;
-                if (max1+max2 > max_global) {
+                if (max1+max2 > max_global-1) {
                     max_global = max1 + max2;
                     x1_ans = x1;
                     y1_ans = y1;
@@ -179,7 +179,7 @@ int main() {
             // dist12 = (x2-x1_tmp)*(x2-x1_tmp) + (y2-y1_tmp)*(y2-y1_tmp); // distance b/w two circles
             cost = w_fixed*max2*max2 + w_search*(cnt-overlapped_n)*(cnt-overlapped_n) - w_overlap*overlapped_n;
             // if (cost > max || cost == max) {      
-            if (cost > max) {                
+            if (cost > max-1) {                
                 max1 = cnt - overlapped_n;
                 max = cost;
                 x1 = x1_tmp; y1 = y1_tmp;
