@@ -44,10 +44,24 @@ int main() {
             for (int k = 0; k < 40; k++) {
                 // Check whether the points are in the radius of 4 of the circle
                 x = list[k].first; y = list[k].second;
-                int dist = (x-i)*(x-i) + (y-j)*(y-j);
-                if (dist < 17) {
-                    detected_tmp[k] = true;
-                    cnt++;
+                // int dist = (x-i)*(x-i) + (y-j)*(y-j);
+                // if (dist < 17) {
+                //     detected_tmp[k] = true;
+                //     cnt++;
+                // }
+                int dx = abs(x-i), dy = abs(y-j);
+                if (dx+dy < 6) {
+                    if (dx+dy == 5) {
+                        if (abs(dx-dy) == 3 || abs(dx-dy) == 5) continue;
+                        else {
+                            detected_tmp[k] = true;
+                            cnt++;
+                        }
+                    }
+                    else {
+                        detected_tmp[k] = true;
+                        cnt++;
+                    }
                 }
             }
             if (cnt > max) {                
@@ -96,11 +110,27 @@ int main() {
             for (int k = 0; k < 40; k++) {
                 // Check whether the points are in the radius of 4 of the circle
                 x = list[k].first; y = list[k].second;
-                int dist = (x-x2_tmp)*(x-x2_tmp) + (y-y2_tmp)*(y-y2_tmp);
-                if (dist < 17) {
-                    detected_2_tmp[k] = true;
-                    if (detected[k]) overlapped_n++; // punishment for overlapping
-                    cnt++; 
+                // int dist = (x-x2_tmp)*(x-x2_tmp) + (y-y2_tmp)*(y-y2_tmp);
+                // if (dist < 17) {
+                //     detected_2_tmp[k] = true;
+                //     if (detected[k]) overlapped_n++; // punishment for overlapping
+                //     cnt++; 
+                // }
+                int dx = abs(x-x2_tmp), dy = abs(y-y2_tmp);
+                if (dx+dy < 6) {
+                    if (dx+dy == 5) {
+                        if (abs(dx-dy) == 3 || abs(dx-dy) == 5) continue;
+                        else {
+                            detected_2_tmp[k] = true;
+                            if (detected[k]) overlapped_n++; // punishment for overlapping
+                            cnt++; 
+                        }
+                    }
+                    else {
+                        detected_2_tmp[k] = true;
+                        if (detected[k]) overlapped_n++; // punishment for overlapping
+                        cnt++; 
+                    }
                 }
             }
             float w_fixed = 1;
@@ -108,7 +138,7 @@ int main() {
             float w_overlap = 5; // penalty weight for overlapping
             // float dist12 = (x1-x2_tmp)*(x1-x2_tmp) + (y1-y2_tmp)*(y1-y2_tmp); // distance b/w two circles
             float cost = w_fixed*max1*max1 + w_search*(cnt-overlapped_n)*(cnt-overlapped_n) - w_overlap*overlapped_n;
-            if (cost > max - 1) {                
+            if (cost > max) {                
                 max2 = cnt - overlapped_n;
                 max = cost;
                 x2 = x2_tmp; y2 = y2_tmp;
@@ -161,17 +191,33 @@ int main() {
             for (int k = 0; k < 40; k++) {
                 // Check whether the points are in the radius of 4 of the circle
                 x = list[k].first; y = list[k].second;
-                int dist = (x-x1_tmp)*(x-x1_tmp) + (y-y1_tmp)*(y-y1_tmp);
-                if (dist < 17) {
-                    detected_tmp[k] = true;
-                    if (detected_2[k]) overlapped_n++; // punishment for overlapping
-                    cnt++; 
+                // int dist = (x-x1_tmp)*(x-x1_tmp) + (y-y1_tmp)*(y-y1_tmp);
+                // if (dist < 17) {
+                //     detected_tmp[k] = true;
+                //     if (detected_2[k]) overlapped_n++; // punishment for overlapping
+                //     cnt++; 
+                // }
+                int dx = abs(x-x1_tmp), dy = abs(y-y1_tmp);
+                if (dx+dy < 6) {
+                    if (dx+dy == 5) {
+                        if (abs(dx-dy) == 3 || abs(dx-dy) == 5) continue;
+                        else {
+                            detected_tmp[k] = true;
+                            if (detected_2[k]) overlapped_n++; // punishment for overlapping
+                            cnt++; 
+                        }
+                    }
+                    else {
+                        detected_tmp[k] = true;
+                        if (detected_2[k]) overlapped_n++; // punishment for overlapping
+                        cnt++; 
+                    }
                 }
             }
 
             // dist12 = (x2-x1_tmp)*(x2-x1_tmp) + (y2-y1_tmp)*(y2-y1_tmp); // distance b/w two circles
             cost = w_fixed*max2*max2 + w_search*(cnt-overlapped_n)*(cnt-overlapped_n) - w_overlap*overlapped_n;
-            if (cost > max - 1) {                
+            if (cost > max) {                
                 max1 = cnt - overlapped_n;
                 max = cost;
                 x1 = x1_tmp; y1 = y1_tmp;
@@ -197,7 +243,7 @@ int main() {
             }
         
             cout << "\n\tcircle_1: (" << x1 << ", " << y1 << ")" << endl;
-            cout << "\tmax #coverage: " << max1+max2 << "\n\n";
+            cout << "\tmax #coverage: " << (int)max1+max2 << "\n\n";
             if ((int)(max1+max2) == sol) {
                 cout << 
                 "\t>----------------------<\n\t|                      |\n\t|        Perfect       |\n\t|                      |\n\t>----------------------<\n";
@@ -228,17 +274,39 @@ int main() {
     cout << "\nCircle_1 (" << x1_ans << ", " << y1_ans << ") detected points: \n";
     for (int k = 0; k < 40; k++) {
         x = list[k].first; y = list[k].second;
-        int dist = (x-x1_ans)*(x-x1_ans) + (y-y1_ans)*(y-y1_ans);
-        if (dist < 17)
-            cout << "\t" << list[k].first << ", " << list[k].second << endl;
+        // int dist = (x-x1_ans)*(x-x1_ans) + (y-y1_ans)*(y-y1_ans);
+        // if (dist < 17) cout << "\t" << list[k].first << ", " << list[k].second << endl;
+        int dx = abs(x-x1_ans), dy = abs(y-y1_ans);
+        if (dx+dy < 6) {
+            if (dx+dy == 5) {
+                if (abs(dx-dy) == 3 || abs(dx-dy) == 5) continue;
+                else {
+                    cout << "\t" << list[k].first << ", " << list[k].second << endl;
+                }
+            }
+            else {
+                cout << "\t" << list[k].first << ", " << list[k].second << endl;
+            }
+        }
     }
 
     cout << "\nCircle_2 (" << x2_ans << ", " << y2_ans << ") detected points: \n";
     for (int k = 0; k < 40; k++) {
         x = list[k].first; y = list[k].second;
-        int dist = (x-x2_ans)*(x-x2_ans) + (y-x2_ans)*(y-x2_ans);
-        if (dist < 17)
-            cout << "\t" << list[k].first << ", " << list[k].second << endl;
+        // int dist = (x-x2_ans)*(x-x2_ans) + (y-y2_ans)*(y-y2_ans);
+        // if (dist < 17) cout << "\t" << list[k].first << ", " << list[k].second << endl;
+        int dx = abs(x-x2_ans), dy = abs(y-y2_ans);
+        if (dx+dy < 6) {
+            if (dx+dy == 5) {
+                if (abs(dx-dy) == 3 || abs(dx-dy) == 5) continue;
+                else {
+                    cout << "\t" << list[k].first << ", " << list[k].second << endl;
+                }
+            }
+            else {
+                cout << "\t" << list[k].first << ", " << list[k].second << endl;
+            }
+        }
     }
     cout << "\n\tmax #coverage: " << max_global << endl;
     cout << "\t" << sol_tmp << endl;
