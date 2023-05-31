@@ -35,11 +35,11 @@ int main() {
     // First step: find the max coverage of the first circle
     float max = 0;
     int x1 = 0, y1 = 0;
-    vector<bool> detected(40, false);
-    vector<bool> detected_tmp(40, false);
+    // vector<int> detected(40, 0);
+    // vector<int> detected_tmp(40, 0);
     for (int i = 0; i < 16; i++) {
         for (int j = 0; j < 16; j++) {            
-            for (int k = 0; k < 40; k++) detected_tmp[k] = false; // avoid segmentation fault
+            // for (int k = 0; k < 40; k++) detected_tmp[k] = 0; // avoid segmentation fault
             float cnt = 0;
             for (int k = 0; k < 40; k++) {
                 // Check whether the points are in the radius of 4 of the circle
@@ -54,12 +54,14 @@ int main() {
                     if (dx+dy == 5) {
                         if (abs(dx-dy) == 3 || abs(dx-dy) == 5) continue;
                         else {
-                            detected_tmp[k] = true;
+                            // detected[k] = 1;
+                            // detected_tmp[k] = 1;
                             cnt++;
                         }
                     }
                     else {
-                        detected_tmp[k] = true;
+                        // detected[k] = 1;
+                        // detected_tmp[k] = 1;
                         cnt++;
                     }
                 }
@@ -67,8 +69,16 @@ int main() {
             if (cnt > max) {                
                 max = cnt;
                 x1 = i; y1 = j;
-                for (int k = 0; k < 40; k++) detected[k] = detected_tmp[k];
+                // for (int k = 0; k < 40; k++) detected[k] = detected_tmp[k];
+                // for (int k = 0; k < 40; k++) {
+                //     if (detected[k]) detected[k];
+                // }
             }
+            // else {
+            //     for (int k = 0; k < 40; k++) {
+            //         if (detected[k]) detected[k] = 0;
+            //     }
+            // }
         }
     }
     cout << std::dec << "\ncircle_1: (" << x1 << ", " << y1 << ")" << endl;
@@ -81,8 +91,8 @@ int main() {
     int frozen_cnt = 0; 
     // ^^^^^^^^^^^ Manual Parameters ^^^^^^^^^^^ //
 
-    vector<bool> detected_2(40, false);
-    vector<bool> detected_2_tmp(40, false);
+    // vector<int> detected_2(40, 0);
+    // vector<int> detected_2_tmp(40, 0);
     float max1 = max; // max1: the max coverage found of circle_1
     float max2 = 0; // max2: the max coverage found of circle_2
     float max_global = max1;
@@ -98,7 +108,7 @@ int main() {
         cout << "\n-\nRound_" << n++ << ":\n";
         // Second step: fix circle_1, find the best central point for circle_2        
         for (int t = 0; t < 15; t++) {
-            for (int k = 0; k < 40; k++) detected_2_tmp[k] = false; // reset the tmp; looks stupid, but effectively avoid segmentation fault 
+            // for (int k = 0; k < 40; k++) detected_2_tmp[k] = false; // reset the tmp; looks stupid, but effectively avoid segmentation fault 
             int x2_tmp = x2 + pow(-1, rand()%2) * (rand()%3); // x2 = x2 +- (0~2)
             if (x2_tmp < 0) x2_tmp = 0;
             else if (x2_tmp > 15) x2_tmp = 15;
@@ -116,19 +126,35 @@ int main() {
                 //     if (detected[k]) overlapped_n++; // punishment for overlapping
                 //     cnt++; 
                 // }
+
+                /*
+                    new in c1  && new in c2 -> overlapped
+                    
+                */
+
                 int dx = abs(x-x2_tmp), dy = abs(y-y2_tmp);
                 if (dx+dy < 6) {
                     if (dx+dy == 5) {
                         if (abs(dx-dy) == 3 || abs(dx-dy) == 5) continue;
                         else {
-                            detected_2_tmp[k] = true;
-                            if (detected[k]) overlapped_n++; // punishment for overlapping
+                            // detected_2_tmp[k] = true;
+                            // if (detected[k]) {                                
+                            //     overlapped_n++; // punishment for overlapping
+                            // }
+                            // else {
+                            //     detected[k] = 2;
+                            // }
                             cnt++; 
                         }
                     }
                     else {
-                        detected_2_tmp[k] = true;
-                        if (detected[k]) overlapped_n++; // punishment for overlapping
+                        // detected_2_tmp[k] = true;
+                        // if (detected[k]) {
+                        //     overlapped_n++; // punishment for overlapping
+                        // }
+                        // else {
+                        //     detected[k] = 2;
+                        // }
                         cnt++; 
                     }
                 }
@@ -138,6 +164,10 @@ int main() {
             float w_overlap = 5; // penalty weight for overlapping
             // float dist12 = (x1-x2_tmp)*(x1-x2_tmp) + (y1-y2_tmp)*(y1-y2_tmp); // distance b/w two circles
             float cost = w_fixed*max1*max1 + w_search*(cnt-overlapped_n)*(cnt-overlapped_n) - w_overlap*overlapped_n;
+
+            int max2_ = cnt - overlapped_n;
+            // if (max2' > max2)
+
             if (cost > max) {                
                 max2 = cnt - overlapped_n;
                 max = cost;
@@ -149,9 +179,16 @@ int main() {
                     x2_ans = x2;
                     y2_ans = y2;
                 }
-                for (int k = 0; k < 40; k++) detected_2[k] = detected_2_tmp[k];
+
+                // for (int k = 0; k < 40; k++) {
+                //     if (detected[k] == 2) {
+                //         detected[k]--;
+                //     }
+                // }
+                // for (int k = 0; k < 40; k++) detected_2[k] = detected_2_tmp[k];
             }
             else {
+                
                 float r = rand();
                 float sample = r / RAND_MAX;
                 float prob = exp(-(max-cost)/T);                    
@@ -159,8 +196,16 @@ int main() {
                     max2 = cnt - overlapped_n;
                     max = cost;
                     x2 = x2_tmp; y2 = y2_tmp;
-                    for (int k = 0; k < 40; k++) detected_2[k] = detected_2_tmp[k];
+                    // for (int k = 0; k < 40; k++) {
+                    //     if (detected[k] == 2) {
+                    //         detected[k]--;
+                    //     }
+                    // }
+                    // for (int k = 0; k < 40; k++) detected_2[k] = detected_2_tmp[k];
                 }
+                // else {
+                //     for (int k = 0; k < 40; k++) detected[k]--;
+                // }
             }
             cout << "\tcircle_2: (" << std::dec << x2 << ", " << y2 << ")" << endl;
             cout << "\tmax #coverage: " << max1+max2 << "\n\n";
@@ -178,7 +223,7 @@ int main() {
             }
 
             // Third step: fix circle_2, find the best covering central point for circle_1
-            for (int k = 0; k < 40; k++) detected_tmp[k] = false; // avoid segmentation fault
+            // for (int k = 0; k < 40; k++) detected_tmp[k] = false; // avoid segmentation fault
 
             int x1_tmp = x1 + pow(-1, rand()%2) * (rand()%3); // x1 = x1 +- (1~2)
             if (x1_tmp < 0) x1_tmp = 0;
@@ -202,14 +247,26 @@ int main() {
                     if (dx+dy == 5) {
                         if (abs(dx-dy) == 3 || abs(dx-dy) == 5) continue;
                         else {
-                            detected_tmp[k] = true;
-                            if (detected_2[k]) overlapped_n++; // punishment for overlapping
+                            // detected_tmp[k] = true;
+                            // if (detected[k]) {
+                            //     // detected[k]++;
+                            //     overlapped_n++; // punishment for overlapping
+                            // }
+                            // else {
+                            //     detected[k]++;
+                            // }
                             cnt++; 
                         }
                     }
                     else {
-                        detected_tmp[k] = true;
-                        if (detected_2[k]) overlapped_n++; // punishment for overlapping
+                        // detected_tmp[k] = true;
+                        // if (detected_2[k]) {
+                        // if (detected[k]) {
+                        //     overlapped_n++; // punishment for overlapping
+                        // }
+                        // else {
+                        //     detected[k]++;
+                        // }
                         cnt++; 
                     }
                 }
@@ -217,6 +274,9 @@ int main() {
 
             // dist12 = (x2-x1_tmp)*(x2-x1_tmp) + (y2-y1_tmp)*(y2-y1_tmp); // distance b/w two circles
             cost = w_fixed*max2*max2 + w_search*(cnt-overlapped_n)*(cnt-overlapped_n) - w_overlap*overlapped_n;
+
+            // if (max1' > max1)
+
             if (cost > max) {                
                 max1 = cnt - overlapped_n;
                 max = cost;
@@ -228,7 +288,7 @@ int main() {
                     x2_ans = x2;
                     y2_ans = y2;
                 }
-                for (int k = 0; k < 40; k++) detected[k] = detected_tmp[k];
+                // for (int k = 0; k < 40; k++) detected[k] = detected_tmp[k];
             }
             else {
                 float r = rand();
@@ -238,7 +298,7 @@ int main() {
                     max1 = cnt - overlapped_n;
                     max = cost;
                     x1 = x1_tmp; y1 = y1_tmp;
-                    for (int k = 0; k < 40; k++) detected[k] = detected_tmp[k];
+                    // for (int k = 0; k < 40; k++) detected[k] = detected_tmp[k];
                 }
             }
         
