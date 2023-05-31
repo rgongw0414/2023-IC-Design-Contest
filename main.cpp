@@ -131,30 +131,17 @@ int main() {
                     new in c1  && new in c2 -> overlapped
                     
                 */
+                bool c1 = false, c2 = false;
                 int dx1 = abs(x-x1), dy1 = abs(y-y1);
                 if (dx1+dy1 < 6) {
                     if (dx1+dy1 == 5) {
                         if (abs(dx1-dy1) == 3 || abs(dx1-dy1) == 5) continue;
                         else {
-                            // detected_2_tmp[k] = true;
-                            // if (detected[k]) {                                
-                            //     overlapped_n++; // punishment for overlapping
-                            // }
-                            // else {
-                            //     detected[k] = 2;
-                            // }
-                            cnt++; 
+                            c1 = true;
                         }
                     }
                     else {
-                        // detected_2_tmp[k] = true;
-                        // if (detected[k]) {
-                        //     overlapped_n++; // punishment for overlapping
-                        // }
-                        // else {
-                        //     detected[k] = 2;
-                        // }
-                        cnt++; 
+                        c1 = true;
                     }
                 }
 
@@ -163,36 +150,23 @@ int main() {
                     if (dx2+dy2 == 5) {
                         if (abs(dx2-dy2) == 3 || abs(dx2-dy2) == 5) continue;
                         else {
-                            // detected_2_tmp[k] = true;
-                            // if (detected[k]) {                                
-                            //     overlapped_n++; // punishment for overlapping
-                            // }
-                            // else {
-                            //     detected[k] = 2;
-                            // }
-                            cnt++; 
+                            c2 = true;
                         }
                     }
                     else {
-                        // detected_2_tmp[k] = true;
-                        // if (detected[k]) {
-                        //     overlapped_n++; // punishment for overlapping
-                        // }
-                        // else {
-                        //     detected[k] = 2;
-                        // }
-                        cnt++; 
+                        c2 = true;
                     }
                 }
+                
+                // if (c1) cnt++;
+                if (c2) cnt++;
+                if (c1 && c2) overlapped_n++;
             }
             float w_fixed = 1;
             float w_search = 1;
             float w_overlap = 5; // penalty weight for overlapping
             // float dist12 = (x1-x2_tmp)*(x1-x2_tmp) + (y1-y2_tmp)*(y1-y2_tmp); // distance b/w two circles
             float cost = w_fixed*max1*max1 + w_search*(cnt-overlapped_n)*(cnt-overlapped_n) - w_overlap*overlapped_n;
-
-            int max2_ = cnt - overlapped_n;
-            // if (max2' > max2)
 
             if (cost > max) {                
                 max2 = cnt - overlapped_n;
@@ -268,34 +242,36 @@ int main() {
                 //     if (detected_2[k]) overlapped_n++; // punishment for overlapping
                 //     cnt++; 
                 // }
-                int dx = abs(x-x1_tmp), dy = abs(y-y1_tmp);
-                if (dx+dy < 6) {
-                    if (dx+dy == 5) {
-                        if (abs(dx-dy) == 3 || abs(dx-dy) == 5) continue;
+                bool c1 = false, c2 = false;
+                int dx1 = abs(x-x1_tmp), dy1 = abs(y-y1_tmp);
+                if (dx1+dy1 < 6) {
+                    if (dx1+dy1 == 5) {
+                        if (abs(dx1-dy1) == 3 || abs(dx1-dy1) == 5) continue;
                         else {
-                            // detected_tmp[k] = true;
-                            // if (detected[k]) {
-                            //     // detected[k]++;
-                            //     overlapped_n++; // punishment for overlapping
-                            // }
-                            // else {
-                            //     detected[k]++;
-                            // }
-                            cnt++; 
+                            c1 = true;
                         }
                     }
                     else {
-                        // detected_tmp[k] = true;
-                        // if (detected_2[k]) {
-                        // if (detected[k]) {
-                        //     overlapped_n++; // punishment for overlapping
-                        // }
-                        // else {
-                        //     detected[k]++;
-                        // }
-                        cnt++; 
+                        c1 = true;
                     }
                 }
+
+                int dx2 = abs(x-x2), dy2 = abs(y-y2);
+                if (dx2+dy2 < 6) {
+                    if (dx2+dy2 == 5) {
+                        if (abs(dx2-dy2) == 3 || abs(dx2-dy2) == 5) continue;
+                        else {
+                            c2 = true;
+                        }
+                    }
+                    else {
+                        c2 = true;
+                    }
+                }
+                
+                if (c1) cnt++;
+                // if (c2) cnt++;
+                if (c1 && c2) overlapped_n++;
             }
 
             // dist12 = (x2-x1_tmp)*(x2-x1_tmp) + (y2-y1_tmp)*(y2-y1_tmp); // distance b/w two circles
