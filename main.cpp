@@ -44,10 +44,8 @@ int main() {
             for (int k = 0; k < 40; k++) {
                 // Check whether the points are in the radius of 4 of the circle
                 x = list[k].first; y = list[k].second;
-                // int dist = (x-i)*(x-i) + (y-j)*(y-j); // takes lots of area and time
-                // if (dist < 17) { // instead of "dist < 16 || dist == 16", this might generate a MUX
-                int dist = abs(x-i) + abs(y-j); // NOTE: only works in int_grid problem, not works on all problems
-                if (dist < 6) {
+                int dist = (x-i)*(x-i) + (y-j)*(y-j);
+                if (dist < 17) {
                     detected_tmp[k] = true;
                     cnt++;
                 }
@@ -87,10 +85,10 @@ int main() {
         // Second step: fix circle_1, find the best central point for circle_2        
         for (int t = 0; t < 15; t++) {
             for (int k = 0; k < 40; k++) detected_2_tmp[k] = false; // reset the tmp; looks stupid, but effectively avoid segmentation fault 
-            int x2_tmp = x2 + pow(-1, rand()%2) * (rand()%3); // x2 = x2 +- (1~2)
+            int x2_tmp = x2 + pow(-1, rand()%2) * (rand()%3); // x2 = x2 +- (0~2)
             if (x2_tmp < 0) x2_tmp = 0;
             else if (x2_tmp > 15) x2_tmp = 15;
-            int y2_tmp = y2 + pow(-1, rand()%2) * (rand()%3); // y2 = y2 +- (1~2)
+            int y2_tmp = y2 + pow(-1, rand()%2) * (rand()%3); // y2 = y2 +- (0~2)
             if (y2_tmp < 0) y2_tmp = 0;
             else if (y2_tmp > 15) y2_tmp = 15;
 
@@ -98,10 +96,8 @@ int main() {
             for (int k = 0; k < 40; k++) {
                 // Check whether the points are in the radius of 4 of the circle
                 x = list[k].first; y = list[k].second;
-                // int dist = (x-x2_tmp)*(x-x2_tmp) + (y-y2_tmp)*(y-y2_tmp);
-                // if (dist < 17) {
-                int dist = abs(x-x2_tmp) + abs(y-y2_tmp); // NOTE: only works in int_grid problem, not works on all problems
-                if (dist < 6) {
+                int dist = (x-x2_tmp)*(x-x2_tmp) + (y-y2_tmp)*(y-y2_tmp);
+                if (dist < 17) {
                     detected_2_tmp[k] = true;
                     if (detected[k]) overlapped_n++; // punishment for overlapping
                     cnt++; 
@@ -110,14 +106,13 @@ int main() {
             float w_fixed = 1;
             float w_search = 1;
             float w_overlap = 5; // penalty weight for overlapping
-            float dist12 = (x1-x2_tmp)*(x1-x2_tmp) + (y1-y2_tmp)*(y1-y2_tmp); // distance b/w two circles
+            // float dist12 = (x1-x2_tmp)*(x1-x2_tmp) + (y1-y2_tmp)*(y1-y2_tmp); // distance b/w two circles
             float cost = w_fixed*max1*max1 + w_search*(cnt-overlapped_n)*(cnt-overlapped_n) - w_overlap*overlapped_n;
-            // if (cost > max || cost == max) {     // need a MUX 
-            if (cost > max-1) {                // no MUXs needed
+            if (cost > max - 1) {                
                 max2 = cnt - overlapped_n;
                 max = cost;
                 x2 = x2_tmp; y2 = y2_tmp;
-                if (max1+max2 > max_global-1) {
+                if (max1+max2 > max_global) {
                     max_global = max1 + max2;
                     x1_ans = x1;
                     y1_ans = y1;
@@ -166,10 +161,8 @@ int main() {
             for (int k = 0; k < 40; k++) {
                 // Check whether the points are in the radius of 4 of the circle
                 x = list[k].first; y = list[k].second;
-                // int dist = (x-x1_tmp)*(x-x1_tmp) + (y-y1_tmp)*(y-y1_tmp);
-                // if (dist < 17) {
-                int dist = abs(x-x1_tmp) + abs(y-y1_tmp); // NOTE: only works in int_grid problem, not works on all problems
-                if (dist < 6) {
+                int dist = (x-x1_tmp)*(x-x1_tmp) + (y-y1_tmp)*(y-y1_tmp);
+                if (dist < 17) {
                     detected_tmp[k] = true;
                     if (detected_2[k]) overlapped_n++; // punishment for overlapping
                     cnt++; 
@@ -178,8 +171,7 @@ int main() {
 
             // dist12 = (x2-x1_tmp)*(x2-x1_tmp) + (y2-y1_tmp)*(y2-y1_tmp); // distance b/w two circles
             cost = w_fixed*max2*max2 + w_search*(cnt-overlapped_n)*(cnt-overlapped_n) - w_overlap*overlapped_n;
-            // if (cost > max || cost == max) {      
-            if (cost > max-1) {                
+            if (cost > max - 1) {                
                 max1 = cnt - overlapped_n;
                 max = cost;
                 x1 = x1_tmp; y1 = y1_tmp;
@@ -236,19 +228,17 @@ int main() {
     cout << "\nCircle_1 (" << x1_ans << ", " << y1_ans << ") detected points: \n";
     for (int k = 0; k < 40; k++) {
         x = list[k].first; y = list[k].second;
-        // int dist = (x-x1_ans)*(x-x1_ans) + (y-y1_ans)*(y-y1_ans);
-        // if (dist < 17)
-        int dist = abs(x-x1_ans) + abs(y-y1_ans); // NOTE: only works in int_grid problem, not works on all problems
-        if (dist < 6) cout << "\t" << list[k].first << ", " << list[k].second << endl;
+        int dist = (x-x1_ans)*(x-x1_ans) + (y-y1_ans)*(y-y1_ans);
+        if (dist < 17)
+            cout << "\t" << list[k].first << ", " << list[k].second << endl;
     }
 
     cout << "\nCircle_2 (" << x2_ans << ", " << y2_ans << ") detected points: \n";
     for (int k = 0; k < 40; k++) {
         x = list[k].first; y = list[k].second;
-        // int dist = (x-x2_ans)*(x-x2_ans) + (y-y2_ans)*(y-y2_ans);
-        // if (dist < 17)
-        int dist = abs(x-x2_ans) + abs(y-y2_ans); // NOTE: only works in int_grid problem, not works on all problems
-        if (dist < 6) cout << "\t" << list[k].first << ", " << list[k].second << endl;
+        int dist = (x-x2_ans)*(x-x2_ans) + (y-x2_ans)*(y-x2_ans);
+        if (dist < 17)
+            cout << "\t" << list[k].first << ", " << list[k].second << endl;
     }
     cout << "\n\tmax #coverage: " << max_global << endl;
     cout << "\t" << sol_tmp << endl;
@@ -257,3 +247,4 @@ int main() {
         "\t>----------------------<\n\t|                      |\n\t|        Perfect       |\n\t|                      |\n\t>----------------------<\n";
     }
 }
+
