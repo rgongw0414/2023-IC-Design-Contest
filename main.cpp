@@ -44,8 +44,10 @@ int main() {
             for (int k = 0; k < 40; k++) {
                 // Check whether the points are in the radius of 4 of the circle
                 x = list[k].first; y = list[k].second;
-                int dist = (x-i)*(x-i) + (y-j)*(y-j);
-                if (dist < 17) {
+                // int dist = (x-i)*(x-i) + (y-j)*(y-j); // takes lots of area and time
+                // if (dist < 17) { // instead of "dist < 16 || dist == 16", this might generate a MUX
+                int dist = abs(x-i) + abs(y-j); // NOTE: only works in int_grid problem, not works on all problems
+                if (dist < 6) {
                     detected_tmp[k] = true;
                     cnt++;
                 }
@@ -96,8 +98,10 @@ int main() {
             for (int k = 0; k < 40; k++) {
                 // Check whether the points are in the radius of 4 of the circle
                 x = list[k].first; y = list[k].second;
-                int dist = (x-x2_tmp)*(x-x2_tmp) + (y-y2_tmp)*(y-y2_tmp);
-                if (dist < 17) {
+                // int dist = (x-x2_tmp)*(x-x2_tmp) + (y-y2_tmp)*(y-y2_tmp);
+                // if (dist < 17) {
+                int dist = abs(x-x2_tmp) + abs(y-y2_tmp); // NOTE: only works in int_grid problem, not works on all problems
+                if (dist < 6) {
                     detected_2_tmp[k] = true;
                     if (detected[k]) overlapped_n++; // punishment for overlapping
                     cnt++; 
@@ -162,8 +166,10 @@ int main() {
             for (int k = 0; k < 40; k++) {
                 // Check whether the points are in the radius of 4 of the circle
                 x = list[k].first; y = list[k].second;
-                int dist = (x-x1_tmp)*(x-x1_tmp) + (y-y1_tmp)*(y-y1_tmp);
-                if (dist < 17) {
+                // int dist = (x-x1_tmp)*(x-x1_tmp) + (y-y1_tmp)*(y-y1_tmp);
+                // if (dist < 17) {
+                int dist = abs(x-x1_tmp) + abs(y-y1_tmp); // NOTE: only works in int_grid problem, not works on all problems
+                if (dist < 6) {
                     detected_tmp[k] = true;
                     if (detected_2[k]) overlapped_n++; // punishment for overlapping
                     cnt++; 
@@ -230,17 +236,19 @@ int main() {
     cout << "\nCircle_1 (" << x1_ans << ", " << y1_ans << ") detected points: \n";
     for (int k = 0; k < 40; k++) {
         x = list[k].first; y = list[k].second;
-        int dist = (x-x1_ans)*(x-x1_ans) + (y-y1_ans)*(y-y1_ans);
-        if (dist < 17)
-            cout << "\t" << list[k].first << ", " << list[k].second << endl;
+        // int dist = (x-x1_ans)*(x-x1_ans) + (y-y1_ans)*(y-y1_ans);
+        // if (dist < 17)
+        int dist = abs(x-x1_ans) + abs(y-y1_ans); // NOTE: only works in int_grid problem, not works on all problems
+        if (dist < 6) cout << "\t" << list[k].first << ", " << list[k].second << endl;
     }
 
     cout << "\nCircle_2 (" << x2_ans << ", " << y2_ans << ") detected points: \n";
     for (int k = 0; k < 40; k++) {
         x = list[k].first; y = list[k].second;
-        int dist = (x-x2_ans)*(x-x2_ans) + (y-x2_ans)*(y-x2_ans);
-        if (dist < 17)
-            cout << "\t" << list[k].first << ", " << list[k].second << endl;
+        // int dist = (x-x2_ans)*(x-x2_ans) + (y-y2_ans)*(y-y2_ans);
+        // if (dist < 17)
+        int dist = abs(x-x2_ans) + abs(y-y2_ans); // NOTE: only works in int_grid problem, not works on all problems
+        if (dist < 6) cout << "\t" << list[k].first << ", " << list[k].second << endl;
     }
     cout << "\n\tmax #coverage: " << max_global << endl;
     cout << "\t" << sol_tmp << endl;
