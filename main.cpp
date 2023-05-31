@@ -131,11 +131,37 @@ int main() {
                     new in c1  && new in c2 -> overlapped
                     
                 */
+                int dx1 = abs(x-x1), dy1 = abs(y-y1);
+                if (dx1+dy1 < 6) {
+                    if (dx1+dy1 == 5) {
+                        if (abs(dx1-dy1) == 3 || abs(dx1-dy1) == 5) continue;
+                        else {
+                            // detected_2_tmp[k] = true;
+                            // if (detected[k]) {                                
+                            //     overlapped_n++; // punishment for overlapping
+                            // }
+                            // else {
+                            //     detected[k] = 2;
+                            // }
+                            cnt++; 
+                        }
+                    }
+                    else {
+                        // detected_2_tmp[k] = true;
+                        // if (detected[k]) {
+                        //     overlapped_n++; // punishment for overlapping
+                        // }
+                        // else {
+                        //     detected[k] = 2;
+                        // }
+                        cnt++; 
+                    }
+                }
 
-                int dx = abs(x-x2_tmp), dy = abs(y-y2_tmp);
-                if (dx+dy < 6) {
-                    if (dx+dy == 5) {
-                        if (abs(dx-dy) == 3 || abs(dx-dy) == 5) continue;
+                int dx2 = abs(x-x2_tmp), dy2 = abs(y-y2_tmp);
+                if (dx2+dy2 < 6) {
+                    if (dx2+dy2 == 5) {
+                        if (abs(dx2-dy2) == 3 || abs(dx2-dy2) == 5) continue;
                         else {
                             // detected_2_tmp[k] = true;
                             // if (detected[k]) {                                
