@@ -45,7 +45,7 @@ int main() {
                 // Check whether the points are in the radius of 4 of the circle
                 x = list[k].first; y = list[k].second;
                 int dist = (x-i)*(x-i) + (y-j)*(y-j);
-                if (dist < 16 || dist == 16) {
+                if (dist < 17) {
                     detected_tmp[k] = true;
                     cnt++;
                 }
@@ -97,7 +97,7 @@ int main() {
                 // Check whether the points are in the radius of 4 of the circle
                 x = list[k].first; y = list[k].second;
                 int dist = (x-x2_tmp)*(x-x2_tmp) + (y-y2_tmp)*(y-y2_tmp);
-                if (dist < 16 || dist == 16) {
+                if (dist < 17) {
                     detected_2_tmp[k] = true;
                     if (detected[k]) overlapped_n++; // punishment for overlapping
                     cnt++; 
@@ -108,7 +108,8 @@ int main() {
             float w_overlap = 5; // penalty weight for overlapping
             float dist12 = (x1-x2_tmp)*(x1-x2_tmp) + (y1-y2_tmp)*(y1-y2_tmp); // distance b/w two circles
             float cost = w_fixed*max1*max1 + w_search*(cnt-overlapped_n)*(cnt-overlapped_n) - w_overlap*overlapped_n;
-            if (cost > max || cost == max) {                
+            // if (cost > max || cost == max) {     // need a MUX 
+            if (cost > max) {                // no MUXs needed
                 max2 = cnt - overlapped_n;
                 max = cost;
                 x2 = x2_tmp; y2 = y2_tmp;
@@ -162,7 +163,7 @@ int main() {
                 // Check whether the points are in the radius of 4 of the circle
                 x = list[k].first; y = list[k].second;
                 int dist = (x-x1_tmp)*(x-x1_tmp) + (y-y1_tmp)*(y-y1_tmp);
-                if (dist < 16 || dist == 16) {
+                if (dist < 17) {
                     detected_tmp[k] = true;
                     if (detected_2[k]) overlapped_n++; // punishment for overlapping
                     cnt++; 
@@ -171,7 +172,8 @@ int main() {
 
             // dist12 = (x2-x1_tmp)*(x2-x1_tmp) + (y2-y1_tmp)*(y2-y1_tmp); // distance b/w two circles
             cost = w_fixed*max2*max2 + w_search*(cnt-overlapped_n)*(cnt-overlapped_n) - w_overlap*overlapped_n;
-            if (cost > max || cost == max) {                
+            // if (cost > max || cost == max) {      
+            if (cost > max) {                
                 max1 = cnt - overlapped_n;
                 max = cost;
                 x1 = x1_tmp; y1 = y1_tmp;
@@ -229,7 +231,7 @@ int main() {
     for (int k = 0; k < 40; k++) {
         x = list[k].first; y = list[k].second;
         int dist = (x-x1_ans)*(x-x1_ans) + (y-y1_ans)*(y-y1_ans);
-        if (dist < 16 || dist == 16)
+        if (dist < 17)
             cout << "\t" << list[k].first << ", " << list[k].second << endl;
     }
 
@@ -237,7 +239,7 @@ int main() {
     for (int k = 0; k < 40; k++) {
         x = list[k].first; y = list[k].second;
         int dist = (x-x2_ans)*(x-x2_ans) + (y-x2_ans)*(y-x2_ans);
-        if (dist < 16 || dist == 16)
+        if (dist < 17)
             cout << "\t" << list[k].first << ", " << list[k].second << endl;
     }
     cout << "\n\tmax #coverage: " << max_global << endl;
