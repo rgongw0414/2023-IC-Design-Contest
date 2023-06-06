@@ -1,6 +1,12 @@
 output.txt
 test.cpp
 test.v
+*.err
+.bpad/
+ida.db/
+novasLog/
+novas*
+*Log/
 # Prerequisites
 *.d
 
