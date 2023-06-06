@@ -9,18 +9,21 @@ output reg [3:0] C2X,
 output reg [3:0] C2Y,
 output reg DONE);
 
+// For LFSR
+reg [4:0] q // random value from 1 to 31 
+
+// FSM
 reg [3:0]current_state;
 reg [3:0]next_state;
-
 parameter  INIT = 0;
 parameter READ = 1;
-
 parameter STEP_ONE = 2;
 parameter STEP_TWO = 3;
 parameter STEP_THREE = 4;
 // parameter OPTIMIZE = 8;
 parameter OUTPUT = 5;
 
+// caculate max cover
 reg [5:0] cover_current; // num of current covered points
 reg [5:0] cover_max;
 reg [5:0] cnt;
@@ -58,12 +61,12 @@ always @(*) begin
       next_state =(RST)?INIT:READ;
     READ:
       next_state =  (cnt == 6'd39)?STEP_ONE:READ;
-    STEP_ONE:
-      next_state =  (cnt < 6'd20)?STEP_TWO:READ;
+    STEP_ONE: // how to stop STEP_ONE?
+      next_state =  (cnt == 6'd20)?STEP_TWO:STEP_ONE;
     STEP_TWO:
-      next_state =  (cnt < 6'd20)?STEP_THREE:READ;
+      next_state =  (cnt == 6'd20)?STEP_THREE:STEP_TWO;
     STEP_THREE:
-      next_state =  (cnt < 6'd20)?STEP_TWO:OUTPUT;
+      next_state =  (cnt ==Z 6'd20)?STEP_TWO:STEP_THREE;
     // OPTIMIZE:
     //     next_state =(dir1 == 0 && dir2 == 0 && change ==0 && interval == 3'd7)?OUTPUT:CAL_DOWN;
     OUTPUT:
@@ -175,68 +178,44 @@ end
 
 end
 
-// circle
-always @(posedge CLK) begin
-if(RST)
-    circle <= 0;
-else if(current_state == CAL_LEFT)
-begin
-    if(cnt == 6'd40)
-        if((!circle && dir2==0) || (circle && dir1 == 0))
-            circle <= ~circle;
-end
-else if(current_state == OUTPUT)
-    circle <= 0;
-end
-
-
 // cnt, or Temperature for 15 ~ 25 round
 always @(posedge CLK) begin
-if(RST)
-  cnt <= 0;
-else if(current_state == OUTPUT)
-  cnt <= 0;
-else if(next_state == READ) // read input patterns
-  cnt <= cnt + 1;
-else if(current_state == STEP_ONE)
-  cnt <= 0;
-else if(current_state == STEP_TWO) // start SA
-  cnt = (cnt == 6'd20)? cnt <= 0: cnt;
-else if(current_state == STEP_THTREE)
-  cnt = (cnt == 6'd20)? cnt <= 0: cnt+1;
-else
-  cnt <= 0;
+  if(RST)
+    cnt <= 0;
+  else if(current_state == OUTPUT)
+    cnt <= 0;
+  else if(next_state == READ) // read input patterns
+    cnt <= cnt + 1;
+  else if(current_state == STEP_ONE)
+    cnt <= 0;
+  else if(current_state == STEP_TWO) // start SA
+    cnt = (cnt == 6'd20)? cnt <= 0: cnt;
+  else if(current_state == STEP_THTREE)
+    cnt = (cnt == 6'd20)? cnt <= 0: cnt+1;
+  else
+    cnt <= 0;
 end
 
-// OUTPUT
+// OUTPUT (C1X, C1Y), (C2X, C2Y)
 always @(posedge CLK) begin
-if(RST)
-begin
+  if (RST)
+  begin
     C1X <= 0;
     C1Y <= 0;
     C2X <= 0;
     C2Y <= 0;
-end
-else if(current_state == CAL_CIRCLE2_LOCATION)
-begin
-    C1X <= add_1/40;
-    C1Y <= add_2/40;
-    C2X <= add_1/40;
-    C2Y <= add_2/40;
-end
-else if(current_state == CAL_UP || current_state == CAL_DOWN || current_state == CAL_LEFT || current_state == CAL_RIGHT)
-begin
-    if(cnt == 6'd40)
-    begin
-        if(cover_current > cover_max)
-        begin
-            C1X <= tmpx1;
-            C1Y <= tmpy1;
-            C2X <= tmpx2;
-            C2Y <= tmpy2;
-        end
+  end
+  else if (current_state == STEP_ONE || current_state == STEP_TWO || current_state == STEP_THREE)
+  begin
+    if(cnt == 6'd20) begin
+      if(cover_current > cover_max) begin
+        C1X <= tmpX1;
+        C1Y <= tmpY1;
+        C2X <= tmpX2;
+        C2Y <= tmpY2;
+      end
     end
-end
+  end
 end
 
 
@@ -251,3 +230,20 @@ end
 
 endmodule
 
+// 5-bit maximal-length LFSR 
+always @(posedge CLK) begin
+  /* 
+    q = 1 ~ 31
+    if used as probability function, 
+    sampled q < 4 approximately equals to 10%
+  */
+  if (RST) 
+    q <= 5'h1;
+  else begin
+    q[4] <= 1'b0 ^ q[0];
+    q[3] <= q[4];
+    q[2] <= q[0] ^ q[3];
+    q[1] <= q[2];
+    q[0] <= q[1];
+  end
+end
