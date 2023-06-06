@@ -34,32 +34,12 @@ int main() {
 
     // First step: find the max coverage of the first circle
     float max = 0;
-    int x1 = 0, y1 = 0;
-    for (int i = 0; i < 16; i++) {
-        for (int j = 0; j < 16; j++) {            
-            // for (int k = 0; k < 40; k++) detected_tmp[k] = 0; // avoid segmentation fault
-            float cnt = 0;
-            for (int k = 0; k < 40; k++) {
-                // Check whether the points are in the radius of 4 of the circle
-                x = list[k].first; y = list[k].second;
-                int dx = abs(x-i), dy = abs(y-j);
-                if (dx+dy < 6) {
-                    if (dx+dy == 5) {
-                        if (abs(dx-dy) == 3 || abs(dx-dy) == 5) continue;
-                        else {
-                            cnt++;
-                        }
-                    }
-                    else {
-                        cnt++;
-                    }
-                }
-            }
-            if (cnt > max) {                
-                max = cnt;
-                x1 = i; y1 = j;
-            }
-        }
+    int x1 = 7, y1 = 7;
+    for (int k = 0; k < 40; k++) {
+        // Check whether the points are in the radius of 4 of the circle
+        x = list[k].first; y = list[k].second;
+        int dx = abs(x-x1), dy = abs(y-y1);
+        max += ((dx + dy <= 4) || (dx == 3 && dy == 2) || (dx == 2 && dy == 3));
     }
     cout << std::dec << "\ncircle_1: (" << x1 << ", " << y1 << ")" << endl;
     cout << "max #coverage of circle_1: " << max << endl;
@@ -67,17 +47,18 @@ int main() {
     // vvvvvvvvvvv Manual Parameters vvvvvvvvvvv //
     float T = 100, r = 0.8; // T0 = 10, r increases from 0.8 to 0.94 then decreases to 0.94
     bool frozen = false;
-    int repeat_max = 100; // if reach repeat_max consecutive repeated values, froze the SA algo.
+    int repeat_max = 25; // if reach repeat_max consecutive repeated values, froze the SA algo.
     int frozen_cnt = 0; 
     // ^^^^^^^^^^^ Manual Parameters ^^^^^^^^^^^ //
 
-    float max1 = max; // max1: the max coverage found of circle_1
-    float max2 = 0; // max2: the max coverage found of circle_2
-    float max_global = max1;
+    // float max1 = max; // max1: the max coverage found of circle_1
+    // float max2 = 0; // max2: the max coverage found of circle_2
+    // float max_global = max1;
+    float max_global = max;
     srand(std::time(nullptr));
     int n = 1, x2 = rand() % 16, y2 = rand() % 16;
     int x1_ans = x1, y1_ans = y1, x2_ans = x2, y2_ans = y2;
-    int prev_max = 0;
+    int prev_cnt_max = 0; // previous round total cover count
     while (T > 0.1) {
         if (frozen) {
             cout << "\n\tFrozen!\n";
@@ -85,7 +66,15 @@ int main() {
         }
         cout << "\n-\nRound_" << n++ << ":\n";
         // Second step: fix circle_1, find the best central point for circle_2        
-        for (int t = 0; t < 15; t++) {
+        for (int t = 0; t < 5; t++) {
+            // Third step: fix circle_2, find the best covering central point for circle_1
+            int x1_tmp = x1 + pow(-1, rand()%2) * (rand()%3); // x1 = x1 +- (1~2)
+            if (x1_tmp < 0) x1_tmp = 0;
+            else if (x1_tmp > 15) x1_tmp = 15;
+            int y1_tmp = y1 + pow(-1, rand()%2) * (rand()%3); // y2 = y1 +- (1~2)
+            if (y1_tmp < 0) y1_tmp = 0;
+            else if (y1_tmp > 15) y1_tmp = 15;
+            
             int x2_tmp = x2 + pow(-1, rand()%2) * (rand()%3); // x2 = x2 +- (0~2)
             if (x2_tmp < 0) x2_tmp = 0;
             else if (x2_tmp > 15) x2_tmp = 15;
@@ -98,193 +87,76 @@ int main() {
                 // Check whether the points are in the radius of 4 of the circle
                 x = list[k].first; y = list[k].second;
 
-                bool c1 = false, c2 = false;
-                int dx1 = abs(x-x1), dy1 = abs(y-y1);
-                if (dx1+dy1 < 6) {
-                    if (dx1+dy1 == 5) {
-                        if (abs(dx1-dy1) == 3 || abs(dx1-dy1) == 5) continue;
-                        else {
-                            c1 = true;
-                        }
-                    }
-                    else {
-                        c1 = true;
-                    }
-                }
-
-                // weird, otherwise g++ goes wrong
-                int detected = 0;
-                if (c1) detected++; // wtf, if put this line after line 131, it would go wrong sometimes
-
+                int dx1 = abs(x-x1_tmp), dy1 = abs(y-y1_tmp);
                 int dx2 = abs(x-x2_tmp), dy2 = abs(y-y2_tmp);
-                if (dx2+dy2 < 6) {
-                    if (dx2+dy2 == 5) {
-                        if (abs(dx2-dy2) == 3 || abs(dx2-dy2) == 5) continue;
-                        else {
-                            c2 = true;
-                        }
+                if (((dx1 + dy1 <= 4) || (dx1 == 3 && dy1 == 2) || (dx1 == 2 && dy1 == 3)) && 
+                    ((dx2 + dy2 <= 4) || (dx2 == 3 && dy2 == 2) || (dx2 == 2 && dy2 == 3))) {
+                        overlapped_n++;
                     }
-                    else {
-                        c2 = true;
-                    }
-                }
-
-                // ***
-                if (c2) {
-                    cnt++;
-                    detected++; // weird, otherwise g++ goes wrong
-                }
-                if (detected == 2) overlapped_n++; 
-                // ***
-
-                // if (c1 && c2) overlapped_n++;                    
+                cnt = cnt + (((dx1 + dy1 <= 4) || (dx1 == 3 && dy1 == 2) || (dx1 == 2 && dy1 == 3)) || 
+                             ((dx2 + dy2 <= 4) || (dx2 == 3 && dy2 == 2) || (dx2 == 2 && dy2 == 3)));
             }
             float w_fixed = 1;
             float w_search = 1;
             float w_overlap = 5; // penalty weight for overlapping
-            // float dist12 = (x1-x2_tmp)*(x1-x2_tmp) + (y1-y2_tmp)*(y1-y2_tmp); // distance b/w two circles
-            float cost = w_fixed*max1*max1 + w_search*(cnt-overlapped_n)*(cnt-overlapped_n) - w_overlap*overlapped_n;
+            // float cost = w_fixed*max1*max1 + w_search*cnt*cnt + overlapped_n*overlapped_n - w_overlap*overlapped_n;
+            // float cost = cnt;
+            float cost = (cnt-overlapped_n)*(cnt-overlapped_n) - overlapped_n*overlapped_n;
+            cout << cost << endl;
 
             if (cost > max) {                
-                max2 = cnt - overlapped_n;
+                // max2 = cnt - overlapped_n;
                 max = cost;
+                x1 = x1_tmp; y1 = y1_tmp;
                 x2 = x2_tmp; y2 = y2_tmp;
-                if (max1+max2 > max_global) {
-                    max_global = max1 + max2;
+                // max1: # of points only found by circle_1
+                // max2: # of points only found by circle_2
+                // if (max > max_global) {
+                if (cnt > max_global) {
+                    // max_global = max1+max2;
+                    max_global = cnt;
                     x1_ans = x1;
                     y1_ans = y1;
                     x2_ans = x2;
                     y2_ans = y2;
                 }
             }
-            else {
-                
+            else {                
                 float r = rand();
                 float sample = r / RAND_MAX;
-                float prob = exp(-(max-cost)/T);                    
+                // float prob = exp(-(max-cost)/T);                    
+                float prob = 0.1;
                 if (sample < prob) { // accept the worse solution
-                    max2 = cnt - overlapped_n;
+                    // max2 = cnt - overlapped_n;
                     max = cost;
+                    x1 = x1_tmp; y1 = y1_tmp;
                     x2 = x2_tmp; y2 = y2_tmp;
                 }
             }
+            cout << "\tcircle_1: (" << x1 << ", " << y1 << ")" << endl;            
             cout << "\tcircle_2: (" << std::dec << x2 << ", " << y2 << ")" << endl;
-            cout << "\tmax #coverage: " << max1+max2 << "\n\n";
-            if ((int)(max1+max2) == sol) {
+            cout << "\tmax #coverage: " << cnt << ", overlapped_n: " << overlapped_n << "\n\n";
+            if ((int)(cnt) == sol) {
                 cout << 
                 "\t>----------------------<\n\t|                      |\n\t|        Perfect       |\n\t|                      |\n\t>----------------------<\n";
             }
             
-            if (prev_max == max1+max2) frozen_cnt++;
+            if (prev_cnt_max == cnt) frozen_cnt++;
             else frozen_cnt = 0;
-            prev_max = max1+max2;
+            prev_cnt_max = cnt;
             if (frozen_cnt == repeat_max) {
                 frozen = true;
                 break;
             }
-
-            // Third step: fix circle_2, find the best covering central point for circle_1
-            int x1_tmp = x1 + pow(-1, rand()%2) * (rand()%3); // x1 = x1 +- (1~2)
-            if (x1_tmp < 0) x1_tmp = 0;
-            else if (x1_tmp > 15) x1_tmp = 15;
-            int y1_tmp = y1 + pow(-1, rand()%2) * (rand()%3); // y2 = y1 +- (1~2)
-            if (y1_tmp < 0) y1_tmp = 0;
-            else if (y1_tmp > 15) y1_tmp = 15;
-
-            cnt = 0, overlapped_n = 0;
-            for (int k = 0; k < 40; k++) {
-                // Check whether the points are in the radius of 4 of the circle
-                x = list[k].first; y = list[k].second;
-
-                bool c1 = false, c2 = false;
-                int dx1 = abs(x-x1_tmp), dy1 = abs(y-y1_tmp);
-                if (dx1+dy1 < 6) {
-                    if (dx1+dy1 == 5) {
-                        if (abs(dx1-dy1) == 3 || abs(dx1-dy1) == 5) continue;
-                        else {
-                            c1 = true;
-                        }
-                    }
-                    else {
-                        c1 = true;
-                    }
-                }
-
-                // weird, otherwise g++ goes wrong
-                int detected = 0;
-                if (c1) {
-                    cnt++;
-                    detected++; // weird, otherwise g++ goes wrong
-                }
-                // ***
-
-                int dx2 = abs(x-x2), dy2 = abs(y-y2);
-                if (dx2+dy2 < 6) {
-                    if (dx2+dy2 == 5) {
-                        if (abs(dx2-dy2) == 3 || abs(dx2-dy2) == 5) continue;
-                        else {
-                            c2 = true;
-                        }
-                    }
-                    else {
-                        c2 = true;
-                    }
-                }
-                
-                if (c2) detected++; // weird, otherwise g++ goes wrong
-                if (detected == 2) overlapped_n++;         
-                // if (c1 && c2) overlapped_n++;
-            }
-
-            // dist12 = (x2-x1_tmp)*(x2-x1_tmp) + (y2-y1_tmp)*(y2-y1_tmp); // distance b/w two circles
-            cost = w_fixed*max2*max2 + w_search*(cnt-overlapped_n)*(cnt-overlapped_n) - w_overlap*overlapped_n;
-
-            if (cost > max) {                
-                max1 = cnt - overlapped_n;
-                max = cost;
-                x1 = x1_tmp; y1 = y1_tmp;
-                if (max1+max2 > max_global) {
-                    max_global = max1 + max2;
-                    x1_ans = x1;
-                    y1_ans = y1;
-                    x2_ans = x2;
-                    y2_ans = y2;
-                }
-            }
-            else {
-                float r = rand();
-                float sample = r / RAND_MAX;
-                float prob = exp(-(max-cost)/T);                    
-                if (sample < prob) { // accept the worse solution
-                    max1 = cnt - overlapped_n;
-                    max = cost;
-                    x1 = x1_tmp; y1 = y1_tmp;
-                }
-            }
-        
-            cout << "\n\tcircle_1: (" << x1 << ", " << y1 << ")" << endl;
-            cout << "\tmax #coverage: " << (int)max1+max2 << "\n\n";
-            if ((int)(max1+max2) == sol) {
-                cout << 
-                "\t>----------------------<\n\t|                      |\n\t|        Perfect       |\n\t|                      |\n\t>----------------------<\n";
-            }
-            cout << "-\n";
-
-            if (prev_max == max1+max2) frozen_cnt++;
-            else frozen_cnt = 0;
-            prev_max = max1+max2;
-            if (frozen_cnt == repeat_max) {
-                frozen = true;
-                break;
-            }
+            cout << "\n-\n";
         }
 
         // vvvvvvvvvvv Manual Parameters vvvvvvvvvvv //
         T = T * r; // Tn = r^n * T0, where T0 = 5
-        float tmpA = (float)0.94 / (float)0.8, tmpB = (float)1 / (float)23;
-        float schedule = pow(tmpA, tmpB);
-        if (n < 31) r = r * schedule;
-        else r = r / schedule;
+        // float tmpA = (float)0.94 / (float)0.8, tmpB = (float)1 / (float)23;
+        // float schedule = pow(tmpA, tmpB);
+        // if (n < 31) r = r * schedule;
+        // else r = r / schedule;
         // ^^^^^^^^^^^ Manual Parameters ^^^^^^^^^^^ //
         cout << "-\nRound_" << n-1 << ":" << endl;
         cout << "\tT: " << T << ", r: " << r << endl;
@@ -294,36 +166,21 @@ int main() {
     cout << "\nCircle_1 (" << x1_ans << ", " << y1_ans << ") detected points: \n";
     for (int k = 0; k < 40; k++) {
         x = list[k].first; y = list[k].second;
+
+
         int dx = abs(x-x1_ans), dy = abs(y-y1_ans);
-        if (dx+dy < 6) {
-            if (dx+dy == 5) {
-                if (abs(dx-dy) == 3 || abs(dx-dy) == 5) continue;
-                else {
-                    cout << "\t" << list[k].first << ", " << list[k].second << endl;
-                }
-            }
-            else {
-                cout << "\t" << list[k].first << ", " << list[k].second << endl;
-            }
-        }
+        if (((dx + dy <= 4) || (dx == 3 && dy == 2) || (dx == 2 && dy == 3)))
+            cout << "\t" << list[k].first << ", " << list[k].second << endl;
     }
 
     cout << "\nCircle_2 (" << x2_ans << ", " << y2_ans << ") detected points: \n";
     for (int k = 0; k < 40; k++) {
         x = list[k].first; y = list[k].second;
         int dx = abs(x-x2_ans), dy = abs(y-y2_ans);
-        if (dx+dy < 6) {
-            if (dx+dy == 5) {
-                if (abs(dx-dy) == 3 || abs(dx-dy) == 5) continue;
-                else {
-                    cout << "\t" << list[k].first << ", " << list[k].second << endl;
-                }
-            }
-            else {
-                cout << "\t" << list[k].first << ", " << list[k].second << endl;
-            }
-        }
+        if (((dx + dy <= 4) || (dx == 3 && dy == 2) || (dx == 2 && dy == 3)))
+            cout << "\t" << list[k].first << ", " << list[k].second << endl;
     }
+
     cout << "\n\tmax #coverage: " << max_global << endl;
     cout << "\t" << sol_tmp << endl;
     if ((int)(max_global) == sol) {

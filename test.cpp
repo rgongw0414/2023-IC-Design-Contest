@@ -35,42 +35,39 @@ int main() {
     // First step: find the max coverage of the first circle
     float max = 0;
     int x1 = 0, y1 = 0;
-    vector<bool> detected(40, false);
-    vector<bool> detected_tmp(40, false);
-    for (int i = 0; i < 16; i++) {
-        for (int j = 0; j < 16; j++) {            
-            for (int k = 0; k < 40; k++) detected_tmp[k] = false; // avoid segmentation fault
-            float cnt = 0;
-            for (int k = 0; k < 40; k++) {
-                // Check whether the points are in the radius of 4 of the circle
-                x = list[k].first; y = list[k].second;
-                // int dist = (x-i)*(x-i) + (y-j)*(y-j);
-                // if (dist < 17) {
-                //     detected_tmp[k] = true;
-                //     cnt++;
-                // }
-                int dx = abs(x-i), dy = abs(y-j);
-                if (dx+dy < 6) {
-                    if (dx+dy == 5) {
-                        if (abs(dx-dy) == 3 || abs(dx-dy) == 5) continue;
-                        else {
-                            detected_tmp[k] = true;
-                            cnt++;
-                        }
-                    }
-                    else {
-                        detected_tmp[k] = true;
-                        cnt++;
-                    }
-                }
-            }
-            if (cnt > max) {                
-                max = cnt;
-                x1 = i; y1 = j;
-                for (int k = 0; k < 40; k++) detected[k] = detected_tmp[k];
-            }
-        }
+    // for (int i = 0; i < 16; i++) {
+    //     for (int j = 0; j < 16; j++) {            
+    //         // for (int k = 0; k < 40; k++) detected_tmp[k] = 0; // avoid segmentation fault
+    //         float cnt = 0;
+    //         for (int k = 0; k < 40; k++) {
+    //             // Check whether the points are in the radius of 4 of the circle
+    //             x = list[k].first; y = list[k].second;
+    //             int dx = abs(x-i), dy = abs(y-j);
+    //             if (dx+dy < 6) {
+    //                 if (dx+dy == 5) {
+    //                     if (abs(dx-dy) == 3 || abs(dx-dy) == 5) continue;
+    //                     else {
+    //                         cnt++;
+    //                     }
+    //                 }
+    //                 else {
+    //                     cnt++;
+    //                 }
+    //             }
+    //         }
+    //         if (cnt > max) {                
+    //             max = cnt;
+    //             x1 = i; y1 = j;
+    //         }
+    //     }
+    // }
+    for (int k = 0; k < 40; k++) {
+        // Check whether the points are in the radius of 4 of the circle
+        x = list[k].first; y = list[k].second;
+        int dx = abs(x-7), dy = abs(y-7);
+        max += ((dx + dy <= 4) || (dx == 3 && dy == 2) || (dx == 2 && dy == 3));
     }
+    x1 = 7; y1 = 7;
     cout << std::dec << "\ncircle_1: (" << x1 << ", " << y1 << ")" << endl;
     cout << "max #coverage of circle_1: " << max << endl;
 
