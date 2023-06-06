@@ -94,7 +94,7 @@ int main() {
         }
         cout << "\n-\nRound_" << n++ << ":\n";
         // Second step: fix circle_1, find the best central point for circle_2        
-        for (int t = 0; t < 15; t++) {
+        for (int t = 0; t < 10; t++) {
             for (int k = 0; k < 40; k++) detected_2_tmp[k] = false; // reset the tmp; looks stupid, but effectively avoid segmentation fault 
             int x2_tmp = x2 + pow(-1, rand()%2) * (rand()%3); // x2 = x2 +- (0~2)
             if (x2_tmp < 0) x2_tmp = 0;
