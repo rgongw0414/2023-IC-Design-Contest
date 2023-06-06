@@ -99,7 +99,6 @@ int main() {
             float w_fixed = 1;
             float w_search = 1;
             float w_overlap = 5; // penalty weight for overlapping
-            // float cost = w_fixed*max1*max1 + w_search*cnt*cnt + overlapped_n*overlapped_n - w_overlap*overlapped_n;
             // float cost = cnt;
             float cost = (cnt-overlapped_n)*(cnt-overlapped_n) - overlapped_n*overlapped_n;
             cout << cost << endl;
