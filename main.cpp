@@ -58,7 +58,7 @@ int main() {
     srand(std::time(nullptr));
     int n = 1, x2 = rand() % 16, y2 = rand() % 16;
     int x1_ans = x1, y1_ans = y1, x2_ans = x2, y2_ans = y2;
-    int prev_cnt_max = 0; // previous round total cover count
+    int prev_max = 0;
     while (T > 0.1) {
         if (frozen) {
             cout << "\n\tFrozen!\n";
@@ -99,9 +99,8 @@ int main() {
             float w_fixed = 1;
             float w_search = 1;
             float w_overlap = 5; // penalty weight for overlapping
-            // float cost = cnt;
-            float cost = (cnt-overlapped_n)*(cnt-overlapped_n) - overlapped_n*overlapped_n;
-            cout << cost << endl;
+            // float cost = w_fixed*max1*max1 + w_search*cnt*cnt + overlapped_n*overlapped_n - w_overlap*overlapped_n;
+            float cost = cnt;
 
             if (cost > max) {                
                 // max2 = cnt - overlapped_n;
@@ -110,10 +109,9 @@ int main() {
                 x2 = x2_tmp; y2 = y2_tmp;
                 // max1: # of points only found by circle_1
                 // max2: # of points only found by circle_2
-                // if (max > max_global) {
-                if (cnt > max_global) {
+                if (max > max_global) {
                     // max_global = max1+max2;
-                    max_global = cnt;
+                    max_global = max;
                     x1_ans = x1;
                     y1_ans = y1;
                     x2_ans = x2;
@@ -134,15 +132,15 @@ int main() {
             }
             cout << "\tcircle_1: (" << x1 << ", " << y1 << ")" << endl;            
             cout << "\tcircle_2: (" << std::dec << x2 << ", " << y2 << ")" << endl;
-            cout << "\tmax #coverage: " << cnt << ", overlapped_n: " << overlapped_n << "\n\n";
-            if ((int)(cnt) == sol) {
+            cout << "\tmax #coverage: " << max << "\n\n";
+            if ((int)(max) == sol) {
                 cout << 
                 "\t>----------------------<\n\t|                      |\n\t|        Perfect       |\n\t|                      |\n\t>----------------------<\n";
             }
             
-            if (prev_cnt_max == cnt) frozen_cnt++;
+            if (prev_max == max) frozen_cnt++;
             else frozen_cnt = 0;
-            prev_cnt_max = cnt;
+            prev_max = max;
             if (frozen_cnt == repeat_max) {
                 frozen = true;
                 break;
@@ -179,7 +177,7 @@ int main() {
         if (((dx + dy <= 4) || (dx == 3 && dy == 2) || (dx == 2 && dy == 3)))
             cout << "\t" << list[k].first << ", " << list[k].second << endl;
     }
-
+    
     cout << "\n\tmax #coverage: " << max_global << endl;
     cout << "\t" << sol_tmp << endl;
     if ((int)(max_global) == sol) {
