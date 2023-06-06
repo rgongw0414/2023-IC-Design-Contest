@@ -21,7 +21,7 @@ parameter STEP_THREE = 4;
 // parameter OPTIMIZE = 8;
 parameter OUTPUT = 5;
 
-reg [5:0] cover_current; // num of current covered points 
+reg [5:0] cover_current; // num of current covered points
 reg [5:0] cover_max;
 reg [5:0] cnt;
 reg [3:0] corX [39:0]; // coordinates array of all input points
@@ -29,58 +29,50 @@ reg [3:0] corY [39:0];
 reg [3:0] tmpX1, tmpY1, tmpX2, tmpY2; // current x and y
 wire [4:0] dx1, dy1, dx2, dy2;
 
-// *** 
+// ***
 // compute abs value of dist. b/t tmpX/Y and corXY
 assign  dx1 = (tmpX1 > corX[cnt])? tmpX1 - corX[cnt] : corX[cnt] - tmpX1;
 assign  dy1 = (tmpY1 > corY[cnt])? tmpY1 - corY[cnt] : corY[cnt] - tmpY1;
 assign  dx2 = (tmpX2 > corX[cnt])? tmpX2 - corX[cnt] : corX[cnt] - tmpX2;
-assign  dy2 = (tmpY2 > corY[cnt])? tmpY2 - corY[cnt] : corY[cnt] - tmpY2; 
+assign  dy2 = (tmpY2 > corY[cnt])? tmpY2 - corY[cnt] : corY[cnt] - tmpY2;
 // ***
 /*
-cover_current <= cover_current + 
-        ((dx1 + dy1 <= 4) || (dx1 == 3 && dy1 == 2) || (dx1 == 2 && dy1 == 3) || 
+cover_current <= cover_current +
+        ((dx1 + dy1 <= 4) || (dx1 == 3 && dy1 == 2) || (dx1 == 2 && dy1 == 3) ||
         (dx2 + dy2 <= 4) || (dx2 == 3 && dy2 == 2) || (dx2 == 2 && dy2 == 3));
 */
 
-reg [3:0] tmpx1, tmpx2, tmpy1, tmpy2;
-wire [8:0] mul1, mul2;
-assign mul1 =(tmpx1 - bufferX[cnt])*(tmpx1 - bufferX[cnt]) + (tmpy1 - bufferY[cnt])*(tmpy1 - bufferY[cnt]);
-assign mul2 =(tmpx2 - bufferX[cnt])*(tmpx2 - bufferX[cnt]) + (tmpy2 - bufferY[cnt])*(tmpy2 - bufferY[cnt]);
+
+/// vvvvvvvvvvv  FSM  vvvvvvvvvvv ///
 always @(posedge CLK or posedge RST) begin
-    if(RST)
-        current_state <= INIT;
-    else 
-        current_state <= next_state;
+  if(RST)
+    current_state <= INIT;
+  else
+    current_state <= next_state;
 end
 
+// State transition
 always @(*) begin
-case (current_state)
+  case (current_state)
     INIT:
-        next_state =(RST)?INIT:READ;
+      next_state =(RST)?INIT:READ;
     READ:
-        next_state =  (cnt == 6'd39)?CAL_CIRCLE2_LOCATION:READ;
-    CAL_CIRCLE2_LOCATION:
-        next_state = CAL_COVER_RATE;
-    CAL_COVER_RATE:
-        next_state = (cnt == 6'd40)?CAL_DOWN:CAL_COVER_RATE;
-    CAL_DOWN:
-        next_state =(cnt == 6'd40)?CAL_UP:CAL_DOWN;
-    CAL_UP:
-        next_state =(cnt == 6'd40)?CAL_RIGHT:CAL_UP;
-    
-    CAL_RIGHT:
-        next_state =(cnt == 6'd40)?CAL_LEFT:CAL_RIGHT;
-    CAL_LEFT:
-        next_state =(cnt == 6'd40)?OPTIMIZE:CAL_LEFT;
-        
-    OPTIMIZE:
-        next_state =(dir1 == 0 && dir2 == 0 && change ==0 && interval == 3'd7)?OUTPUT:CAL_DOWN;
+      next_state =  (cnt == 6'd39)?STEP_ONE:READ;
+    STEP_ONE:
+      next_state =  (cnt < 6'd20)?STEP_TWO:READ;
+    STEP_TWO:
+      next_state =  (cnt < 6'd20)?STEP_THREE:READ;
+    STEP_THREE:
+      next_state =  (cnt < 6'd20)?STEP_TWO:OUTPUT;
+    // OPTIMIZE:
+    //     next_state =(dir1 == 0 && dir2 == 0 && change ==0 && interval == 3'd7)?OUTPUT:CAL_DOWN;
     OUTPUT:
-        next_state = READ;
-    default: 
-        next_state = INIT;
-endcase
+      next_state = READ;
+    default:
+      next_state = INIT;
+  endcase
 end
+/// ^^^^^^^^^^^  FSM  ^^^^^^^^^^^ ///
 
 // cover_current
 always @(posedge CLK) begin
@@ -201,29 +193,19 @@ end
 // cnt, or Temperature for 15 ~ 25 round
 always @(posedge CLK) begin
 if(RST)
-    cnt <= 0;
+  cnt <= 0;
 else if(current_state == OUTPUT)
-    cnt <= 0;
-else if(next_state == READ)
-    cnt <= cnt + 1;
-else if(current_state == CAL_CIRCLE2_LOCATION)
-    cnt <= 0;
-else if(current_state == CAL_COVER_RATE)
-begin
-    if(cnt == 40)
-        cnt <= 0;
-    else
-        cnt <= cnt + 1;
-end
-else if(current_state == CAL_UP || current_state == CAL_DOWN || current_state == CAL_LEFT|| current_state == CAL_RIGHT )
-begin
-    if(cnt ==6'd40)
-        cnt <= 0;
-    else 
-        cnt <= cnt +1;
-end
-else 
-    cnt <= 0;
+  cnt <= 0;
+else if(next_state == READ) // read input patterns
+  cnt <= cnt + 1;
+else if(current_state == STEP_ONE)
+  cnt <= 0;
+else if(current_state == STEP_TWO) // start SA
+  cnt = (cnt == 6'd20)? cnt <= 0: cnt;
+else if(current_state == STEP_THTREE)
+  cnt = (cnt == 6'd20)? cnt <= 0: cnt+1;
+else
+  cnt <= 0;
 end
 
 // OUTPUT
@@ -260,10 +242,10 @@ end
 
 always @(posedge CLK) begin
   if(RST)
-    DONE <= 1'b0;  
+    DONE <= 1'b0;
   else if (next_state == OUTPUT)
     DONE <= 1'b1;
-  else 
+  else
     DONE <= 1'b0;
 end
 
