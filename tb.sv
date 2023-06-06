@@ -40,16 +40,32 @@ LASER u_LASER(
 
 always begin #(`CYCLE/2) CLK = ~CLK; end
 
-//initial begin
-//    $fsdbDumpfile("LASER.fsdb");
-//    $fsdbDumpvars();
-//    $fsdbDumpMDA;
-//end
+initial begin
+    // $fsdbDumpfile("LASER.fsdb");
+    // $fsdbDumpvars();
+    // $fsdbDumpMDA;
 
-//initial begin
+    `ifdef RTL
+    //    $fsdbDumpfile("LASER.fsdb");
+    $fsdbDumpfile("LASER.fsdb");
+    // $fsdbDumpvars(0,"+mda");
+    $fsdbDumpvars();
+    $fsdbDumpMDA;
+    `endif
+    
+    `ifdef GATE
+    $sdf_annotate("LASER_SYN.sdf", u_LASER);
+    $fsdbDumpfile("LASER_SYN.fsdb");
+    // $fsdbDumpvars(0,"+mda");
+    //    $fsdbDumpvars();
+    $fsdbDumpvars();    
+    `endif
+end
+
+// initial begin
 //    $dumpvars();
 //    $dumpfile("LASER.vcd");
-//end
+// end
 
 `ifdef P1
     string PAT [1] = {"img1.pattern"};

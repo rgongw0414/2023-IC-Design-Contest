@@ -1,0 +1,251 @@
+Operating system: Linux
+                  0.0.0 Linux 3.10.0-1160.90.1.el7.x86_64 #1 SMP Thu May 4 15:21:22 UTC 2023 x86_64
+CPU: amd64
+     family 6 model 94 stepping 3
+     1 CPU
+
+GPU: UNKNOWN
+
+Crash reason:  DUMP_REQUESTED
+Crash address: 0x7f9d7082f406
+Process uptime: not available
+
+Thread 0 (crashed)
+ 0  libcbreakpad.so + 0x36406
+    rax = 0x00007f9d708064d5   rdx = 0x0000000000000000
+    rcx = 0x00007f9d7082dcb2   rbx = 0x00007f9d68f68980
+    rsi = 0x0000000000000001   rdi = 0x00007f9d68f68308
+    rbp = 0x00007f9d68f688c0   rsp = 0x00007f9d68f68270
+     r8 = 0x0000000000000000    r9 = 0x0000000000000000
+    r10 = 0x0000000000000000   r11 = 0x00000000055cf480
+    r12 = 0x0000000000000000   r13 = 0x00007f9d68f68ce8
+    r14 = 0x00007f9d68f68900   r15 = 0x0000000000d0f961
+    rip = 0x00007f9d7082f406
+    Found by: given as instruction pointer in context
+ 1  libcbreakpad.so + 0x34672
+    rbp = 0x00007f9d68f68a10   rsp = 0x00007f9d68f688d0
+    rip = 0x00007f9d7082d672
+    Found by: previous frame's frame pointer
+ 2  xmsim + 0x696630
+    rbp = 0x00007f9d68f68a10   rsp = 0x00007f9d68f68968
+    rip = 0x0000000000a96630
+    Found by: stack scanning
+ 3  xmsim + 0x5a771c
+    rbp = 0x00007f9d68f68a10   rsp = 0x00007f9d68f68980
+    rip = 0x00000000009a771c
+    Found by: stack scanning
+ 4  xmsim + 0x14e1f36
+    rsp = 0x00007f9d68f68a20   rip = 0x00000000018e1f36
+    Found by: stack scanning
+ 5  libc-2.17.so + 0x78179
+    rsp = 0x00007f9d68f68a40   rip = 0x00007f9d6fa46179
+    Found by: stack scanning
+ 6  libc-2.17.so + 0x53447
+    rsp = 0x00007f9d68f68ac0   rip = 0x00007f9d6fa21447
+    Found by: stack scanning
+ 7  libc-2.17.so + 0x1fe000
+    rsp = 0x00007f9d68f68ac8   rip = 0x00007f9d6fd90000
+    Found by: stack scanning
+ 8  libc-2.17.so + 0xefbc9
+    rsp = 0x00007f9d68f68ae0   rip = 0x00007f9d6fabdbc9
+    Found by: stack scanning
+ 9  libc-2.17.so + 0x7a2f3
+    rsp = 0x00007f9d68f68af0   rip = 0x00007f9d6fa482f3
+    Found by: stack scanning
+10  libc-2.17.so + 0x7ab90
+    rsp = 0x00007f9d68f68b20   rip = 0x00007f9d6fa48b90
+    Found by: stack scanning
+11  libc-2.17.so + 0x200380
+    rsp = 0x00007f9d68f68b58   rip = 0x00007f9d6fd92380
+    Found by: stack scanning
+12  libc-2.17.so + 0x6f05b
+    rsp = 0x00007f9d68f68b70   rip = 0x00007f9d6fa3d05b
+    Found by: stack scanning
+13  libsscore_xcelium171.so + 0x1f436e
+    rsp = 0x00007f9d68f68ba0   rip = 0x00007f9d674b536e
+    Found by: stack scanning
+14  libsscore_xcelium171.so + 0x334b89
+    rsp = 0x00007f9d68f68bc0   rip = 0x00007f9d675f5b89
+    Found by: stack scanning
+15  libsscore_xcelium171.so + 0x3422b9
+    rsp = 0x00007f9d68f68bc8   rip = 0x00007f9d676032b9
+    Found by: stack scanning
+16  libc-2.17.so + 0x204000
+    rsp = 0x00007f9d68f68be0   rip = 0x00007f9d6fd96000
+    Found by: stack scanning
+17  libc-2.17.so + 0xb60a5
+    rsp = 0x00007f9d68f68c00   rip = 0x00007f9d6fa840a5
+    Found by: stack scanning
+18  libsscore_xcelium171.so + 0x1f46ff
+    rsp = 0x00007f9d68f68c60   rip = 0x00007f9d674b56ff
+    Found by: stack scanning
+19  libc-2.17.so + 0x204000
+    rsp = 0x00007f9d68f68c88   rip = 0x00007f9d6fd96000
+    Found by: stack scanning
+20  libc-2.17.so + 0x392d2
+    rsp = 0x00007f9d68f68ca0   rip = 0x00007f9d6fa072d2
+    Found by: stack scanning
+21  xmsim + 0x90f961
+    rsp = 0x00007f9d68f68cd8   rip = 0x0000000000d0f961
+    Found by: stack scanning
+22  xmsim + 0x14e3a95
+    rsp = 0x00007f9d68f68ce0   rip = 0x00000000018e3a95
+    Found by: stack scanning
+23  xmsim + 0x1f4dd50
+    rsp = 0x00007f9d68f68d10   rip = 0x000000000234dd50
+    Found by: stack scanning
+24  libsscore_xcelium171.so + 0x16f904
+    rsp = 0x00007f9d68f68d40   rip = 0x00007f9d67430904
+    Found by: stack scanning
+25  libsscore_xcelium171.so + 0x16fc7e
+    rsp = 0x00007f9d68f68d80   rip = 0x00007f9d67430c7e
+    Found by: stack scanning
+26  xmsim + 0x6e5515
+    rsp = 0x00007f9d68f68d90   rip = 0x0000000000ae5515
+    Found by: stack scanning
+27  xmsim + 0x741f49
+    rsp = 0x00007f9d68f68db0   rip = 0x0000000000b41f49
+    Found by: stack scanning
+28  xmsim + 0x747314
+    rsp = 0x00007f9d68f68dc0   rip = 0x0000000000b47314
+    Found by: stack scanning
+29  xmsim + 0x74791d
+    rsp = 0x00007f9d68f68ea0   rip = 0x0000000000b4791d
+    Found by: stack scanning
+30  libsscore_xcelium171.so + 0xefd60
+    rsp = 0x00007f9d68f68ed0   rip = 0x00007f9d673b0d60
+    Found by: stack scanning
+31  libpthread-2.17.so + 0xf630
+    rsp = 0x00007f9d68f68f00   rip = 0x00007f9d7048b630
+    Found by: stack scanning
+32  xmsim + 0x90f961
+    rsp = 0x00007f9d68f68fb0   rip = 0x0000000000d0f961
+    Found by: stack scanning
+33  xmsim + 0x5a04d2
+    rsp = 0x00007f9d68f69010   rip = 0x00000000009a04d2
+    Found by: stack scanning
+34  xmsim + 0x5a04d2
+    rsp = 0x00007f9d68f690a0   rip = 0x00000000009a04d2
+    Found by: stack scanning
+
+Thread 1
+ 0  libpthread-2.17.so + 0xba35
+    rax = 0xfffffffffffffe00   rdx = 0x0000000000000001
+    rcx = 0xffffffffffffffff   rbx = 0x0000000000000000
+    rsi = 0x0000000000000080   rdi = 0x0000000005addd64
+    rbp = 0x00007f9d62113790   rsp = 0x00007f9d62113730
+     r8 = 0x0000000005ad5900    r9 = 0x0000000000000000
+    r10 = 0x0000000000000000   r11 = 0x0000000000000246
+    r12 = 0x0000000000000000   r13 = 0x0000000000801000
+    r14 = 0x0000000000000004   r15 = 0x00007f9d62115700
+    rip = 0x00007f9d70487a35
+    Found by: given as instruction pointer in context
+ 1  libsn_ida_producer_consumer.so + 0x1593
+    rbp = 0x00007f9d62113790   rsp = 0x00007f9d62113760
+    rip = 0x00007f9d7088e593
+    Found by: stack scanning
+ 2  libida_dump.so + 0x10e8a0
+    rbp = 0x00007f9d62113790   rsp = 0x00007f9d62113788
+    rip = 0x00007f9d622838a0
+    Found by: stack scanning
+ 3  libpthread-2.17.so + 0x7ea5
+    rsp = 0x00007f9d621137a0   rip = 0x00007f9d70483ea5
+    Found by: stack scanning
+ 4  xmsim + 0x401000
+    rsp = 0x00007f9d621137d0   rip = 0x0000000000801000
+    Found by: stack scanning
+ 5  libc-2.17.so + 0xfeb0d
+    rsp = 0x00007f9d62113840   rip = 0x00007f9d6faccb0d
+    Found by: stack scanning
+
+Thread 2
+ 0  libpthread-2.17.so + 0xba35
+    rax = 0xfffffffffffffe00   rdx = 0x0000000000000007
+    rcx = 0xffffffffffffffff   rbx = 0x0000000000000000
+    rsi = 0x0000000000000080   rdi = 0x0000000005ade1b4
+    rbp = 0x00007f9d61912790   rsp = 0x00007f9d61912730
+     r8 = 0x0000000005ade100    r9 = 0x0000000000000003
+    r10 = 0x0000000000000000   r11 = 0x0000000000000246
+    r12 = 0x0000000000000000   r13 = 0x0000000000801000
+    r14 = 0x0000000000000004   r15 = 0x00007f9d61914700
+    rip = 0x00007f9d70487a35
+    Found by: given as instruction pointer in context
+ 1  libsn_ida_producer_consumer.so + 0x1593
+    rbp = 0x00007f9d61912790   rsp = 0x00007f9d61912760
+    rip = 0x00007f9d7088e593
+    Found by: stack scanning
+ 2  libida_dump.so + 0x12c6f0
+    rbp = 0x00007f9d61912790   rsp = 0x00007f9d61912788
+    rip = 0x00007f9d622a16f0
+    Found by: stack scanning
+ 3  libpthread-2.17.so + 0x7ea5
+    rsp = 0x00007f9d619127a0   rip = 0x00007f9d70483ea5
+    Found by: stack scanning
+ 4  xmsim + 0x401000
+    rsp = 0x00007f9d619127d0   rip = 0x0000000000801000
+    Found by: stack scanning
+ 5  libc-2.17.so + 0xfeb0d
+    rsp = 0x00007f9d61912840   rip = 0x00007f9d6faccb0d
+    Found by: stack scanning
+
+Loaded modules:
+0x00400000 - 0x02ef9fff  xmsim  ???  (main)  (WARNING: No symbols, xmsim, BA1589BEC95F518C43F9346AFBBBF4070)
+0x7f9d6109c000 - 0x7f9d6110efff  libdwapi.so  ???
+0x7f9d6110f000 - 0x7f9d61113fff  libdwapi.so  ???
+0x7f9d62116000 - 0x7f9d62142fff  libstcdump.so  ???
+0x7f9d62175000 - 0x7f9d6233afff  libida_dump.so  ???  (WARNING: No symbols, libida_dump.so, D3BBC21744C29A13071958508DBA7AAF0)
+0x7f9d623a1000 - 0x7f9d62437fff  libcdns_ida_judy.so  ???
+0x7f9d672c1000 - 0x7f9d67728fff  libsscore_xcelium171.so  ???  (WARNING: No symbols, libsscore_xcelium171.so, 0B6BE4142F7E86F3C1ADB17989BB6A550)
+0x7f9d67729000 - 0x7f9d6793bfff  libsscore_xcelium171.so  ???
+0x7f9d67dad000 - 0x7f9d67dc3fff  libIUS.so  ???
+0x7f9d67dc4000 - 0x7f9d67fc6fff  libIUS.so  ???
+0x7f9d67fc8000 - 0x7f9d67fcefff  librt-2.17.so  ???
+0x7f9d67fcf000 - 0x7f9d681cffff  librt-2.17.so  ???
+0x7f9d681e6000 - 0x7f9d681f5fff  ida.dsn  ???
+0x7f9d681f6000 - 0x7f9d681fcfff  gconv-modules.cache  ???
+0x7f9d681fd000 - 0x7f9d68200fff  libpli.so  ???
+0x7f9d68201000 - 0x7f9d68404fff  libpli.so  ???
+0x7f9d68ff8000 - 0x7f9d691abfff  libStrapNC.so  ???
+0x7f9d691b7000 - 0x7f9d69269fff  libdcapi.so  ???
+0x7f9d6926a000 - 0x7f9d69276fff  libdcapi.so  ???
+0x7f9d69278000 - 0x7f9d6f7bafff  locale-archive  ???
+0x7f9d6f7bb000 - 0x7f9d6f7c6fff  libnss_files-2.17.so  ???
+0x7f9d6f7c7000 - 0x7f9d6f9c7fff  libnss_files-2.17.so  ???
+0x7f9d6f9ce000 - 0x7f9d6fb91fff  libc-2.17.so  ???  (WARNING: No symbols, libc-2.17.so, 79E270948F389C7FB2ED3B2872D0C2090)
+0x7f9d6fb92000 - 0x7f9d6fd96fff  libc-2.17.so  ???  (WARNING: No symbols, libc-2.17.so, 000000000000000000000000000000000)
+0x7f9d6fd9c000 - 0x7f9d6ff72fff  libstdc++.so.6.0.28  ???
+0x7f9d6ff76000 - 0x7f9d70076fff  libm-2.17.so  ???
+0x7f9d70077000 - 0x7f9d70277fff  libm-2.17.so  ???
+0x7f9d70278000 - 0x7f9d70279fff  libdl-2.17.so  ???
+0x7f9d7027a000 - 0x7f9d7047bfff  libdl-2.17.so  ???
+0x7f9d7047c000 - 0x7f9d70492fff  libpthread-2.17.so  ???  (WARNING: No symbols, libpthread-2.17.so, F2C80CE132B93DFCAEDA22F8DAC5EBB90)
+0x7f9d70493000 - 0x7f9d70693fff  libpthread-2.17.so  ???
+0x7f9d70698000 - 0x7f9d706b9fff  ld-2.17.so  ???
+0x7f9d706ba000 - 0x7f9d706c7fff  libida.so  ???
+0x7f9d706c8000 - 0x7f9d706d3fff  libindago.so  ???
+0x7f9d706d4000 - 0x7f9d706dcfff  libxdt.so  ???
+0x7f9d70760000 - 0x7f9d707f8fff  libxmjudy.so.1.0.3  ???
+0x7f9d707f9000 - 0x7f9d7085dfff  libcbreakpad.so  ???  (WARNING: No symbols, libcbreakpad.so, 63B86735150D8CAFFEA2339F8607BB350)
+0x7f9d7085e000 - 0x7f9d70862fff  libcbreakpad.so  ???
+0x7f9d7086f000 - 0x7f9d70888fff  libgcc_s.so.1  ???
+0x7f9d7088d000 - 0x7f9d70891fff  libsn_ida_producer_consumer.so  ???  (WARNING: No symbols, libsn_ida_producer_consumer.so, 56CBB42E376BE9299FD060AAE810E5FA0)
+0x7f9d70894000 - 0x7f9d708b7fff  libml_uvm.so  ???
+0x7f9d708b9000 - 0x7f9d708bafff  ld-2.17.so  ???
+0x7ffd62dd4000 - 0x7ffd62dd5fff  linux-gate.so  ???
+
+******BACKTRACE*****
+vserror (xmsim) [0x18e1f36]
+serror (xmsim) [0x18e3a95]
+sv_seghandler_aux (xmsim) [0xb47314]
+sv_seghandler (xmsim) [0xb4791d]
+sslux_scalar_size (xmsim) [0xd0f961]
+sslu_vcd_add_register (xmsim) [0xe1b0a4]
+sslu_vcd_xbuild_tree (xmsim) [0xe1c71b]
+sslu_vcd_xbuild_tree (xmsim) [0xe1bc1d]
+sslu_vcd_xbuild_tree (xmsim) [0xe1bc1d]
+sslu_vcd_build_tree (xmsim) [0xe1da59]
+sslu_vcd_do_items (xmsim) [0xe285ee]
+sslu_vcd_do_items (xmsim) [0xe2809a]
+ssl_vcd_add_items (xmsim) [0xe29b5e]
+rtl_dumpvars (xmsim) [0xaff23a]
+******BACKTRACE END*****

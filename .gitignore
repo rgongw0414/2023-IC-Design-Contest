@@ -1,5 +1,6 @@
 output.txt
 test.cpp
+test.v
 # Prerequisites
 *.d
 

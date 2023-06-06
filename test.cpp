@@ -154,7 +154,8 @@ int main() {
             else {
                 float r = rand();
                 float sample = r / RAND_MAX;
-                float prob = exp(-(max-cost)/T);                    
+                // float prob = exp(-(max-cost)/T);                    
+                float prob = 0.1; // wtf, SA does not work well in this problem...
                 if (sample < prob) { // accept the worse solution
                     max2 = cnt - overlapped_n;
                     max = cost;
@@ -233,7 +234,8 @@ int main() {
             else {
                 float r = rand();
                 float sample = r / RAND_MAX;
-                float prob = exp(-(max-cost)/T);                    
+                // float prob = exp(-(max-cost)/T);                    
+                float prob = 0.1;
                 if (sample < prob) { // accept the worse solution
                     max1 = cnt - overlapped_n;
                     max = cost;
@@ -261,10 +263,10 @@ int main() {
 
         // vvvvvvvvvvv Manual Parameters vvvvvvvvvvv //
         T = T * r; // Tn = r^n * T0, where T0 = 5
-        float tmpA = (float)0.94 / (float)0.8, tmpB = (float)1 / (float)23;
-        float schedule = pow(tmpA, tmpB);
-        if (n < 31) r = r * schedule;
-        else r = r / schedule;
+        // float tmpA = (float)0.94 / (float)0.8, tmpB = (float)1 / (float)23;
+        // float schedule = pow(tmpA, tmpB);
+        // if (n < 31) r = r * schedule;
+        // else r = r / schedule;
         // ^^^^^^^^^^^ Manual Parameters ^^^^^^^^^^^ //
         cout << "-\nRound_" << n-1 << ":" << endl;
         cout << "\tT: " << T << ", r: " << r << endl;
