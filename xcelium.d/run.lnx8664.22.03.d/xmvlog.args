@@ -6,15 +6,11 @@
 ./xcelium.d/run.lnx8664.22.03.d
 -RUNMODE
 tb.sv
-LASER_syn.v
+LASER.v
 -DEFINE
-GATE
+P1
 -DEFINE
 USECOLOR
--DEFINE
-SDF
--VFILE
-/home/eda/CBDK018_TSMC_Artisan/CIC/Verilog/tsmc18_neg.v
 -CDSLIB
 ./xcelium.d/run.lnx8664.22.03.d/cdsrun.lib
 -HDLVAR

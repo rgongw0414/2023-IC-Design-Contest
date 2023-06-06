@@ -1,3 +1,0 @@
-define LIB_MAP ( $LIB_MAP \
-, ../../../../CBDK018_TSMC_Artisan/CIC/Verilog/tsmc18_neg.v => tsmc18_neg \
-)

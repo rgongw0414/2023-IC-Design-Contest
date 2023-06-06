@@ -2,13 +2,11 @@
 // File created by:  xrun
 // Do not modify this file
 //
-+define+GATE+USECOLOR+SDF
++define+P1+USECOLOR
 +access+r
-+ncmaxdelays
 -ACCESS
 +r
 -CREATEDEBUGDB
--MAXDELAYS
 -MESSAGES
 -XLMODE
 ./xcelium.d/run.lnx8664.22.03.d

@@ -69,19 +69,19 @@ int main() {
         // Second step: fix circle_1, find the best central point for circle_2        
         for (int t = 0; t < 10; t++) {
             // Third step: fix circle_2, find the best covering central point for circle_1
-            int x1_tmp = x1 + pow(-1, rand()%2) * (rand()%3); // x1 = x1 +- (1~2)
-            if (x1_tmp < 0) x1_tmp = 0;
-            else if (x1_tmp > 15) x1_tmp = 15;
-            int y1_tmp = y1 + pow(-1, rand()%2) * (rand()%3); // y2 = y1 +- (1~2)
-            if (y1_tmp < 0) y1_tmp = 0;
-            else if (y1_tmp > 15) y1_tmp = 15;
+            int x1_tmp = x1 + pow(-1, rand()%2) * (rand()%4); // x1 = x1 +- (1~2)
+            if (x1_tmp < 0) x1_tmp = (x1_tmp+16)%16;
+            else if (x1_tmp > 15) x1_tmp = (x1_tmp+16)%16;
+            int y1_tmp = y1 + pow(-1, rand()%2) * (rand()%4); // y2 = y1 +- (1~2)
+            if (y1_tmp < 0) y1_tmp = (y1_tmp+16)%16;
+            else if (y1_tmp > 15) y1_tmp = (y1_tmp+16)%16;
             
-            int x2_tmp = x2 + pow(-1, rand()%2) * (rand()%3); // x2 = x2 +- (0~2)
-            if (x2_tmp < 0) x2_tmp = 0;
-            else if (x2_tmp > 15) x2_tmp = 15;
-            int y2_tmp = y2 + pow(-1, rand()%2) * (rand()%3); // y2 = y2 +- (0~2)
-            if (y2_tmp < 0) y2_tmp = 0;
-            else if (y2_tmp > 15) y2_tmp = 15;
+            int x2_tmp = x2 + pow(-1, rand()%2) * (rand()%4); // x2 = x2 +- (0~2)
+            if (x2_tmp < 0) x2_tmp = (x2_tmp+16)%16;
+            else if (x2_tmp > 15) x2_tmp = (x2_tmp+16)%16;
+            int y2_tmp = y2 + pow(-1, rand()%2) * (rand()%4); // y2 = y2 +- (0~2)
+            if (y2_tmp < 0) y2_tmp = (y2_tmp+16)%16;
+            else if (y2_tmp > 15) y2_tmp = (y2_tmp+16)%16;
 
             float cnt = 0, overlapped_n = 0;
             for (int k = 0; k < 40; k++) {
@@ -101,6 +101,8 @@ int main() {
             // float cost = (cnt-overlapped_n)*(cnt-overlapped_n) - overlapped_n*overlapped_n;
             // float cost = 10*(cnt-overlapped_n) - 3*overlapped_n;
 
+            // cost, cnt: cover_current
+            // max: cover_prev
             if (cost > max) {                
                 // max2 = cnt - overlapped_n;
                 max = cost;
@@ -109,6 +111,7 @@ int main() {
                 // max1: # of points only found by circle_1
                 // max2: # of points only found by circle_2
                 // if (max > max_global) {
+                // max_global: cover_max
                 if (cnt > max_global) {
                     // max_global = max1+max2;
                     max_global = cnt;
@@ -118,18 +121,18 @@ int main() {
                     y2_ans = y2;
                 }
             }
-            else {                
-                float r = rand();
-                float sample = r / RAND_MAX;
-                // float prob = exp(-(max-cost)/T);                    
-                float prob = 0.1;
-                if (sample < prob) { // accept the worse solution
-                    // max2 = cnt - overlapped_n;
-                    max = cost;
-                    x1 = x1_tmp; y1 = y1_tmp;
-                    x2 = x2_tmp; y2 = y2_tmp;
-                }
-            }
+            // else {                
+            //     float r = rand();
+            //     float sample = r / RAND_MAX;
+            //     // float prob = exp(-(max-cost)/T);                    
+            //     float prob = 0.1;
+            //     if (sample < prob) { // accept the worse solution
+            //         // max2 = cnt - overlapped_n;
+            //         max = cost;
+            //         x1 = x1_tmp; y1 = y1_tmp;
+            //         x2 = x2_tmp; y2 = y2_tmp;
+            //     }
+            // }
             cout << "\tcircle_1: (" << x1 << ", " << y1 << ")" << endl;            
             cout << "\tcircle_2: (" << std::dec << x2 << ", " << y2 << ")" << endl;
             cout << "\tmax #coverage: " << cnt << ", overlapped_n: " << overlapped_n << "\n\n";

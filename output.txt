@@ -23,54 +23,54 @@ max #coverage of circle_1: 12
 
 -
 Round_2:
-	circle_1: (7, 7)
-	circle_2: (0, 7)
-	max #coverage: 14, overlapped_n: 0
+	circle_1: (7, 8)
+	circle_2: (11, 13)
+	max #coverage: 24, overlapped_n: 1
 
 -
-	circle_1: (7, 7)
-	circle_2: (0, 7)
-	max #coverage: 10, overlapped_n: 2
+	circle_1: (7, 8)
+	circle_2: (12, 13)
+	max #coverage: 25, overlapped_n: 0
 
 -
-	circle_1: (7, 7)
-	circle_2: (0, 7)
-	max #coverage: 14, overlapped_n: 0
+	circle_1: (6, 8)
+	circle_2: (14, 14)
+	max #coverage: 21, overlapped_n: 0
 
 -
-	circle_1: (7, 7)
-	circle_2: (0, 7)
-	max #coverage: 14, overlapped_n: 0
+	circle_1: (8, 9)
+	circle_2: (0, 13)
+	max #coverage: 19, overlapped_n: 0
 
 -
-	circle_1: (8, 7)
-	circle_2: (0, 9)
-	max #coverage: 16, overlapped_n: 0
+	circle_1: (9, 9)
+	circle_2: (1, 13)
+	max #coverage: 20, overlapped_n: 0
 
 -
-	circle_1: (8, 7)
-	circle_2: (2, 11)
-	max #coverage: 18, overlapped_n: 0
+	circle_1: (10, 11)
+	circle_2: (2, 14)
+	max #coverage: 20, overlapped_n: 0
 
 -
-	circle_1: (8, 7)
-	circle_2: (2, 11)
-	max #coverage: 18, overlapped_n: 0
+	circle_1: (10, 12)
+	circle_2: (4, 13)
+	max #coverage: 25, overlapped_n: 1
 
 -
-	circle_1: (8, 8)
-	circle_2: (4, 11)
-	max #coverage: 19, overlapped_n: 5
+	circle_1: (9, 13)
+	circle_2: (6, 14)
+	max #coverage: 15, overlapped_n: 5
 
 -
-	circle_1: (8, 8)
-	circle_2: (4, 11)
-	max #coverage: 19, overlapped_n: 3
+	circle_1: (9, 11)
+	circle_2: (6, 12)
+	max #coverage: 22, overlapped_n: 7
 
 -
-	circle_1: (8, 8)
-	circle_2: (4, 11)
-	max #coverage: 19, overlapped_n: 8
+	circle_1: (10, 11)
+	circle_2: (5, 12)
+	max #coverage: 25, overlapped_n: 5
 
 -
 -
@@ -80,54 +80,54 @@ Round_2:
 
 -
 Round_4:
-	circle_1: (9, 10)
-	circle_2: (5, 13)
-	max #coverage: 23, overlapped_n: 4
-
--
-	circle_1: (9, 10)
-	circle_2: (5, 13)
-	max #coverage: 19, overlapped_n: 3
-
--
-	circle_1: (9, 10)
-	circle_2: (5, 13)
-	max #coverage: 22, overlapped_n: 7
+	circle_1: (10, 11)
+	circle_2: (5, 12)
+	max #coverage: 25, overlapped_n: 5
 
 -
 	circle_1: (10, 12)
-	circle_2: (3, 13)
+	circle_2: (4, 12)
+	max #coverage: 26, overlapped_n: 3
+
+-
+	circle_1: (12, 13)
+	circle_2: (4, 12)
 	max #coverage: 24, overlapped_n: 0
 
 -
-	circle_1: (10, 12)
-	circle_2: (3, 13)
-	max #coverage: 23, overlapped_n: 0
-
--
-	circle_1: (10, 12)
-	circle_2: (3, 13)
+	circle_1: (11, 13)
+	circle_2: (4, 13)
 	max #coverage: 21, overlapped_n: 0
 
 -
-	circle_1: (10, 12)
-	circle_2: (3, 13)
-	max #coverage: 21, overlapped_n: 0
+	circle_1: (9, 12)
+	circle_2: (5, 13)
+	max #coverage: 18, overlapped_n: 5
 
 -
-	circle_1: (11, 12)
-	circle_2: (3, 12)
-	max #coverage: 23, overlapped_n: 0
+	circle_1: (7, 10)
+	circle_2: (6, 13)
+	max #coverage: 20, overlapped_n: 7
 
 -
-	circle_1: (12, 11)
-	circle_2: (5, 12)
-	max #coverage: 27, overlapped_n: 1
+	circle_1: (7, 11)
+	circle_2: (6, 15)
+	max #coverage: 18, overlapped_n: 4
 
 -
-	circle_1: (12, 11)
-	circle_2: (5, 12)
-	max #coverage: 25, overlapped_n: 1
+	circle_1: (7, 13)
+	circle_2: (6, 0)
+	max #coverage: 11, overlapped_n: 0
+
+-
+	circle_1: (7, 14)
+	circle_2: (7, 2)
+	max #coverage: 11, overlapped_n: 0
+
+-
+	circle_1: (9, 0)
+	circle_2: (6, 2)
+	max #coverage: 3, overlapped_n: 1
 
 -
 -
@@ -137,54 +137,54 @@ Round_4:
 
 -
 Round_6:
-	circle_1: (12, 11)
-	circle_2: (5, 12)
-	max #coverage: 23, overlapped_n: 0
+	circle_1: (8, 2)
+	circle_2: (7, 2)
+	max #coverage: 3, overlapped_n: 2
 
 -
-	circle_1: (12, 11)
-	circle_2: (5, 12)
-	max #coverage: 25, overlapped_n: 0
+	circle_1: (8, 2)
+	circle_2: (9, 1)
+	max #coverage: 3, overlapped_n: 3
 
 -
-	circle_1: (12, 11)
-	circle_2: (5, 12)
-	max #coverage: 20, overlapped_n: 0
+	circle_1: (10, 2)
+	circle_2: (9, 15)
+	max #coverage: 8, overlapped_n: 0
 
 -
-	circle_1: (12, 11)
-	circle_2: (5, 12)
-	max #coverage: 26, overlapped_n: 1
+	circle_1: (11, 4)
+	circle_2: (9, 15)
+	max #coverage: 9, overlapped_n: 0
 
 -
-	circle_1: (12, 11)
-	circle_2: (5, 12)
-	max #coverage: 21, overlapped_n: 7
+	circle_1: (11, 5)
+	circle_2: (8, 14)
+	max #coverage: 12, overlapped_n: 0
 
 -
-	circle_1: (12, 11)
-	circle_2: (5, 12)
-	max #coverage: 23, overlapped_n: 0
+	circle_1: (10, 6)
+	circle_2: (7, 15)
+	max #coverage: 13, overlapped_n: 0
 
 -
-	circle_1: (12, 11)
-	circle_2: (5, 12)
-	max #coverage: 22, overlapped_n: 0
+	circle_1: (9, 8)
+	circle_2: (5, 13)
+	max #coverage: 20, overlapped_n: 3
 
 -
-	circle_1: (12, 11)
-	circle_2: (5, 12)
-	max #coverage: 21, overlapped_n: 0
+	circle_1: (11, 8)
+	circle_2: (3, 12)
+	max #coverage: 19, overlapped_n: 0
 
 -
-	circle_1: (13, 11)
-	circle_2: (4, 12)
-	max #coverage: 25, overlapped_n: 0
+	circle_1: (9, 8)
+	circle_2: (3, 11)
+	max #coverage: 20, overlapped_n: 3
 
 -
-	circle_1: (14, 12)
-	circle_2: (2, 10)
-	max #coverage: 21, overlapped_n: 0
+	circle_1: (9, 10)
+	circle_2: (1, 10)
+	max #coverage: 24, overlapped_n: 0
 
 -
 -
@@ -194,54 +194,54 @@ Round_6:
 
 -
 Round_8:
-	circle_1: (14, 12)
-	circle_2: (2, 10)
-	max #coverage: 19, overlapped_n: 0
+	circle_1: (9, 10)
+	circle_2: (0, 10)
+	max #coverage: 22, overlapped_n: 0
 
 -
-	circle_1: (12, 12)
-	circle_2: (4, 12)
-	max #coverage: 25, overlapped_n: 1
+	circle_1: (9, 9)
+	circle_2: (2, 12)
+	max #coverage: 22, overlapped_n: 0
 
 -
-	circle_1: (12, 12)
-	circle_2: (4, 12)
-	max #coverage: 15, overlapped_n: 0
+	circle_1: (9, 8)
+	circle_2: (1, 14)
+	max #coverage: 17, overlapped_n: 0
 
 -
-	circle_1: (12, 10)
-	circle_2: (3, 12)
-	max #coverage: 19, overlapped_n: 0
+	circle_1: (11, 7)
+	circle_2: (0, 0)
+	max #coverage: 9, overlapped_n: 0
 
 -
-	circle_1: (12, 11)
-	circle_2: (2, 13)
-	max #coverage: 19, overlapped_n: 0
+	circle_1: (12, 9)
+	circle_2: (0, 0)
+	max #coverage: 12, overlapped_n: 0
 
 -
-	circle_1: (11, 11)
-	circle_2: (4, 14)
-	max #coverage: 23, overlapped_n: 0
+	circle_1: (12, 8)
+	circle_2: (0, 0)
+	max #coverage: 9, overlapped_n: 0
 
 -
-	circle_1: (11, 11)
-	circle_2: (4, 14)
-	max #coverage: 19, overlapped_n: 0
+	circle_1: (14, 8)
+	circle_2: (2, 2)
+	max #coverage: 7, overlapped_n: 0
 
 -
-	circle_1: (11, 11)
-	circle_2: (4, 14)
-	max #coverage: 21, overlapped_n: 0
+	circle_1: (0, 9)
+	circle_2: (2, 1)
+	max #coverage: 7, overlapped_n: 0
 
 -
-	circle_1: (11, 11)
-	circle_2: (4, 15)
-	max #coverage: 21, overlapped_n: 0
+	circle_1: (15, 8)
+	circle_2: (3, 1)
+	max #coverage: 5, overlapped_n: 0
 
 -
-	circle_1: (11, 11)
-	circle_2: (4, 15)
-	max #coverage: 16, overlapped_n: 0
+	circle_1: (1, 8)
+	circle_2: (2, 15)
+	max #coverage: 11, overlapped_n: 1
 
 -
 -
@@ -251,54 +251,54 @@ Round_8:
 
 -
 Round_10:
-	circle_1: (11, 11)
-	circle_2: (4, 15)
-	max #coverage: 21, overlapped_n: 0
-
--
-	circle_1: (11, 11)
-	circle_2: (4, 15)
-	max #coverage: 19, overlapped_n: 0
-
--
-	circle_1: (11, 11)
-	circle_2: (4, 15)
-	max #coverage: 21, overlapped_n: 4
-
--
-	circle_1: (11, 11)
-	circle_2: (4, 15)
-	max #coverage: 16, overlapped_n: 0
-
--
-	circle_1: (11, 12)
+	circle_1: (0, 10)
 	circle_2: (2, 13)
-	max #coverage: 22, overlapped_n: 0
+	max #coverage: 8, overlapped_n: 3
 
 -
-	circle_1: (11, 12)
-	circle_2: (2, 13)
-	max #coverage: 17, overlapped_n: 0
-
--
-	circle_1: (11, 12)
-	circle_2: (2, 13)
+	circle_1: (15, 9)
+	circle_2: (2, 11)
 	max #coverage: 15, overlapped_n: 0
 
 -
-	circle_1: (9, 10)
-	circle_2: (2, 13)
-	max #coverage: 23, overlapped_n: 0
+	circle_1: (14, 11)
+	circle_2: (0, 13)
+	max #coverage: 14, overlapped_n: 0
 
 -
-	circle_1: (9, 10)
-	circle_2: (2, 13)
-	max #coverage: 20, overlapped_n: 1
+	circle_1: (15, 12)
+	circle_2: (2, 15)
+	max #coverage: 12, overlapped_n: 0
 
 -
-	circle_1: (9, 10)
+	circle_1: (1, 12)
+	circle_2: (1, 0)
+	max #coverage: 7, overlapped_n: 0
+
+-
+	circle_1: (3, 11)
+	circle_2: (2, 14)
+	max #coverage: 10, overlapped_n: 5
+
+-
+	circle_1: (5, 11)
+	circle_2: (2, 12)
+	max #coverage: 15, overlapped_n: 6
+
+-
+	circle_1: (7, 12)
 	circle_2: (2, 13)
-	max #coverage: 23, overlapped_n: 0
+	max #coverage: 16, overlapped_n: 2
+
+-
+	circle_1: (7, 12)
+	circle_2: (4, 13)
+	max #coverage: 17, overlapped_n: 4
+
+-
+	circle_1: (5, 10)
+	circle_2: (3, 11)
+	max #coverage: 16, overlapped_n: 9
 
 -
 -
@@ -308,54 +308,54 @@ Round_10:
 
 -
 Round_12:
-	circle_1: (8, 12)
-	circle_2: (4, 13)
-	max #coverage: 19, overlapped_n: 3
+	circle_1: (5, 8)
+	circle_2: (1, 11)
+	max #coverage: 18, overlapped_n: 3
 
 -
-	circle_1: (8, 12)
-	circle_2: (4, 13)
-	max #coverage: 19, overlapped_n: 3
+	circle_1: (5, 6)
+	circle_2: (15, 9)
+	max #coverage: 15, overlapped_n: 0
 
 -
-	circle_1: (8, 12)
-	circle_2: (4, 13)
-	max #coverage: 19, overlapped_n: 2
+	circle_1: (6, 4)
+	circle_2: (13, 7)
+	max #coverage: 10, overlapped_n: 0
 
 -
-	circle_1: (6, 13)
-	circle_2: (5, 13)
-	max #coverage: 13, overlapped_n: 9
+	circle_1: (6, 3)
+	circle_2: (13, 9)
+	max #coverage: 13, overlapped_n: 0
 
 -
-	circle_1: (7, 12)
-	circle_2: (5, 14)
-	max #coverage: 14, overlapped_n: 6
+	circle_1: (6, 3)
+	circle_2: (13, 10)
+	max #coverage: 14, overlapped_n: 0
 
 -
-	circle_1: (7, 11)
-	circle_2: (3, 15)
-	max #coverage: 19, overlapped_n: 3
+	circle_1: (4, 3)
+	circle_2: (13, 10)
+	max #coverage: 14, overlapped_n: 0
 
 -
-	circle_1: (7, 12)
-	circle_2: (1, 15)
-	max #coverage: 14, overlapped_n: 1
+	circle_1: (4, 5)
+	circle_2: (14, 8)
+	max #coverage: 12, overlapped_n: 0
 
 -
-	circle_1: (8, 10)
-	circle_2: (1, 15)
+	circle_1: (4, 5)
+	circle_2: (15, 10)
+	max #coverage: 14, overlapped_n: 0
+
+-
+	circle_1: (3, 5)
+	circle_2: (14, 12)
+	max #coverage: 15, overlapped_n: 0
+
+-
+	circle_1: (4, 6)
+	circle_2: (14, 10)
 	max #coverage: 18, overlapped_n: 0
-
--
-	circle_1: (8, 10)
-	circle_2: (1, 15)
-	max #coverage: 17, overlapped_n: 1
-
--
-	circle_1: (8, 10)
-	circle_2: (1, 15)
-	max #coverage: 16, overlapped_n: 0
 
 -
 -
@@ -365,54 +365,54 @@ Round_12:
 
 -
 Round_14:
-	circle_1: (8, 10)
-	circle_2: (1, 15)
-	max #coverage: 17, overlapped_n: 0
+	circle_1: (4, 6)
+	circle_2: (15, 8)
+	max #coverage: 12, overlapped_n: 0
 
 -
-	circle_1: (10, 9)
-	circle_2: (1, 15)
-	max #coverage: 20, overlapped_n: 0
-
--
-	circle_1: (10, 9)
-	circle_2: (1, 15)
+	circle_1: (4, 8)
+	circle_2: (15, 9)
 	max #coverage: 18, overlapped_n: 0
 
 -
-	circle_1: (10, 9)
-	circle_2: (1, 15)
-	max #coverage: 20, overlapped_n: 0
+	circle_1: (5, 8)
+	circle_2: (15, 11)
+	max #coverage: 23, overlapped_n: 0
 
 -
-	circle_1: (10, 9)
-	circle_2: (1, 15)
-	max #coverage: 17, overlapped_n: 0
-
--
-	circle_1: (10, 9)
-	circle_2: (1, 15)
-	max #coverage: 10, overlapped_n: 0
-
--
-	circle_1: (10, 9)
-	circle_2: (1, 14)
+	circle_1: (6, 7)
+	circle_2: (14, 13)
 	max #coverage: 21, overlapped_n: 0
 
 -
-	circle_1: (10, 9)
-	circle_2: (1, 14)
+	circle_1: (6, 7)
+	circle_2: (15, 12)
 	max #coverage: 19, overlapped_n: 0
 
 -
-	circle_1: (10, 9)
-	circle_2: (1, 14)
-	max #coverage: 17, overlapped_n: 0
+	circle_1: (6, 6)
+	circle_2: (0, 12)
+	max #coverage: 12, overlapped_n: 0
 
 -
-	circle_1: (10, 9)
-	circle_2: (1, 14)
-	max #coverage: 21, overlapped_n: 0
+	circle_1: (6, 6)
+	circle_2: (2, 14)
+	max #coverage: 13, overlapped_n: 0
+
+-
+	circle_1: (6, 7)
+	circle_2: (3, 14)
+	max #coverage: 18, overlapped_n: 0
+
+-
+	circle_1: (4, 8)
+	circle_2: (3, 15)
+	max #coverage: 16, overlapped_n: 1
+
+-
+	circle_1: (3, 6)
+	circle_2: (4, 1)
+	max #coverage: 8, overlapped_n: 0
 
 -
 -
@@ -420,31 +420,32 @@ Round_14:
 	T: 20.9715, r: 0.8
 	optimum=30
 
-Circle_1 (12, 11) detected points: 
+Circle_1 (10, 12) detected points: 
 	10, 9
 	12, 9
+	7, 10
+	8, 10
 	13, 10
-	14, 10
+	7, 11
 	8, 11
 	11, 11
 	12, 11
+	8, 12
 	11, 12
 	13, 12
 	14, 12
 	13, 13
+	9, 14
 	11, 14
 	13, 14
 
-Circle_2 (5, 12) detected points: 
-	5, 8
+Circle_2 (4, 12) detected points: 
 	4, 9
 	6, 9
 	3, 10
 	7, 10
-	8, 10
 	3, 11
 	7, 11
-	8, 11
 	1, 12
 	5, 12
 	8, 12
@@ -452,5 +453,5 @@ Circle_2 (5, 12) detected points:
 	4, 13
 	6, 15
 
-	max #coverage: 27
+	max #coverage: 26
 	optimum=30
