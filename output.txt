@@ -1,0 +1,2445 @@
+optimum=28
+  0 1 2 3 4 5 6 7 8 9 a b c d e f 
+ --------------------------------
+0|0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 
+1|0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 
+2|0 0 0 0 0 0 0 1 0 1 0 0 1 0 1 0 
+3|0 0 0 0 1 0 0 0 0 1 1 0 0 0 0 0 
+4|0 0 0 0 0 0 0 0 1 0 0 1 0 0 1 0 
+5|0 0 0 0 0 0 0 1 0 0 0 1 0 0 0 0 
+6|0 1 0 0 0 0 0 0 0 0 0 0 1 1 0 0 
+7|0 0 1 0 1 0 0 0 0 0 0 0 1 1 0 0 
+8|1 0 0 0 1 0 0 1 1 0 0 1 0 0 0 0 
+9|0 0 0 0 0 0 0 0 1 0 0 0 0 1 0 0 
+a|0 0 0 1 0 1 0 0 1 0 0 0 0 0 0 0 
+b|0 0 0 1 0 0 0 0 1 1 0 0 0 0 0 0 
+c|0 0 1 0 0 0 0 0 1 1 0 0 0 0 0 0 
+d|0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 
+e|0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 
+f|0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 
+
+circle_1: (7, 10)
+max #coverage of circle_1: 15
+
+-
+Round_1:
+	circle_2: (6, 11)
+	max #coverage: 16
+
+
+	circle_1: (7, 10)
+	max #coverage: 16
+
+-
+	circle_2: (8, 10)
+	max #coverage: 16
+
+
+	circle_1: (7, 10)
+	max #coverage: 16
+
+-
+	circle_2: (6, 11)
+	max #coverage: 16
+
+
+	circle_1: (7, 10)
+	max #coverage: 16
+
+-
+	circle_2: (6, 13)
+	max #coverage: 16
+
+
+	circle_1: (7, 10)
+	max #coverage: 16
+
+-
+	circle_2: (7, 15)
+	max #coverage: 16
+
+
+	circle_1: (7, 10)
+	max #coverage: 16
+
+-
+	circle_2: (9, 13)
+	max #coverage: 15
+
+
+	circle_1: (7, 10)
+	max #coverage: 15
+
+-
+	circle_2: (11, 11)
+	max #coverage: 19
+
+
+	circle_1: (7, 10)
+	max #coverage: 19
+
+-
+	circle_2: (12, 10)
+	max #coverage: 20
+
+
+	circle_1: (7, 10)
+	max #coverage: 20
+
+-
+	circle_2: (10, 9)
+	max #coverage: 19
+
+
+	circle_1: (7, 10)
+	max #coverage: 19
+
+-
+	circle_2: (10, 9)
+	max #coverage: 19
+
+
+	circle_1: (7, 10)
+	max #coverage: 19
+
+-
+	circle_2: (12, 9)
+	max #coverage: 20
+
+
+	circle_1: (7, 10)
+	max #coverage: 20
+
+-
+	circle_2: (11, 11)
+	max #coverage: 19
+
+
+	circle_1: (7, 10)
+	max #coverage: 19
+
+-
+	circle_2: (11, 9)
+	max #coverage: 19
+
+
+	circle_1: (7, 10)
+	max #coverage: 19
+
+-
+	circle_2: (13, 9)
+	max #coverage: 20
+
+
+	circle_1: (7, 10)
+	max #coverage: 20
+
+-
+	circle_2: (15, 7)
+	max #coverage: 20
+
+
+	circle_1: (7, 10)
+	max #coverage: 20
+
+-
+-
+Round_1:
+	T: 80, r: 0.805629
+	optimum=28
+
+-
+Round_2:
+	circle_2: (13, 7)
+	max #coverage: 21
+
+
+	circle_1: (7, 10)
+	max #coverage: 20
+
+-
+	circle_2: (11, 8)
+	max #coverage: 19
+
+
+	circle_1: (7, 10)
+	max #coverage: 19
+
+-
+	circle_2: (12, 8)
+	max #coverage: 19
+
+
+	circle_1: (7, 10)
+	max #coverage: 19
+
+-
+	circle_2: (12, 9)
+	max #coverage: 19
+
+
+	circle_1: (7, 10)
+	max #coverage: 18
+
+-
+	circle_2: (13, 8)
+	max #coverage: 19
+
+
+	circle_1: (9, 11)
+	max #coverage: 14
+
+-
+	circle_2: (14, 9)
+	max #coverage: 11
+
+
+	circle_1: (8, 9)
+	max #coverage: 12
+
+-
+	circle_2: (13, 10)
+	max #coverage: 11
+
+
+	circle_1: (8, 10)
+	max #coverage: 12
+
+-
+	circle_2: (13, 10)
+	max #coverage: 13
+
+
+	circle_1: (8, 10)
+	max #coverage: 13
+
+-
+	circle_2: (13, 10)
+	max #coverage: 13
+
+
+	circle_1: (8, 10)
+	max #coverage: 13
+
+-
+	circle_2: (15, 9)
+	max #coverage: 13
+
+
+	circle_1: (10, 10)
+	max #coverage: 11
+
+-
+	circle_2: (15, 11)
+	max #coverage: 9
+
+
+	circle_1: (11, 10)
+	max #coverage: 9
+
+-
+	circle_2: (15, 13)
+	max #coverage: 8
+
+
+	circle_1: (12, 11)
+	max #coverage: 7
+
+-
+	circle_2: (15, 11)
+	max #coverage: 7
+
+
+	circle_1: (11, 12)
+	max #coverage: 5
+
+-
+	circle_2: (15, 9)
+	max #coverage: 6
+
+
+	circle_1: (11, 11)
+	max #coverage: 6
+
+-
+	circle_2: (14, 7)
+	max #coverage: 7
+
+
+	circle_1: (11, 11)
+	max #coverage: 7
+
+-
+-
+Round_2:
+	T: 64.4503, r: 0.811298
+	optimum=28
+
+-
+Round_3:
+	circle_2: (15, 5)
+	max #coverage: 7
+
+
+	circle_1: (12, 10)
+	max #coverage: 9
+
+-
+	circle_2: (15, 5)
+	max #coverage: 8
+
+
+	circle_1: (13, 10)
+	max #coverage: 7
+
+-
+	circle_2: (15, 3)
+	max #coverage: 9
+
+
+	circle_1: (11, 10)
+	max #coverage: 12
+
+-
+	circle_2: (15, 4)
+	max #coverage: 12
+
+
+	circle_1: (11, 11)
+	max #coverage: 12
+
+-
+	circle_2: (15, 4)
+	max #coverage: 12
+
+
+	circle_1: (12, 9)
+	max #coverage: 10
+
+-
+	circle_2: (15, 4)
+	max #coverage: 9
+
+
+	circle_1: (12, 9)
+	max #coverage: 9
+
+-
+	circle_2: (15, 4)
+	max #coverage: 9
+
+
+	circle_1: (10, 9)
+	max #coverage: 12
+
+-
+	circle_2: (15, 5)
+	max #coverage: 12
+
+
+	circle_1: (10, 9)
+	max #coverage: 12
+
+-
+	circle_2: (15, 3)
+	max #coverage: 13
+
+
+	circle_1: (10, 11)
+	max #coverage: 14
+
+-
+	circle_2: (15, 1)
+	max #coverage: 13
+
+
+	circle_1: (10, 11)
+	max #coverage: 13
+
+-
+	circle_2: (15, 0)
+	max #coverage: 12
+
+
+	circle_1: (12, 12)
+	max #coverage: 6
+
+-
+	circle_2: (15, 0)
+	max #coverage: 6
+
+
+	circle_1: (12, 11)
+	max #coverage: 9
+
+-
+	circle_2: (15, 0)
+	max #coverage: 9
+
+
+	circle_1: (12, 11)
+	max #coverage: 9
+
+-
+	circle_2: (15, 0)
+	max #coverage: 9
+
+
+	circle_1: (12, 9)
+	max #coverage: 9
+
+-
+	circle_2: (15, 1)
+	max #coverage: 10
+
+
+	circle_1: (11, 7)
+	max #coverage: 13
+
+-
+-
+Round_3:
+	T: 52.2884, r: 0.817006
+	optimum=28
+
+-
+Round_4:
+	circle_2: (13, 0)
+	max #coverage: 12
+
+
+	circle_1: (11, 7)
+	max #coverage: 12
+
+-
+	circle_2: (15, 0)
+	max #coverage: 12
+
+
+	circle_1: (11, 5)
+	max #coverage: 13
+
+-
+	circle_2: (15, 0)
+	max #coverage: 12
+
+
+	circle_1: (11, 5)
+	max #coverage: 12
+
+-
+	circle_2: (14, 1)
+	max #coverage: 12
+
+
+	circle_1: (11, 5)
+	max #coverage: 12
+
+-
+	circle_2: (14, 3)
+	max #coverage: 12
+
+
+	circle_1: (11, 5)
+	max #coverage: 12
+
+-
+	circle_2: (15, 5)
+	max #coverage: 12
+
+
+	circle_1: (11, 5)
+	max #coverage: 12
+
+-
+	circle_2: (15, 6)
+	max #coverage: 12
+
+
+	circle_1: (11, 5)
+	max #coverage: 10
+
+-
+	circle_2: (15, 6)
+	max #coverage: 10
+
+
+	circle_1: (10, 5)
+	max #coverage: 11
+
+-
+	circle_2: (14, 6)
+	max #coverage: 13
+
+
+	circle_1: (10, 5)
+	max #coverage: 13
+
+-
+	circle_2: (14, 8)
+	max #coverage: 14
+
+
+	circle_1: (10, 5)
+	max #coverage: 14
+
+-
+	circle_2: (14, 10)
+	max #coverage: 14
+
+
+	circle_1: (8, 5)
+	max #coverage: 14
+
+-
+	circle_2: (15, 12)
+	max #coverage: 12
+
+
+	circle_1: (8, 5)
+	max #coverage: 12
+
+-
+	circle_2: (13, 10)
+	max #coverage: 17
+
+
+	circle_1: (9, 5)
+	max #coverage: 15
+
+-
+	circle_2: (13, 10)
+	max #coverage: 15
+
+
+	circle_1: (10, 5)
+	max #coverage: 16
+
+-
+	circle_2: (14, 9)
+	max #coverage: 13
+
+
+	circle_1: (9, 3)
+	max #coverage: 12
+
+-
+-
+Round_4:
+	T: 42.72, r: 0.822755
+	optimum=28
+
+-
+Round_5:
+	circle_2: (14, 9)
+	max #coverage: 15
+
+
+	circle_1: (9, 3)
+	max #coverage: 15
+
+-
+	circle_2: (15, 9)
+	max #coverage: 14
+
+
+	circle_1: (8, 3)
+	max #coverage: 14
+
+-
+	circle_2: (15, 8)
+	max #coverage: 14
+
+
+	circle_1: (6, 5)
+	max #coverage: 15
+
+-
+	circle_2: (13, 8)
+	max #coverage: 19
+
+
+	circle_1: (8, 4)
+	max #coverage: 19
+
+-
+	circle_2: (13, 8)
+	max #coverage: 19
+
+
+	circle_1: (8, 4)
+	max #coverage: 19
+
+-
+	circle_2: (13, 8)
+	max #coverage: 19
+
+
+	circle_1: (10, 6)
+	max #coverage: 16
+
+-
+	circle_2: (13, 8)
+	max #coverage: 16
+
+
+	circle_1: (10, 6)
+	max #coverage: 16
+
+-
+	circle_2: (15, 9)
+	max #coverage: 8
+
+
+	circle_1: (10, 8)
+	max #coverage: 8
+
+-
+	circle_2: (15, 7)
+	max #coverage: 9
+
+
+	circle_1: (10, 8)
+	max #coverage: 10
+
+-
+	circle_2: (15, 7)
+	max #coverage: 10
+
+
+	circle_1: (9, 8)
+	max #coverage: 10
+
+-
+	circle_2: (15, 7)
+	max #coverage: 11
+
+
+	circle_1: (9, 10)
+	max #coverage: 14
+
+-
+	circle_2: (15, 7)
+	max #coverage: 14
+
+
+	circle_1: (9, 10)
+	max #coverage: 14
+
+-
+	circle_2: (15, 6)
+	max #coverage: 13
+
+
+	circle_1: (9, 10)
+	max #coverage: 13
+
+-
+	circle_2: (15, 5)
+	max #coverage: 13
+
+
+	circle_1: (7, 10)
+	max #coverage: 17
+
+-
+	circle_2: (15, 5)
+	max #coverage: 17
+
+
+	circle_1: (7, 9)
+	max #coverage: 16
+
+-
+-
+Round_5:
+	T: 35.1481, r: 0.828544
+	optimum=28
+
+-
+Round_6:
+	circle_2: (13, 5)
+	max #coverage: 21
+
+
+	circle_1: (7, 9)
+	max #coverage: 21
+
+-
+	circle_2: (13, 5)
+	max #coverage: 21
+
+
+	circle_1: (6, 9)
+	max #coverage: 21
+
+-
+	circle_2: (13, 5)
+	max #coverage: 21
+
+
+	circle_1: (6, 9)
+	max #coverage: 21
+
+-
+	circle_2: (12, 4)
+	max #coverage: 22
+
+
+	circle_1: (6, 9)
+	max #coverage: 22
+
+-
+	circle_2: (12, 4)
+	max #coverage: 22
+
+
+	circle_1: (7, 9)
+	max #coverage: 22
+
+-
+	circle_2: (12, 5)
+	max #coverage: 21
+
+
+	circle_1: (7, 9)
+	max #coverage: 21
+
+-
+	circle_2: (12, 5)
+	max #coverage: 21
+
+
+	circle_1: (7, 9)
+	max #coverage: 21
+
+-
+	circle_2: (12, 5)
+	max #coverage: 21
+
+
+	circle_1: (6, 9)
+	max #coverage: 21
+
+-
+	circle_2: (13, 5)
+	max #coverage: 22
+
+
+	circle_1: (6, 9)
+	max #coverage: 22
+
+-
+	circle_2: (12, 5)
+	max #coverage: 23
+
+
+	circle_1: (6, 9)
+	max #coverage: 23
+
+-
+	circle_2: (12, 5)
+	max #coverage: 23
+
+
+	circle_1: (6, 9)
+	max #coverage: 23
+
+-
+	circle_2: (12, 3)
+	max #coverage: 19
+
+
+	circle_1: (6, 9)
+	max #coverage: 19
+
+-
+	circle_2: (14, 3)
+	max #coverage: 19
+
+
+	circle_1: (6, 9)
+	max #coverage: 19
+
+-
+	circle_2: (12, 3)
+	max #coverage: 19
+
+
+	circle_1: (6, 9)
+	max #coverage: 19
+
+-
+	circle_2: (11, 4)
+	max #coverage: 22
+
+
+	circle_1: (6, 9)
+	max #coverage: 22
+
+-
+-
+Round_6:
+	T: 29.1217, r: 0.834374
+	optimum=28
+
+-
+Round_7:
+	circle_2: (12, 4)
+	max #coverage: 22
+
+
+	circle_1: (6, 9)
+	max #coverage: 22
+
+-
+	circle_2: (10, 5)
+	max #coverage: 23
+
+
+	circle_1: (6, 9)
+	max #coverage: 23
+
+-
+	circle_2: (10, 5)
+	max #coverage: 23
+
+
+	circle_1: (6, 9)
+	max #coverage: 23
+
+-
+	circle_2: (10, 5)
+	max #coverage: 23
+
+
+	circle_1: (6, 9)
+	max #coverage: 23
+
+-
+	circle_2: (11, 4)
+	max #coverage: 22
+
+
+	circle_1: (6, 9)
+	max #coverage: 22
+
+-
+	circle_2: (11, 4)
+	max #coverage: 22
+
+
+	circle_1: (6, 9)
+	max #coverage: 22
+
+-
+	circle_2: (11, 4)
+	max #coverage: 22
+
+
+	circle_1: (6, 9)
+	max #coverage: 22
+
+-
+	circle_2: (9, 2)
+	max #coverage: 23
+
+
+	circle_1: (6, 9)
+	max #coverage: 23
+
+-
+	circle_2: (9, 2)
+	max #coverage: 23
+
+
+	circle_1: (6, 9)
+	max #coverage: 23
+
+-
+	circle_2: (9, 2)
+	max #coverage: 23
+
+
+	circle_1: (6, 9)
+	max #coverage: 23
+
+-
+	circle_2: (9, 2)
+	max #coverage: 23
+
+
+	circle_1: (6, 9)
+	max #coverage: 23
+
+-
+	circle_2: (10, 2)
+	max #coverage: 23
+
+
+	circle_1: (6, 9)
+	max #coverage: 23
+
+-
+	circle_2: (10, 2)
+	max #coverage: 23
+
+
+	circle_1: (6, 9)
+	max #coverage: 23
+
+-
+	circle_2: (10, 2)
+	max #coverage: 23
+
+
+	circle_1: (6, 9)
+	max #coverage: 23
+
+-
+	circle_2: (10, 2)
+	max #coverage: 23
+
+
+	circle_1: (6, 9)
+	max #coverage: 23
+
+-
+-
+Round_7:
+	T: 24.2984, r: 0.840245
+	optimum=28
+
+-
+Round_8:
+	circle_2: (10, 2)
+	max #coverage: 23
+
+
+	circle_1: (6, 9)
+	max #coverage: 23
+
+-
+	circle_2: (10, 2)
+	max #coverage: 23
+
+
+	circle_1: (6, 9)
+	max #coverage: 23
+
+-
+	circle_2: (10, 2)
+	max #coverage: 23
+
+
+	circle_1: (6, 9)
+	max #coverage: 23
+
+-
+	circle_2: (10, 2)
+	max #coverage: 23
+
+
+	circle_1: (6, 9)
+	max #coverage: 23
+
+-
+	circle_2: (10, 2)
+	max #coverage: 23
+
+
+	circle_1: (6, 9)
+	max #coverage: 23
+
+-
+	circle_2: (10, 2)
+	max #coverage: 23
+
+
+	circle_1: (6, 9)
+	max #coverage: 23
+
+-
+	circle_2: (10, 2)
+	max #coverage: 23
+
+
+	circle_1: (6, 9)
+	max #coverage: 23
+
+-
+	circle_2: (10, 2)
+	max #coverage: 23
+
+
+	circle_1: (6, 9)
+	max #coverage: 23
+
+-
+	circle_2: (8, 2)
+	max #coverage: 23
+
+
+	circle_1: (6, 9)
+	max #coverage: 23
+
+-
+	circle_2: (8, 2)
+	max #coverage: 23
+
+
+	circle_1: (6, 9)
+	max #coverage: 23
+
+-
+	circle_2: (8, 2)
+	max #coverage: 23
+
+
+	circle_1: (6, 9)
+	max #coverage: 23
+
+-
+	circle_2: (8, 2)
+	max #coverage: 23
+
+
+	circle_1: (6, 10)
+	max #coverage: 23
+
+-
+	circle_2: (10, 3)
+	max #coverage: 23
+
+
+	circle_1: (7, 9)
+	max #coverage: 23
+
+-
+	circle_2: (10, 3)
+	max #coverage: 23
+
+
+	circle_1: (7, 9)
+	max #coverage: 23
+
+-
+	circle_2: (10, 3)
+	max #coverage: 23
+
+
+	circle_1: (6, 10)
+	max #coverage: 23
+
+-
+-
+Round_8:
+	T: 20.4166, r: 0.846157
+	optimum=28
+
+-
+Round_9:
+	circle_2: (10, 1)
+	max #coverage: 22
+
+
+	circle_1: (6, 10)
+	max #coverage: 22
+
+-
+	circle_2: (9, 2)
+	max #coverage: 23
+
+
+	circle_1: (7, 9)
+	max #coverage: 23
+
+-
+	circle_2: (9, 2)
+	max #coverage: 23
+
+
+	circle_1: (7, 9)
+	max #coverage: 23
+
+-
+	circle_2: (9, 2)
+	max #coverage: 23
+
+
+	circle_1: (5, 10)
+	max #coverage: 23
+
+-
+	circle_2: (9, 2)
+	max #coverage: 23
+
+
+	circle_1: (5, 10)
+	max #coverage: 23
+
+-
+	circle_2: (9, 2)
+	max #coverage: 23
+
+
+	circle_1: (5, 10)
+	max #coverage: 23
+
+-
+	circle_2: (10, 3)
+	max #coverage: 23
+
+
+	circle_1: (5, 10)
+	max #coverage: 23
+
+-
+	circle_2: (11, 4)
+	max #coverage: 22
+
+
+	circle_1: (7, 10)
+	max #coverage: 23
+
+-
+	circle_2: (11, 4)
+	max #coverage: 23
+
+
+	circle_1: (7, 10)
+	max #coverage: 23
+
+-
+	circle_2: (11, 4)
+	max #coverage: 23
+
+
+	circle_1: (7, 10)
+	max #coverage: 23
+
+-
+	circle_2: (10, 3)
+	max #coverage: 24
+
+
+	circle_1: (7, 10)
+	max #coverage: 24
+
+-
+	circle_2: (10, 3)
+	max #coverage: 24
+
+
+	circle_1: (7, 10)
+	max #coverage: 24
+
+-
+	circle_2: (10, 3)
+	max #coverage: 24
+
+
+	circle_1: (7, 10)
+	max #coverage: 24
+
+-
+	circle_2: (11, 3)
+	max #coverage: 21
+
+
+	circle_1: (7, 10)
+	max #coverage: 21
+
+-
+	circle_2: (11, 3)
+	max #coverage: 21
+
+
+	circle_1: (7, 10)
+	max #coverage: 21
+
+-
+-
+Round_9:
+	T: 17.2757, r: 0.852111
+	optimum=28
+
+-
+Round_10:
+	circle_2: (13, 4)
+	max #coverage: 21
+
+
+	circle_1: (7, 10)
+	max #coverage: 21
+
+-
+	circle_2: (12, 5)
+	max #coverage: 24
+
+
+	circle_1: (7, 10)
+	max #coverage: 24
+
+-
+	circle_2: (12, 6)
+	max #coverage: 24
+
+
+	circle_1: (7, 10)
+	max #coverage: 24
+
+-
+	circle_2: (12, 6)
+	max #coverage: 24
+
+
+	circle_1: (7, 10)
+	max #coverage: 24
+
+-
+	circle_2: (12, 6)
+	max #coverage: 24
+
+
+	circle_1: (7, 10)
+	max #coverage: 24
+
+-
+	circle_2: (12, 6)
+	max #coverage: 24
+
+
+	circle_1: (5, 10)
+	max #coverage: 23
+
+-
+	circle_2: (11, 6)
+	max #coverage: 27
+
+
+	circle_1: (5, 10)
+	max #coverage: 27
+
+-
+	circle_2: (11, 6)
+	max #coverage: 27
+
+
+	circle_1: (5, 10)
+	max #coverage: 27
+
+-
+	circle_2: (11, 6)
+	max #coverage: 27
+
+
+	circle_1: (5, 10)
+	max #coverage: 27
+
+-
+	circle_2: (11, 6)
+	max #coverage: 27
+
+
+	circle_1: (5, 10)
+	max #coverage: 27
+
+-
+	circle_2: (11, 6)
+	max #coverage: 27
+
+
+	circle_1: (5, 10)
+	max #coverage: 27
+
+-
+	circle_2: (11, 6)
+	max #coverage: 27
+
+
+	circle_1: (5, 10)
+	max #coverage: 27
+
+-
+	circle_2: (11, 6)
+	max #coverage: 27
+
+
+	circle_1: (5, 10)
+	max #coverage: 27
+
+-
+	circle_2: (11, 6)
+	max #coverage: 27
+
+
+	circle_1: (5, 10)
+	max #coverage: 27
+
+-
+	circle_2: (11, 6)
+	max #coverage: 27
+
+
+	circle_1: (5, 10)
+	max #coverage: 27
+
+-
+-
+Round_10:
+	T: 14.7208, r: 0.858107
+	optimum=28
+
+-
+Round_11:
+	circle_2: (11, 6)
+	max #coverage: 27
+
+
+	circle_1: (5, 10)
+	max #coverage: 27
+
+-
+	circle_2: (11, 6)
+	max #coverage: 27
+
+
+	circle_1: (5, 10)
+	max #coverage: 27
+
+-
+	circle_2: (11, 6)
+	max #coverage: 27
+
+
+	circle_1: (5, 10)
+	max #coverage: 27
+
+-
+	circle_2: (11, 6)
+	max #coverage: 27
+
+
+	circle_1: (5, 10)
+	max #coverage: 27
+
+-
+	circle_2: (11, 6)
+	max #coverage: 27
+
+
+	circle_1: (5, 10)
+	max #coverage: 27
+
+-
+	circle_2: (11, 6)
+	max #coverage: 27
+
+
+	circle_1: (5, 11)
+	max #coverage: 27
+
+-
+	circle_2: (11, 6)
+	max #coverage: 27
+
+
+	circle_1: (5, 11)
+	max #coverage: 27
+
+-
+	circle_2: (10, 5)
+	max #coverage: 27
+
+
+	circle_1: (5, 11)
+	max #coverage: 27
+
+-
+	circle_2: (10, 5)
+	max #coverage: 27
+
+
+	circle_1: (5, 11)
+	max #coverage: 27
+
+-
+	circle_2: (10, 5)
+	max #coverage: 27
+
+
+	circle_1: (5, 11)
+	max #coverage: 27
+
+-
+	circle_2: (10, 5)
+	max #coverage: 27
+
+
+	circle_1: (5, 11)
+	max #coverage: 27
+
+-
+	circle_2: (10, 5)
+	max #coverage: 27
+
+
+	circle_1: (5, 11)
+	max #coverage: 27
+
+-
+	circle_2: (10, 5)
+	max #coverage: 27
+
+
+	circle_1: (5, 11)
+	max #coverage: 27
+
+-
+	circle_2: (10, 5)
+	max #coverage: 27
+
+
+	circle_1: (5, 11)
+	max #coverage: 27
+
+-
+	circle_2: (10, 5)
+	max #coverage: 27
+
+
+	circle_1: (5, 11)
+	max #coverage: 27
+
+-
+-
+Round_11:
+	T: 12.632, r: 0.864145
+	optimum=28
+
+-
+Round_12:
+	circle_2: (10, 5)
+	max #coverage: 27
+
+
+	circle_1: (5, 11)
+	max #coverage: 27
+
+-
+	circle_2: (10, 5)
+	max #coverage: 27
+
+
+	circle_1: (4, 11)
+	max #coverage: 27
+
+-
+	circle_2: (10, 5)
+	max #coverage: 27
+
+
+	circle_1: (4, 11)
+	max #coverage: 27
+
+-
+	circle_2: (10, 5)
+	max #coverage: 27
+
+
+	circle_1: (4, 11)
+	max #coverage: 27
+
+-
+	circle_2: (10, 5)
+	max #coverage: 27
+
+
+	circle_1: (4, 11)
+	max #coverage: 27
+
+-
+	circle_2: (11, 5)
+	max #coverage: 27
+
+
+	circle_1: (4, 11)
+	max #coverage: 27
+
+-
+	circle_2: (10, 6)
+	max #coverage: 28
+
+	>----------------------<
+	|                      |
+	|        Perfect       |
+	|                      |
+	>----------------------<
+
+	circle_1: (4, 11)
+	max #coverage: 28
+
+	>----------------------<
+	|                      |
+	|        Perfect       |
+	|                      |
+	>----------------------<
+-
+	circle_2: (10, 6)
+	max #coverage: 28
+
+	>----------------------<
+	|                      |
+	|        Perfect       |
+	|                      |
+	>----------------------<
+
+	circle_1: (4, 11)
+	max #coverage: 28
+
+	>----------------------<
+	|                      |
+	|        Perfect       |
+	|                      |
+	>----------------------<
+-
+	circle_2: (10, 6)
+	max #coverage: 28
+
+	>----------------------<
+	|                      |
+	|        Perfect       |
+	|                      |
+	>----------------------<
+
+	circle_1: (4, 11)
+	max #coverage: 28
+
+	>----------------------<
+	|                      |
+	|        Perfect       |
+	|                      |
+	>----------------------<
+-
+	circle_2: (10, 6)
+	max #coverage: 28
+
+	>----------------------<
+	|                      |
+	|        Perfect       |
+	|                      |
+	>----------------------<
+
+	circle_1: (4, 11)
+	max #coverage: 28
+
+	>----------------------<
+	|                      |
+	|        Perfect       |
+	|                      |
+	>----------------------<
+-
+	circle_2: (11, 6)
+	max #coverage: 28
+
+	>----------------------<
+	|                      |
+	|        Perfect       |
+	|                      |
+	>----------------------<
+
+	circle_1: (4, 11)
+	max #coverage: 28
+
+	>----------------------<
+	|                      |
+	|        Perfect       |
+	|                      |
+	>----------------------<
+-
+	circle_2: (11, 6)
+	max #coverage: 28
+
+	>----------------------<
+	|                      |
+	|        Perfect       |
+	|                      |
+	>----------------------<
+
+	circle_1: (4, 11)
+	max #coverage: 28
+
+	>----------------------<
+	|                      |
+	|        Perfect       |
+	|                      |
+	>----------------------<
+-
+	circle_2: (11, 6)
+	max #coverage: 28
+
+	>----------------------<
+	|                      |
+	|        Perfect       |
+	|                      |
+	>----------------------<
+
+	circle_1: (4, 11)
+	max #coverage: 28
+
+	>----------------------<
+	|                      |
+	|        Perfect       |
+	|                      |
+	>----------------------<
+-
+	circle_2: (11, 6)
+	max #coverage: 28
+
+	>----------------------<
+	|                      |
+	|        Perfect       |
+	|                      |
+	>----------------------<
+
+	circle_1: (4, 11)
+	max #coverage: 28
+
+	>----------------------<
+	|                      |
+	|        Perfect       |
+	|                      |
+	>----------------------<
+-
+	circle_2: (11, 6)
+	max #coverage: 28
+
+	>----------------------<
+	|                      |
+	|        Perfect       |
+	|                      |
+	>----------------------<
+
+	circle_1: (5, 11)
+	max #coverage: 28
+
+	>----------------------<
+	|                      |
+	|        Perfect       |
+	|                      |
+	>----------------------<
+-
+-
+Round_12:
+	T: 10.9159, r: 0.870225
+	optimum=28
+
+-
+Round_13:
+	circle_2: (11, 6)
+	max #coverage: 28
+
+	>----------------------<
+	|                      |
+	|        Perfect       |
+	|                      |
+	>----------------------<
+
+	circle_1: (5, 11)
+	max #coverage: 28
+
+	>----------------------<
+	|                      |
+	|        Perfect       |
+	|                      |
+	>----------------------<
+-
+	circle_2: (11, 6)
+	max #coverage: 28
+
+	>----------------------<
+	|                      |
+	|        Perfect       |
+	|                      |
+	>----------------------<
+
+	circle_1: (5, 11)
+	max #coverage: 28
+
+	>----------------------<
+	|                      |
+	|        Perfect       |
+	|                      |
+	>----------------------<
+-
+	circle_2: (11, 6)
+	max #coverage: 28
+
+	>----------------------<
+	|                      |
+	|        Perfect       |
+	|                      |
+	>----------------------<
+
+	circle_1: (5, 11)
+	max #coverage: 28
+
+	>----------------------<
+	|                      |
+	|        Perfect       |
+	|                      |
+	>----------------------<
+-
+	circle_2: (11, 6)
+	max #coverage: 28
+
+	>----------------------<
+	|                      |
+	|        Perfect       |
+	|                      |
+	>----------------------<
+
+	circle_1: (5, 11)
+	max #coverage: 28
+
+	>----------------------<
+	|                      |
+	|        Perfect       |
+	|                      |
+	>----------------------<
+-
+	circle_2: (11, 6)
+	max #coverage: 28
+
+	>----------------------<
+	|                      |
+	|        Perfect       |
+	|                      |
+	>----------------------<
+
+	circle_1: (5, 11)
+	max #coverage: 28
+
+	>----------------------<
+	|                      |
+	|        Perfect       |
+	|                      |
+	>----------------------<
+-
+	circle_2: (11, 6)
+	max #coverage: 28
+
+	>----------------------<
+	|                      |
+	|        Perfect       |
+	|                      |
+	>----------------------<
+
+	circle_1: (5, 11)
+	max #coverage: 28
+
+	>----------------------<
+	|                      |
+	|        Perfect       |
+	|                      |
+	>----------------------<
+-
+	circle_2: (11, 6)
+	max #coverage: 28
+
+	>----------------------<
+	|                      |
+	|        Perfect       |
+	|                      |
+	>----------------------<
+
+	circle_1: (4, 11)
+	max #coverage: 28
+
+	>----------------------<
+	|                      |
+	|        Perfect       |
+	|                      |
+	>----------------------<
+-
+	circle_2: (10, 6)
+	max #coverage: 28
+
+	>----------------------<
+	|                      |
+	|        Perfect       |
+	|                      |
+	>----------------------<
+
+	circle_1: (4, 11)
+	max #coverage: 28
+
+	>----------------------<
+	|                      |
+	|        Perfect       |
+	|                      |
+	>----------------------<
+-
+	circle_2: (10, 6)
+	max #coverage: 28
+
+	>----------------------<
+	|                      |
+	|        Perfect       |
+	|                      |
+	>----------------------<
+
+	circle_1: (4, 11)
+	max #coverage: 28
+
+	>----------------------<
+	|                      |
+	|        Perfect       |
+	|                      |
+	>----------------------<
+-
+	circle_2: (10, 6)
+	max #coverage: 28
+
+	>----------------------<
+	|                      |
+	|        Perfect       |
+	|                      |
+	>----------------------<
+
+	circle_1: (4, 11)
+	max #coverage: 28
+
+	>----------------------<
+	|                      |
+	|        Perfect       |
+	|                      |
+	>----------------------<
+-
+	circle_2: (10, 6)
+	max #coverage: 28
+
+	>----------------------<
+	|                      |
+	|        Perfect       |
+	|                      |
+	>----------------------<
+
+	circle_1: (4, 11)
+	max #coverage: 28
+
+	>----------------------<
+	|                      |
+	|        Perfect       |
+	|                      |
+	>----------------------<
+-
+	circle_2: (10, 6)
+	max #coverage: 28
+
+	>----------------------<
+	|                      |
+	|        Perfect       |
+	|                      |
+	>----------------------<
+
+	circle_1: (4, 11)
+	max #coverage: 28
+
+	>----------------------<
+	|                      |
+	|        Perfect       |
+	|                      |
+	>----------------------<
+-
+	circle_2: (10, 6)
+	max #coverage: 28
+
+	>----------------------<
+	|                      |
+	|        Perfect       |
+	|                      |
+	>----------------------<
+
+	circle_1: (4, 11)
+	max #coverage: 28
+
+	>----------------------<
+	|                      |
+	|        Perfect       |
+	|                      |
+	>----------------------<
+-
+	circle_2: (10, 6)
+	max #coverage: 28
+
+	>----------------------<
+	|                      |
+	|        Perfect       |
+	|                      |
+	>----------------------<
+
+	circle_1: (4, 11)
+	max #coverage: 28
+
+	>----------------------<
+	|                      |
+	|        Perfect       |
+	|                      |
+	>----------------------<
+-
+	circle_2: (10, 6)
+	max #coverage: 28
+
+	>----------------------<
+	|                      |
+	|        Perfect       |
+	|                      |
+	>----------------------<
+
+	circle_1: (4, 11)
+	max #coverage: 28
+
+	>----------------------<
+	|                      |
+	|        Perfect       |
+	|                      |
+	>----------------------<
+-
+-
+Round_13:
+	T: 9.49929, r: 0.876348
+	optimum=28
+
+-
+Round_14:
+	circle_2: (10, 6)
+	max #coverage: 28
+
+	>----------------------<
+	|                      |
+	|        Perfect       |
+	|                      |
+	>----------------------<
+
+	circle_1: (4, 11)
+	max #coverage: 28
+
+	>----------------------<
+	|                      |
+	|        Perfect       |
+	|                      |
+	>----------------------<
+-
+	circle_2: (10, 6)
+	max #coverage: 28
+
+	>----------------------<
+	|                      |
+	|        Perfect       |
+	|                      |
+	>----------------------<
+
+	circle_1: (4, 11)
+	max #coverage: 28
+
+	>----------------------<
+	|                      |
+	|        Perfect       |
+	|                      |
+	>----------------------<
+-
+	circle_2: (10, 6)
+	max #coverage: 28
+
+	>----------------------<
+	|                      |
+	|        Perfect       |
+	|                      |
+	>----------------------<
+
+	circle_1: (4, 11)
+	max #coverage: 28
+
+	>----------------------<
+	|                      |
+	|        Perfect       |
+	|                      |
+	>----------------------<
+-
+	circle_2: (11, 6)
+	max #coverage: 28
+
+	>----------------------<
+	|                      |
+	|        Perfect       |
+	|                      |
+	>----------------------<
+
+	circle_1: (4, 11)
+	max #coverage: 28
+
+	>----------------------<
+	|                      |
+	|        Perfect       |
+	|                      |
+	>----------------------<
+-
+	circle_2: (11, 6)
+	max #coverage: 28
+
+	>----------------------<
+	|                      |
+	|        Perfect       |
+	|                      |
+	>----------------------<
+
+	circle_1: (4, 11)
+	max #coverage: 28
+
+	>----------------------<
+	|                      |
+	|        Perfect       |
+	|                      |
+	>----------------------<
+-
+	circle_2: (11, 6)
+	max #coverage: 28
+
+	>----------------------<
+	|                      |
+	|        Perfect       |
+	|                      |
+	>----------------------<
+
+	circle_1: (4, 11)
+	max #coverage: 28
+
+	>----------------------<
+	|                      |
+	|        Perfect       |
+	|                      |
+	>----------------------<
+-
+	circle_2: (11, 6)
+	max #coverage: 28
+
+	>----------------------<
+	|                      |
+	|        Perfect       |
+	|                      |
+	>----------------------<
+
+	circle_1: (4, 11)
+	max #coverage: 28
+
+	>----------------------<
+	|                      |
+	|        Perfect       |
+	|                      |
+	>----------------------<
+-
+	circle_2: (11, 6)
+	max #coverage: 28
+
+	>----------------------<
+	|                      |
+	|        Perfect       |
+	|                      |
+	>----------------------<
+
+	circle_1: (4, 11)
+	max #coverage: 28
+
+	>----------------------<
+	|                      |
+	|        Perfect       |
+	|                      |
+	>----------------------<
+-
+	circle_2: (11, 6)
+	max #coverage: 28
+
+	>----------------------<
+	|                      |
+	|        Perfect       |
+	|                      |
+	>----------------------<
+
+	circle_1: (4, 11)
+	max #coverage: 28
+
+	>----------------------<
+	|                      |
+	|        Perfect       |
+	|                      |
+	>----------------------<
+-
+	circle_2: (10, 6)
+	max #coverage: 28
+
+	>----------------------<
+	|                      |
+	|        Perfect       |
+	|                      |
+	>----------------------<
+
+	circle_1: (5, 11)
+	max #coverage: 28
+
+	>----------------------<
+	|                      |
+	|        Perfect       |
+	|                      |
+	>----------------------<
+-
+	circle_2: (10, 6)
+	max #coverage: 28
+
+	>----------------------<
+	|                      |
+	|        Perfect       |
+	|                      |
+	>----------------------<
+
+	circle_1: (5, 11)
+	max #coverage: 28
+
+	>----------------------<
+	|                      |
+	|        Perfect       |
+	|                      |
+	>----------------------<
+-
+	circle_2: (10, 6)
+	max #coverage: 28
+
+	>----------------------<
+	|                      |
+	|        Perfect       |
+	|                      |
+	>----------------------<
+
+	circle_1: (5, 11)
+	max #coverage: 28
+
+	>----------------------<
+	|                      |
+	|        Perfect       |
+	|                      |
+	>----------------------<
+-
+	circle_2: (10, 6)
+	max #coverage: 28
+
+	>----------------------<
+	|                      |
+	|        Perfect       |
+	|                      |
+	>----------------------<
+
+	circle_1: (5, 11)
+	max #coverage: 28
+
+	>----------------------<
+	|                      |
+	|        Perfect       |
+	|                      |
+	>----------------------<
+-
+	circle_2: (10, 6)
+	max #coverage: 28
+
+	>----------------------<
+	|                      |
+	|        Perfect       |
+	|                      |
+	>----------------------<
+
+	circle_1: (5, 11)
+	max #coverage: 28
+
+	>----------------------<
+	|                      |
+	|        Perfect       |
+	|                      |
+	>----------------------<
+-
+	circle_2: (10, 6)
+	max #coverage: 28
+
+	>----------------------<
+	|                      |
+	|        Perfect       |
+	|                      |
+	>----------------------<
+
+	circle_1: (5, 11)
+	max #coverage: 28
+
+	>----------------------<
+	|                      |
+	|        Perfect       |
+	|                      |
+	>----------------------<
+-
+-
+Round_14:
+	T: 8.32469, r: 0.882515
+	optimum=28
+
+-
+Round_15:
+	circle_2: (10, 6)
+	max #coverage: 28
+
+	>----------------------<
+	|                      |
+	|        Perfect       |
+	|                      |
+	>----------------------<
+
+	circle_1: (5, 11)
+	max #coverage: 28
+
+	>----------------------<
+	|                      |
+	|        Perfect       |
+	|                      |
+	>----------------------<
+-
+	circle_2: (10, 6)
+	max #coverage: 28
+
+	>----------------------<
+	|                      |
+	|        Perfect       |
+	|                      |
+	>----------------------<
+
+	circle_1: (5, 11)
+	max #coverage: 28
+
+	>----------------------<
+	|                      |
+	|        Perfect       |
+	|                      |
+	>----------------------<
+-
+	circle_2: (10, 6)
+	max #coverage: 28
+
+	>----------------------<
+	|                      |
+	|        Perfect       |
+	|                      |
+	>----------------------<
+
+	circle_1: (5, 11)
+	max #coverage: 28
+
+	>----------------------<
+	|                      |
+	|        Perfect       |
+	|                      |
+	>----------------------<
+-
+	circle_2: (10, 6)
+	max #coverage: 28
+
+	>----------------------<
+	|                      |
+	|        Perfect       |
+	|                      |
+	>----------------------<
+
+	circle_1: (5, 11)
+	max #coverage: 28
+
+	>----------------------<
+	|                      |
+	|        Perfect       |
+	|                      |
+	>----------------------<
+-
+	circle_2: (10, 6)
+	max #coverage: 28
+
+	>----------------------<
+	|                      |
+	|        Perfect       |
+	|                      |
+	>----------------------<
+
+	circle_1: (4, 11)
+	max #coverage: 28
+
+	>----------------------<
+	|                      |
+	|        Perfect       |
+	|                      |
+	>----------------------<
+-
+	circle_2: (10, 6)
+	max #coverage: 28
+
+	>----------------------<
+	|                      |
+	|        Perfect       |
+	|                      |
+	>----------------------<
+
+	circle_1: (4, 11)
+	max #coverage: 28
+
+	>----------------------<
+	|                      |
+	|        Perfect       |
+	|                      |
+	>----------------------<
+-
+	circle_2: (10, 6)
+	max #coverage: 28
+
+	>----------------------<
+	|                      |
+	|        Perfect       |
+	|                      |
+	>----------------------<
+
+	circle_1: (4, 11)
+	max #coverage: 28
+
+	>----------------------<
+	|                      |
+	|        Perfect       |
+	|                      |
+	>----------------------<
+-
+	circle_2: (10, 6)
+	max #coverage: 28
+
+	>----------------------<
+	|                      |
+	|        Perfect       |
+	|                      |
+	>----------------------<
+
+	circle_1: (4, 11)
+	max #coverage: 28
+
+	>----------------------<
+	|                      |
+	|        Perfect       |
+	|                      |
+	>----------------------<
+-
+	circle_2: (10, 6)
+	max #coverage: 28
+
+	>----------------------<
+	|                      |
+	|        Perfect       |
+	|                      |
+	>----------------------<
+
+	circle_1: (4, 11)
+	max #coverage: 28
+
+	>----------------------<
+	|                      |
+	|        Perfect       |
+	|                      |
+	>----------------------<
+-
+	circle_2: (10, 6)
+	max #coverage: 28
+
+	>----------------------<
+	|                      |
+	|        Perfect       |
+	|                      |
+	>----------------------<
+
+	circle_1: (4, 11)
+	max #coverage: 28
+
+	>----------------------<
+	|                      |
+	|        Perfect       |
+	|                      |
+	>----------------------<
+-
+	circle_2: (10, 6)
+	max #coverage: 28
+
+	>----------------------<
+	|                      |
+	|        Perfect       |
+	|                      |
+	>----------------------<
+
+	circle_1: (4, 11)
+	max #coverage: 28
+
+	>----------------------<
+	|                      |
+	|        Perfect       |
+	|                      |
+	>----------------------<
+-
+	circle_2: (10, 6)
+	max #coverage: 28
+
+	>----------------------<
+	|                      |
+	|        Perfect       |
+	|                      |
+	>----------------------<
+-
+Round_15:
+	T: 7.34666, r: 0.888724
+	optimum=28
+
+	Frozen!
+
+Circle_1 (4, 11) detected points: 
+	4, 8
+	2, 9
+	3, 9
+	3, 10
+	4, 11
+	5, 11
+	8, 11
+	2, 12
+	6, 12
+	7, 12
+	6, 13
+	7, 13
+	2, 14
+	4, 14
+
+Circle_2 (10, 6) detected points: 
+	10, 3
+	11, 3
+	7, 4
+	8, 4
+	13, 4
+	10, 5
+	8, 7
+	8, 8
+	9, 8
+	10, 8
+	11, 8
+	12, 8
+	11, 9
+	12, 9
+
+	max #coverage: 28
+	optimum=28
+	>----------------------<
+	|                      |
+	|        Perfect       |
+	|                      |
+	>----------------------<

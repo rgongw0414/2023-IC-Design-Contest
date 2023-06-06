@@ -1,0 +1,68 @@
+
+                           Design Compiler Graphical 
+                                 DC Ultra (TM)
+                                  DFTMAX (TM)
+                              Power Compiler (TM)
+                                 DesignWare (R)
+                                 DC Expert (TM)
+                               Design Vision (TM)
+                               HDL Compiler (TM)
+                               VHDL Compiler (TM)
+                                  DFT Compiler
+                               Design Compiler(R)
+
+                 Version R-2020.09 for linux64 - Aug 26, 2020 
+
+                    Copyright (c) 1988 - 2020 Synopsys, Inc.
+   This software and the associated documentation are proprietary to Synopsys,
+ Inc. This software may only be used in accordance with the terms and conditions
+ of a written license agreement with Synopsys, Inc. All other use, reproduction,
+            or distribution of this software is strictly prohibited.
+Initializing...
+set company "CIC"
+CIC
+set designer "Student"
+Student
+set search_path      "/home/eda/CBDK018_TSMC_Artisan/CIC/SynopsysDC/  $search_path"
+/home/eda/CBDK018_TSMC_Artisan/CIC/SynopsysDC/  . /usr/cad/synopsys/synthesis/2020.09//libraries/syn /usr/cad/synopsys/synthesis/2020.09//dw/syn_ver /usr/cad/synopsys/synthesis/2020.09//dw/sim_ver
+set target_library   "slow.db"
+slow.db
+set link_library     "* $target_library dw_foundation.sldb"
+* slow.db dw_foundation.sldb
+set symbol_library   "generic.sdb"
+generic.sdb
+set synthetic_library "dw_foundation.sldb"
+dw_foundation.sldb
+set hdlin_translate_off_skip_text "TRUE"
+Information: Variable 'hdlin_translate_off_skip_text' is obsolete and is being ignored. (INFO-100)
+TRUE
+set edifout_netlist_only "TRUE"
+TRUE
+set verilogout_no_tri true
+true
+set hdlin_enable_presto_for_vhdl "TRUE"
+Information: Variable 'hdlin_enable_presto_for_vhdl' is obsolete and is being ignored. (INFO-100)
+Information: Variable 'hdlin_enable_presto_for_vhdl' is obsolete and is being ignored. (INFO-100)
+TRUE
+set sh_enable_line_editing true
+true
+set sh_line_editing_mode emacs
+emacs
+history keep 100
+100
+alias h history
+set bus_inference_style {%s[%d]}
+%s[%d]
+set bus_naming_style {%s[%d]}
+%s[%d]
+set hdlout_internal_busses true
+true
+define_name_rules name_rule -allowed {a-z A-Z 0-9 _} -max_length 255 -type cell
+1
+define_name_rules name_rule -allowed {a-z A-Z 0-9 _[]} -max_length 255 -type net
+1
+define_name_rules name_rule -map {{"\\*cell\\*" "cell"}}
+1
+#Read All Files
+read_file -format verilog  LASER.v
+Loading db file '/home/eda/CBDK018_TSMC_Artisan/CIC/SynopsysDC/slow.db'

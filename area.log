@@ -1,0 +1,30 @@
+ 
+****************************************
+Report : area
+Design : LASER
+Version: R-2020.09
+Date   : Tue Jun  6 20:45:02 2023
+****************************************
+
+Library(s) Used:
+
+    slow (File: /home/eda/CBDK018_TSMC_Artisan/CIC/SynopsysDC/slow.db)
+
+Number of ports:                           27
+Number of nets:                          2008
+Number of cells:                         1958
+Number of combinational cells:           1542
+Number of sequential cells:               416
+Number of macros/black boxes:               0
+Number of buf/inv:                        190
+Number of references:                      56
+
+Combinational area:              25430.328078
+Buf/Inv area:                     1280.664016
+Noncombinational area:           22536.360287
+Macro/Black Box area:                0.000000
+Net Interconnect area:      undefined  (No wire load specified)
+
+Total cell area:                 47966.688365
+Total area:                 undefined
+1

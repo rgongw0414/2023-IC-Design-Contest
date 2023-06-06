@@ -1,0 +1,9 @@
+*design* DebussyLib (btIdent Verdi_P-2019.06)
+Command arguments:
+    +define+verilog
+    /home/eda/2023-IC-Design-Contest/LASER.v
+
+Highest level modules:
+LASER
+
+Total	0 error(s),   0 warning(s)

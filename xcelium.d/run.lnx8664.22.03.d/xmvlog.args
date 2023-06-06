@@ -1,0 +1,26 @@
+//
+// File created by:  xrun
+// Do not modify this file
+//
+-XLMODE
+./xcelium.d/run.lnx8664.22.03.d
+-RUNMODE
+tb.sv
+LASER_syn.v
+-DEFINE
+GATE
+-DEFINE
+USECOLOR
+-DEFINE
+SDF
+-VFILE
+/home/eda/CBDK018_TSMC_Artisan/CIC/Verilog/tsmc18_neg.v
+-CDSLIB
+./xcelium.d/run.lnx8664.22.03.d/cdsrun.lib
+-HDLVAR
+./xcelium.d/run.lnx8664.22.03.d/hdlrun.var
+-MESSAGES
+-UPDATE
+-XLLIBSTORE
+./xcelium.d/run.lnx8664.22.03.d/xllibs
+-ALLOWUNBOUND
