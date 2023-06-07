@@ -2,14 +2,15 @@
 // File created by:  xrun
 // Do not modify this file
 //
-+define+USECOLOR+SDF
++define+USECOLOR+RTL
 +access+r
-+ncmaxdelays
+-INPUT
+xrun.tcl
 -MESSAGES
 +EMGRLOG
 xrun.log
 -XLSTIME
-1686148744
+1686158264
 -XLKEEP
 -XLMODE
 ./xcelium.d/run.lnx8664.22.03.d

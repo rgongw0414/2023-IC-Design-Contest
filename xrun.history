@@ -1,1 +1,1 @@
-s1(07Jun2023:22:39:05):  xrun tb.sv LASER_syn.v +define+USECOLOR+SDF +access+r -clean -createdebugdb -v /home/eda/CBDK_IC_Contest_v2.1/Verilog/tsmc13_neg.v +ncmaxdelays 
+s1(08Jun2023:01:17:44):  xrun tb.sv LASER.v +define+USECOLOR+RTL +access+r -clean -createdebugdb -input xrun.tcl 
