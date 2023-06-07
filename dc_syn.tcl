@@ -1,6 +1,6 @@
 set company "CIC"
 set designer "Student"
-set search_path      "/home/eda/CBDK018_TSMC_Artisan/CIC/SynopsysDC/  $search_path"
+set search_path      "/home/eda/CBDK_IC_Contest_v2.1/SynopsysDC/db  $search_path"
 set target_library   "slow.db"
 set link_library     "* $target_library dw_foundation.sldb"
 set symbol_library   "generic.sdb"
@@ -48,3 +48,5 @@ write -format verilog -hierarchy -output LASER_syn.v
 report_area > area.log
 report_timing > timing.log
 report_qor   >  LASER_syn.qor
+
+exit

@@ -121,18 +121,18 @@ int main() {
                     y2_ans = y2;
                 }
             }
-            // else {                
-            //     float r = rand();
-            //     float sample = r / RAND_MAX;
-            //     // float prob = exp(-(max-cost)/T);                    
-            //     float prob = 0.1;
-            //     if (sample < prob) { // accept the worse solution
-            //         // max2 = cnt - overlapped_n;
-            //         max = cost;
-            //         x1 = x1_tmp; y1 = y1_tmp;
-            //         x2 = x2_tmp; y2 = y2_tmp;
-            //     }
-            // }
+            else {                
+                float r = rand();
+                float sample = r / RAND_MAX;
+                // float prob = exp(-(max-cost)/T);                    
+                float prob = 0.1;
+                if (sample < prob) { // accept the worse solution
+                    // max2 = cnt - overlapped_n;
+                    max = cost;
+                    x1 = x1_tmp; y1 = y1_tmp;
+                    x2 = x2_tmp; y2 = y2_tmp;
+                }
+            }
             cout << "\tcircle_1: (" << x1 << ", " << y1 << ")" << endl;            
             cout << "\tcircle_2: (" << std::dec << x2 << ", " << y2 << ")" << endl;
             cout << "\tmax #coverage: " << cnt << ", overlapped_n: " << overlapped_n << "\n\n";

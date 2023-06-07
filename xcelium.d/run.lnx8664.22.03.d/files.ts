@@ -1,2 +1,3 @@
-1686054988 /home/eda/2023-IC-Design-Contest/tb.sv
-1686095463 /home/eda/2023-IC-Design-Contest/LASER.v
+1173075089 /home/eda/CBDK_IC_Contest_v2.1/Verilog/tsmc13_neg.v
+1686123014 /home/eda/new/2023-IC-Design-Contest/tb.sv
+1686137833 /home/eda/new/2023-IC-Design-Contest/LASER_syn.v

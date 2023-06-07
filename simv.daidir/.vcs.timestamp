@@ -1,0 +1,123 @@
+1        
+0 ./LASER_syn.sdf_c
+39
++access+r
++define+USECOLOR+SDF
++fsdb+mda
++fsdbfile+LASER.fsdb
++itf+/usr/cad/synopsys/vcs/2022.06/linux/lib/vcsdp_lite.tab
++maxdelays
++vcs+fsdbon
++vcsd1
++vpi
+-Mamsrun=
+-Masflags=--32
+-Mcc=gcc
+-Mcfl= -pipe -m32 -O -I/usr/cad/synopsys/vcs/2022.06/include
+-Mcplusplus=g++
+-Mcrt0=
+-Mcrtn=
+-Mcsrc=
+-Mexternalobj=
+-Mldflags= -m32 -m32 -rdynamic
+-Mobjects= /usr/cad/synopsys/vcs/2022.06/linux/lib/libvirsim.so /usr/cad/synopsys/vcs/2022.06/linux/lib/liberrorinf.so /usr/cad/synopsys/vcs/2022.06/linux/lib/libsnpsmalloc.so /usr/cad/synopsys/vcs/2022.06/linux/lib/libvfs.so
+-Mout=simv
+-Msaverestoreobj=/usr/cad/synopsys/vcs/2022.06/linux/lib/vcs_save_restore_new.o
+-Msyslibs=/usr/cad/synopsys/verdi/2022.06//share/PLI/VCS/LINUX/pli.a /usr/cad/synopsys/vcs/2022.06/linux/lib/ctype-stubs_32.a -ldl
+-Mvcsaceobjs=
+-Mxcflags= -pipe -m32 -I/usr/cad/synopsys/vcs/2022.06/include
+-Mxllcflags=
+-P
+-Xvcs_run_simv=1
+-debug_access
+-fsdb
+-gen_obj
+-picarchive
+-sverilog
+-v
+/usr/cad/synopsys/vcs/2022.06/linux/bin/vcs1
+/usr/cad/synopsys/verdi/2022.06//share/PLI/VCS/LINUX/verdi.tab
+tb.sv
+LASER_syn.v
+/cad/Design_Kit/CBDK_IC_Contest_v2.1/Verilog/tsmc13_neg.v
+63
+XMODIFIERS=@im=ibus
+XLOCALEDIR=/usr/cad/synopsys/icc/2022.03/etc/locale
+XDG_VTNR=1
+XDG_SESSION_TYPE=x11
+XDG_SESSION_ID=1
+XDG_SESSION_DESKTOP=gnome-classic
+XDG_SEAT=seat0
+XDG_RUNTIME_DIR=/run/user/1001
+XDG_MENU_PREFIX=gnome-
+XDG_DATA_DIRS=/nchudata/account/nuivtrain/.local/share/flatpak/exports/share/:/var/lib/flatpak/exports/share/:/usr/local/share/:/usr/share/
+XDG_CURRENT_DESKTOP=GNOME-Classic:GNOME
+XAUTHORITY=/run/gdm/auth-for-nuivtrain-qJlndg/database
+WINDOWPATH=1
+VTE_VERSION=5204
+VMR_MODE_FLAG=32
+VERDI_HOME=/usr/cad/synopsys/verdi/2022.06/
+VENDOR=unknown
+VCS_PATHMAP_PRELOAD_DONE=1
+VCS_MX_HOME_INTERNAL=1
+VCS_HOME=/usr/cad/synopsys/vcs/2022.06
+VCS_EXEC_DONE=1
+VCS_DEPTH=0
+VCS_CC=gcc
+VCS_ARG_ADDED_FOR_TMP=1
+VCS_ARCH=linux
+VCS_AMD_PURE32=1
+USERNAME=nuivtrain
+UNAME=/bin/uname
+TOOL_HOME=/usr/cad/synopsys/vcs/2022.06/linux
+SYN_MAN_DIR=/usr/cad/synopsys/synthesis/2022.03/doc/syn/man
+SYNOPSYS_LC_ROOT=/cad/synopsys/lc/cur
+SSH_AUTH_SOCK=/run/user/1001/keyring/ssh
+SSH_AGENT_PID=2552
+SNPS_VCS_CLANG_PATH=/usr/cad/synopsys/vcs/2022.06/linux/clang
+SNPS_INTERNAL_VCS_LINUX_OS=linux
+SHLIB_PATH=/usr/cad/synopsys/verdi/2022.06//etc/lib/libstdc++/LINUX64/:/usr/cad/synopsys/verdi/2022.06//share/PLI/lib/LINUX64/:/usr/cad/synopsys/verdi/2022.06//share/PLI/VCS/LINUX64/:
+SESSION_MANAGER=local/unix:@/tmp/.ICE-unix/2564,unix/unix:/tmp/.ICE-unix/2564
+SCRNAME=vcs
+SCRIPT_NAME=vcs
+QT_IM_MODULE=ibus
+QT_GRAPHICSSYSTEM_CHECKED=1
+QTLIB=/usr/lib64/qt-3.3/lib
+QTINC=/usr/lib64/qt-3.3/include
+QTDIR=/usr/lib64/qt-3.3
+OVA_UUM=0
+OSTYPE=linux
+LESSOPEN=||/usr/bin/lesspipe.sh %s
+LC_ALL=C
+IMSETTINGS_MODULE=none
+IMSETTINGS_INTEGRATE_DESKTOP=yes
+HOSTTYPE=x86_64-linux
+GROUP=user
+GNOME_TERMINAL_SERVICE=:1.109
+GNOME_TERMINAL_SCREEN=/org/gnome/Terminal/screen/45b44e59_a9b4_422c_bed3_138d87f27a28
+GNOME_SHELL_SESSION_MODE=classic
+GNOME_DESKTOP_SESSION_ID=this-is-deprecated
+GJS_DEBUG_TOPICS=JS ERROR;JS LOG
+GJS_DEBUG_OUTPUT=stderr
+GDM_LANG=en_US.UTF-8
+GDMSESSION=gnome-classic
+DESKTOP_SESSION=gnome-classic
+DBUS_SESSION_BUS_ADDRESS=unix:abstract=/tmp/dbus-QmOrXvuXeZ,guid=3b3ab6cfa76e38f7079eccbb64803adb
+COLORTERM=truecolor
+0
+0
+7
+1686128990 ./LASER_syn.sdf
+1173075089 /cad/Design_Kit/CBDK_IC_Contest_v2.1/Verilog/tsmc13_neg.v
+1173075089 /cad/Design_Kit/CBDK_IC_Contest_v2.1/Verilog/tsmc13_neg.v
+1686128990 LASER_syn.v
+1686123014 tb.sv
+1653825534 /usr/cad/synopsys/verdi/2022.06//share/PLI/VCS/LINUX/verdi.tab
+1654052772 /usr/cad/synopsys/vcs/2022.06/linux/lib/vcsdp_lite.tab
+4
+1654057313 /usr/cad/synopsys/vcs/2022.06/linux/lib/libvirsim.so
+1654056069 /usr/cad/synopsys/vcs/2022.06/linux/lib/liberrorinf.so
+1654055841 /usr/cad/synopsys/vcs/2022.06/linux/lib/libsnpsmalloc.so
+1654056923 /usr/cad/synopsys/vcs/2022.06/linux/lib/libvfs.so
+1686129024 simv.daidir
+-1 partitionlib

@@ -14,8 +14,8 @@ reg [4:0] q; // random value from 1 to 31
 wire [3:0] step;
 
 // FSM
-reg [1:0]current_state;
-reg [1:0]next_state;
+reg [1:0] current_state;
+reg [1:0] next_state;
 parameter  INIT = 0;
 parameter READ = 1;
 parameter WALK = 2;
@@ -31,15 +31,22 @@ reg [3:0] corX [39:0]; // coordinates array of all input points
 reg [3:0] corY [39:0];
 reg [3:0] x1, y1, x2, y2; // current x and y
 reg [3:0] tmpX1, tmpY1, tmpX2, tmpY2; 
-wire [4:0] dx1, dy1, dx2, dy2;
+wire [3:0] dx1, dy1, dx2, dy2;
 
 // reg round_flag;
-reg [3:0] round; // sub-rounds count
+reg [9:0] round; // sub-rounds count
 
+// assign step = (q[1:0] == 2'b11)? {3'b000, q[0]}: {2'b0, q[1:0]};
+assign step = {2'b0, q[1:0]};
 
-assign step = (q[1:0] == 2'b11)? {3'b000, q[0]}: {2'b0, q[1:0]};
+// READ and store the inputs into array
+always @(posedge CLK) begin
+  if (current_state == READ || next_state == READ) begin
+    corX[cnt] <= X;
+    corY[cnt] <= Y;
+  end
+end
 
-// compute abs value of dist. b/t tmpX/Y and corXY
 assign  dx1 = (tmpX1 > corX[cnt])? tmpX1 - corX[cnt] : corX[cnt] - tmpX1;
 assign  dy1 = (tmpY1 > corY[cnt])? tmpY1 - corY[cnt] : corY[cnt] - tmpY1;
 assign  dx2 = (tmpX2 > corX[cnt])? tmpX2 - corX[cnt] : corX[cnt] - tmpX2;
@@ -61,9 +68,9 @@ always @(*) begin
     READ:
       next_state = (cnt == 6'd39)? WALK: READ;
     WALK: // check 40 points covering
-      next_state = (round == 4'd10)? OUTPUT: WALK;
+      next_state = (round == 10'd200)? OUTPUT: WALK;
     OUTPUT:
-      next_state = READ;
+      next_state = INIT;
     default:
       next_state = INIT;
   endcase
@@ -74,15 +81,12 @@ end
 // reg [3:0] round
 always @(posedge CLK) begin
   if (RST)
-    round <= 4'd0;
+    round <= 10'd0;
   else if (current_state == OUTPUT)
-    round <= 4'd0;
+    round <= 10'd0;
   else if (current_state == WALK) begin
-    round <= (cnt == 6'd40)? round <= round+4'd1: 4'd0; // round++
-    // if (cnt == 6'd40) 
-    //   round <= round + 4'd1;
-    // else
-    //   round <= 4'd0;
+    if (cnt == 6'd40)
+      round <= round +10'd1;
   end
 end
 
@@ -90,17 +94,23 @@ end
 always @(posedge CLK) begin
   if (RST) begin
     x1 <= 4'd7; y1 <= 4'd7;
-    x1 <= 4'd7; y2 <= 4'd7;
+    x2 <= 4'd7; y2 <= 4'd7;
   end
   else if (current_state == OUTPUT) begin
     x1 <= 4'd7; y1 <= 4'd7;
     x2 <= 4'd7; y2 <= 4'd7;
   end
   else if (current_state == WALK) begin
-    if (cnt == 6'd40) begin
-      if (cover_current > cover_max) begin
+    if (cnt == 6'd40) begin      
+      if(cover_current > cover_prev) begin
         x1 <= tmpX1; y1 <= tmpY1;
         x2 <= tmpX2; y2 <= tmpY2;
+      end
+      else begin // accept worse result with probability
+        if (q < 5'd6) begin // 10% acceptance
+          x1 <= tmpX1; y1 <= tmpY1;
+          x2 <= tmpX2; y2 <= tmpY2;
+        end
       end
     end
   end
@@ -118,10 +128,22 @@ always @(posedge CLK) begin
     tmpX2 <= 4'd7; tmpY2 <= 4'd7;
   end
   else if (current_state == WALK) begin
-    tmpX1 <= (q[0])? tmpX1 <= x1 + step: tmpX1 <= x1 - step; 
-    tmpY1 <= (q[1])? tmpY1 <= y1 + step: tmpY1 <= y1 - step; 
-    tmpX2 <= (q[2])? tmpX2 <= x2 + step: tmpX2 <= x2 - step; 
-    tmpY2 <= (q[3])? tmpY2 <= y2 + step: tmpY2 <= y2 - step; 
+    if (q[0])
+      tmpX1 <= (x1+step < 16)? x1+step: 15; // keep it walking in the field
+    else
+      tmpX1 <= (x1-step > 0)? x1-step: 0; 
+    if (q[1])
+      tmpY1 <= (y1+step < 16)? y1+step: 15; 
+    else
+      tmpY1 <= (y1-step > 0)? y1-step: 0;  
+    if (q[2])
+      tmpX2 <= (x2+step < 16)? x2+step: 15; 
+    else
+      tmpX2 <= (x2-step > 0)? x2-step: 0;  
+    if (q[3])
+      tmpY2 <= (y2+step < 16)? y2+step: 15;  
+    else
+      tmpY2 <= (y2-step > 0)? y2-step: 0;  
   end
 end
 
@@ -135,10 +157,10 @@ always @(posedge CLK) begin
     if(cnt == 6'd40) begin // finished checking the covering of the 40 points
       if(cover_current > cover_prev)
         cover_prev <= cover_current;
-      // else begin // accept worse result with probability
-      //   if (q < 5'd4)  // 10% acceptance
-      //     cover_prev <= cover_current;
-      // end
+      else begin // accept worse result with probability
+        if (q < 5'd4)  // 10% acceptance
+          cover_prev <= cover_current;
+      end
     end
   end
 end
@@ -187,7 +209,7 @@ always @(posedge CLK) begin
   else if(current_state == OUTPUT)
     cnt <= 0;
   else if(current_state == WALK) begin
-      cnt <= (cnt == 6'd40)? cnt <= 0: cnt+1;
+      cnt <= (cnt == 6'd40)? 0: cnt+1;
   end
   else
     cnt <= 0;
@@ -196,8 +218,8 @@ end
 // OUTPUT: (C1X, C1Y), (C2X, C2Y)
 always @(posedge CLK) begin
   if (RST) begin
-    C1X <= 0; C1Y <= 0;
-    C2X <= 0; C2Y <= 0;
+    C1X <= 4'd7; C1Y <= 4'd7;
+    C2X <= 4'd7; C2Y <= 4'd7;
   end
   else if (current_state == WALK) begin
     if(cnt == 6'd40) begin
@@ -205,12 +227,6 @@ always @(posedge CLK) begin
         C1X <= tmpX1; C1Y <= tmpY1;
         C2X <= tmpX2; C2Y <= tmpY2;
       end
-      // else begin // accept worse result with probability
-      //   if (q < 5'd4) begin // 10% acceptance
-      //     C1X <= tmpX1; C1Y <= tmpY1;
-      //     C2X <= tmpX2; C2Y <= tmpY2;
-      //   end
-      // end
     end
   end
 end
@@ -233,7 +249,7 @@ always @(posedge CLK) begin
     sampled q < 4 approximately equals to 10%
   */
   if (RST) 
-    q <= 5'd1;
+    q <= 5'h1;
   else begin
     q[4] <= 1'b0 ^ q[0];
     q[3] <= q[4];

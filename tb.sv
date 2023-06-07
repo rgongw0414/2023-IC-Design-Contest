@@ -54,7 +54,7 @@ initial begin
     `endif
     
     `ifdef GATE
-    $sdf_annotate("LASER_SYN.sdf", u_LASER);
+    $sdf_annotate("LASER_SYN.sdf");
     $fsdbDumpfile("LASER_SYN.fsdb");
     // $fsdbDumpvars(0,"+mda");
     //    $fsdbDumpvars();

@@ -1,0 +1,9 @@
+{"vcs1":{"timestamp_begin":1686126124.204637033, "rt":1.49, "ut":0.39, "st":0.05}}
+{"vcselab":{"timestamp_begin":1686126125.718406770, "rt":0.59, "ut":0.22, "st":0.01}}
+{"link":{"timestamp_begin":1686126126.330190440, "rt":0.13, "ut":0.12, "st":0.02}}
+{"SNPS_VCS_INTERNAL_ROOT_START_TIME": 1686126123.937141714}
+{"VCS_COMP_START_TIME": 1686126123.937141714}
+{"VCS_COMP_END_TIME": 1686126128.606674477}
+{"VCS_USER_OPTIONS": "-R -sverilog tb.sv LASER_syn.v +define+USECOLOR+SDF +access+r +vcs+fsdbon +fsdb+mda +fsdbfile+LASER.fsdb -v /cad/Design_Kit/CBDK_IC_Contest_v2.1/Verilog/tsmc13_neg.v +maxdelays"}
+{"vcs1": {"peak_mem": 10656}}
+{"stitch_vcselab": {"peak_mem": 10698}}

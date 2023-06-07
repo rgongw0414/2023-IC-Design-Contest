@@ -1,3 +1,4 @@
 Command Line: /usr/cad/synopsys/verdi/cur/platform/LINUXAMD64/bin/Novas
 uname(Linux tool 3.10.0-1160.90.1.el7.x86_64 #1 SMP Thu May 4 15:21:22 UTC 2023 x86_64)
-au time 0.010526 0.007410 0.003265 delta 10473472 10473472 total 443379712 443379712
+Disabled AskUser2 Message (Response 0): Close all windows and exit novas?
+au time 49.064248 2.780120 0.686637 delta 161316864 161316864 total 594223104 594223104
