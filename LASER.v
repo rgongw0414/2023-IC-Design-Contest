@@ -68,7 +68,7 @@ always @(*) begin
     READ:
       next_state = (cnt == 6'd39)? WALK: READ;
     WALK: // check 40 points covering
-      next_state = (round == 10'd200)? OUTPUT: WALK;
+      next_state = (round == 10'd300)? OUTPUT: WALK;
     OUTPUT:
       next_state = INIT;
     default:
@@ -107,7 +107,7 @@ always @(posedge CLK) begin
         x2 <= tmpX2; y2 <= tmpY2;
       end
       else begin // accept worse result with probability
-        if (q < 5'd6) begin // 10% acceptance
+        if (q < 5'd4) begin // 10% acceptance
           x1 <= tmpX1; y1 <= tmpY1;
           x2 <= tmpX2; y2 <= tmpY2;
         end
@@ -129,19 +129,23 @@ always @(posedge CLK) begin
   end
   else if (current_state == WALK) begin
     if (q[0])
-      tmpX1 <= (x1+step < 16)? x1+step: 15; // keep it walking in the field
+      tmpX1 <= x1+step; // keep it walking in the field
+      // tmpX1 <= (x1+step < 16)? x1+step: 15; // keep it walking in the field
     else
       tmpX1 <= (x1-step > 0)? x1-step: 0; 
     if (q[1])
-      tmpY1 <= (y1+step < 16)? y1+step: 15; 
+      tmpY1 <= y1+step;
+      // tmpY1 <= (y1+step < 16)? y1+step: 15; 
     else
       tmpY1 <= (y1-step > 0)? y1-step: 0;  
     if (q[2])
-      tmpX2 <= (x2+step < 16)? x2+step: 15; 
+      tmpX2 <= x2+step;
+      // tmpX2 <= (x2+step < 16)? x2+step: 15; 
     else
       tmpX2 <= (x2-step > 0)? x2-step: 0;  
     if (q[3])
-      tmpY2 <= (y2+step < 16)? y2+step: 15;  
+      tmpY2 <= y2+step;
+      // tmpY2 <= (y2+step < 16)? y2+step: 15;  
     else
       tmpY2 <= (y2-step > 0)? y2-step: 0;  
   end
