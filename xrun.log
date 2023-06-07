@@ -1,5 +1,5 @@
 xrun(64): 22.03-s003: (c) Copyright 1995-2022 Cadence Design Systems, Inc.
-TOOL:	xrun(64)	22.03-s003: Started on Jun 07, 2023 at 19:37:14 CST
+TOOL:	xrun(64)	22.03-s003: Started on Jun 07, 2023 at 19:43:52 CST
 xrun
 	tb.sv
 	LASER_syn.v
@@ -20,13 +20,13 @@ file: LASER_syn.v
 file: /home/eda/CBDK_IC_Contest_v2.1/Verilog/tsmc13_neg.v
 	module tsmc13_neg.BUFX2:v
 		errors: 0, warnings: 0
+	module tsmc13_neg.BUFX3:v
+		errors: 0, warnings: 0
 	module tsmc13_neg.BUFX4:v
 		errors: 0, warnings: 0
 	module tsmc13_neg.BUFX8:v
 		errors: 0, warnings: 0
 	module tsmc13_neg.BUFX12:v
-		errors: 0, warnings: 0
-	module tsmc13_neg.BUFX16:v
 		errors: 0, warnings: 0
 	module tsmc13_neg.INVXL:v
 		errors: 0, warnings: 0
@@ -38,17 +38,21 @@ file: /home/eda/CBDK_IC_Contest_v2.1/Verilog/tsmc13_neg.v
 		errors: 0, warnings: 0
 	module tsmc13_neg.INVX4:v
 		errors: 0, warnings: 0
-	module tsmc13_neg.INVX8:v
+	module tsmc13_neg.INVX6:v
+		errors: 0, warnings: 0
+	module tsmc13_neg.INVX12:v
 		errors: 0, warnings: 0
 	module tsmc13_neg.AND2X1:v
+		errors: 0, warnings: 0
+	module tsmc13_neg.AND2X2:v
+		errors: 0, warnings: 0
+	module tsmc13_neg.AND4X2:v
 		errors: 0, warnings: 0
 	module tsmc13_neg.AND4X4:v
 		errors: 0, warnings: 0
 	module tsmc13_neg.AOI21XL:v
 		errors: 0, warnings: 0
 	module tsmc13_neg.AOI21X1:v
-		errors: 0, warnings: 0
-	module tsmc13_neg.AOI21X4:v
 		errors: 0, warnings: 0
 	module tsmc13_neg.AOI211XL:v
 		errors: 0, warnings: 0
@@ -60,15 +64,11 @@ file: /home/eda/CBDK_IC_Contest_v2.1/Verilog/tsmc13_neg.v
 		errors: 0, warnings: 0
 	module tsmc13_neg.AOI221XL:v
 		errors: 0, warnings: 0
-	module tsmc13_neg.AOI221X2:v
-		errors: 0, warnings: 0
 	module tsmc13_neg.AOI222XL:v
 		errors: 0, warnings: 0
-	module tsmc13_neg.AOI222X1:v
+	module tsmc13_neg.AOI222X2:v
 		errors: 0, warnings: 0
 	module tsmc13_neg.AOI222X4:v
-		errors: 0, warnings: 0
-	module tsmc13_neg.AOI31XL:v
 		errors: 0, warnings: 0
 	module tsmc13_neg.AOI31X1:v
 		errors: 0, warnings: 0
@@ -77,6 +77,8 @@ file: /home/eda/CBDK_IC_Contest_v2.1/Verilog/tsmc13_neg.v
 	module tsmc13_neg.AOI2BB2X1:v
 		errors: 0, warnings: 0
 	module tsmc13_neg.AOI2BB2X2:v
+		errors: 0, warnings: 0
+	module tsmc13_neg.AOI2BB2X4:v
 		errors: 0, warnings: 0
 	module tsmc13_neg.AO21X1:v
 		errors: 0, warnings: 0
@@ -100,9 +102,15 @@ file: /home/eda/CBDK_IC_Contest_v2.1/Verilog/tsmc13_neg.v
 		errors: 0, warnings: 0
 	module tsmc13_neg.NAND4X2:v
 		errors: 0, warnings: 0
+	module tsmc13_neg.NAND4X4:v
+		errors: 0, warnings: 0
+	module tsmc13_neg.NAND2BXL:v
+		errors: 0, warnings: 0
 	module tsmc13_neg.NAND2BX1:v
 		errors: 0, warnings: 0
 	module tsmc13_neg.NAND2BX2:v
+		errors: 0, warnings: 0
+	module tsmc13_neg.NAND2BX4:v
 		errors: 0, warnings: 0
 	module tsmc13_neg.NAND3BX1:v
 		errors: 0, warnings: 0
@@ -116,6 +124,8 @@ file: /home/eda/CBDK_IC_Contest_v2.1/Verilog/tsmc13_neg.v
 		errors: 0, warnings: 0
 	module tsmc13_neg.NOR2X6:v
 		errors: 0, warnings: 0
+	module tsmc13_neg.NOR2X8:v
+		errors: 0, warnings: 0
 	module tsmc13_neg.NOR3XL:v
 		errors: 0, warnings: 0
 	module tsmc13_neg.NOR3X1:v
@@ -126,15 +136,11 @@ file: /home/eda/CBDK_IC_Contest_v2.1/Verilog/tsmc13_neg.v
 		errors: 0, warnings: 0
 	module tsmc13_neg.NOR2BX4:v
 		errors: 0, warnings: 0
-	module tsmc13_neg.NOR3BX1:v
-		errors: 0, warnings: 0
-	module tsmc13_neg.OR2X1:v
+	module tsmc13_neg.OR2X2:v
 		errors: 0, warnings: 0
 	module tsmc13_neg.OAI21XL:v
 		errors: 0, warnings: 0
 	module tsmc13_neg.OAI21X1:v
-		errors: 0, warnings: 0
-	module tsmc13_neg.OAI21X2:v
 		errors: 0, warnings: 0
 	module tsmc13_neg.OAI21X4:v
 		errors: 0, warnings: 0
@@ -150,29 +156,21 @@ file: /home/eda/CBDK_IC_Contest_v2.1/Verilog/tsmc13_neg.v
 		errors: 0, warnings: 0
 	module tsmc13_neg.OAI22X4:v
 		errors: 0, warnings: 0
-	module tsmc13_neg.OAI222XL:v
-		errors: 0, warnings: 0
-	module tsmc13_neg.OAI222X4:v
+	module tsmc13_neg.OAI221XL:v
 		errors: 0, warnings: 0
 	module tsmc13_neg.OAI31XL:v
 		errors: 0, warnings: 0
 	module tsmc13_neg.OAI31X1:v
 		errors: 0, warnings: 0
-	module tsmc13_neg.OAI31X4:v
-		errors: 0, warnings: 0
 	module tsmc13_neg.OAI32XL:v
 		errors: 0, warnings: 0
-	module tsmc13_neg.OAI2BB1XL:v
+	module tsmc13_neg.OAI2BB1X1:v
 		errors: 0, warnings: 0
 	module tsmc13_neg.OAI2BB2XL:v
 		errors: 0, warnings: 0
 	module tsmc13_neg.OAI2BB2X1:v
 		errors: 0, warnings: 0
-	module tsmc13_neg.OAI2BB2X2:v
-		errors: 0, warnings: 0
 	module tsmc13_neg.OA21XL:v
-		errors: 0, warnings: 0
-	module tsmc13_neg.OA22X1:v
 		errors: 0, warnings: 0
 	module tsmc13_neg.XOR2X1:v
 		errors: 0, warnings: 0
@@ -182,9 +180,11 @@ file: /home/eda/CBDK_IC_Contest_v2.1/Verilog/tsmc13_neg.v
 		errors: 0, warnings: 0
 	module tsmc13_neg.CLKINVX1:v
 		errors: 0, warnings: 0
-	module tsmc13_neg.ADDFHX1:v
+	module tsmc13_neg.CLKINVX2:v
 		errors: 0, warnings: 0
-	module tsmc13_neg.ADDFHX2:v
+	module tsmc13_neg.ADDFXL:v
+		errors: 0, warnings: 0
+	module tsmc13_neg.ADDFX2:v
 		errors: 0, warnings: 0
 	module tsmc13_neg.DFFQX1:v
 		errors: 0, warnings: 0
@@ -194,7 +194,11 @@ file: /home/eda/CBDK_IC_Contest_v2.1/Verilog/tsmc13_neg.v
 		errors: 0, warnings: 0
 	module tsmc13_neg.DFFRX1:v
 		errors: 0, warnings: 0
-	module tsmc13_neg.DFFTRX1:v
+	module tsmc13_neg.DFFTRX2:v
+		errors: 0, warnings: 0
+	module tsmc13_neg.DFFHQX4:v
+		errors: 0, warnings: 0
+	module tsmc13_neg.DFFHQX8:v
 		errors: 0, warnings: 0
 	primitive tsmc13_neg.udp_edfft:v
 		errors: 0, warnings: 0
@@ -203,6 +207,11 @@ file: /home/eda/CBDK_IC_Contest_v2.1/Verilog/tsmc13_neg.v
 		Caching library 'tsmc13_neg' ....... Done
 		Caching library 'worklib' ....... Done
 	Elaborating the design hierarchy:
+  DFFRX1 \current_state_reg[0]  ( .D(next_state[0]), .CK(CLK), .RN(n610), .Q(
+                              |
+xmelab: *W,CUVWSP (./LASER_syn.v,600|30): 1 output port was not connected:
+xmelab: (/home/eda/CBDK_IC_Contest_v2.1/Verilog/tsmc13_neg.v,18307): QN
+
 	Top level design units:
 		testfixture
 xmelab: *W,DSEMEL: This SystemVerilog design will be simulated as per IEEE 1800-2009 SystemVerilog simulation semantics. Use -disable_sem2009 option for turning off SV 2009 simulation semantics.
@@ -224,27 +233,31 @@ xmelab: *W,CUSSTI (./tb.sv,57|16): This SDF System Task will be Ignored..
 		Scale type:            
 	Annotation completed successfully...
 	SDF statistics: 
-		 No. of Pathdelays = 3983    	 No. of Disabled Pathdelays = 0        Annotated = 100.00% (3983/3983) 
+		 No. of Pathdelays = 4017    	 No. of Disabled Pathdelays = 0        Annotated = 100.00% (4017/4017) 
 		 No. of Tchecks    = 1614    	 No. of Disabled Tchecks    = 0        Annotated = 100.00% (1614/1614) 
 				        Total(T) 	   Disabled(D) 	    Annotated(A)	  Percentage(A/(T-D))
-		 Path Delays	          3983	             0	              3983	                100.00
+		 Path Delays	          4017	             0	              4017	                100.00
 		      $width	           806	             0	               806	                100.00
 		  $setuphold	           808	             0	               808	                100.00
 	Building instance overlay tables: .................... Done
 	Generating native compiled code:
 		worklib.testfixture:sv <0x2ba301ce>
 			streams:  36, words: 57800
-		tsmc13_neg.ADDFHX2:v <0x11a2bf0f>
+		tsmc13_neg.ADDFXL:v <0x1de999a4>
 			streams:   0, words:     0
-		tsmc13_neg.ADDFHX1:v <0x012e62ab>
+		tsmc13_neg.XOR2X1:v <0x72957925>
 			streams:   0, words:     0
-		tsmc13_neg.XOR2X1:v <0x4bb611e8>
+		tsmc13_neg.ADDFX2:v <0x366ffc4e>
+			streams:   0, words:     0
+		tsmc13_neg.DFFHQX4:v <0x07c74879>
 			streams:   0, words:     0
 		tsmc13_neg.DFFQX4:v <0x3df77fd6>
 			streams:   0, words:     0
-		tsmc13_neg.DFFQX2:v <0x38f44c71>
+		tsmc13_neg.DFFTRX2:v <0x488b4d95>
 			streams:   0, words:     0
-		tsmc13_neg.DFFTRX1:v <0x58079031>
+		tsmc13_neg.DFFQX2:v <0x54b3dd0f>
+			streams:   0, words:     0
+		tsmc13_neg.DFFHQX8:v <0x7f235210>
 			streams:   0, words:     0
 		tsmc13_neg.DFFRX1:v <0x096e3755>
 			streams:   0, words:     0
@@ -263,12 +276,12 @@ xmelab: *W,CUSSTI (./tb.sv,57|16): This SDF System Task will be Ignored..
 			Liberty Pins:	                  0
 	Design hierarchy summary:
 		                    Instances  Unique
-		Modules:                 1551      91
+		Modules:                 1572      93
 		UDPs:                     402       2
-		Primitives:              3648       7
-		Timing outputs:          1554      23
-		Registers:                447      52
-		Scalar wires:            1959       -
+		Primitives:              3675       7
+		Timing outputs:          1577      25
+		Registers:                447      54
+		Scalar wires:            1982       -
 		Expanded wires:             8       2
 		Vectored wires:             2       -
 		Always blocks:              3       3
@@ -276,7 +289,7 @@ xmelab: *W,CUSSTI (./tb.sv,57|16): This SDF System Task will be Ignored..
 		Cont. assignments:          2       2
 		Pseudo assignments:         1       1
 		Timing checks:           2422     409
-		Interconnect:            4353       -
+		Interconnect:            4365       -
 		Delayed tcheck signals:   807     404
 		Simulation timescale:     1ps
 	Writing initial simulation snapshot: worklib.testfixture:sv
@@ -301,36 +314,36 @@ FSDB Dumper for Xcelium, Release Verdi_P-2019.06, Linux x86_64/64bit, 05/26/2019
 ** Simulation Start          **
 *******************************
 == PATTERN img1.pattern
----- Used Cycle:       8200
----- Get Return: C1( 9,11),C2( 5, 1)
----- cover =  17, optimum =  30
+---- Used Cycle:      12300
+---- Get Return: C1( 7, 9),C2(15, 9)
+---- cover =  21, optimum =  30
 == PATTERN img2.pattern
----- Used Cycle:       8200
----- Get Return: C1( 6,15),C2( 8, 8)
----- cover =  18, optimum =  28
+---- Used Cycle:      12300
+---- Get Return: C1( 8, 4),C2( 2, 8)
+---- cover =  19, optimum =  28
 == PATTERN img3.pattern
----- Used Cycle:       8200
----- Get Return: C1( 8,12),C2(12, 6)
----- cover =  20, optimum =  29
+---- Used Cycle:      12300
+---- Get Return: C1(10, 6),C2(10,12)
+---- cover =  22, optimum =  29
 == PATTERN img4.pattern
----- Used Cycle:       8200
----- Get Return: C1(11, 9),C2( 3,11)
----- cover =  17, optimum =  30
+---- Used Cycle:      12300
+---- Get Return: C1( 4,10),C2( 8, 2)
+---- cover =  21, optimum =  30
 == PATTERN img5.pattern
----- Used Cycle:       8200
----- Get Return: C1(10,15),C2( 8, 5)
----- cover =   9, optimum =  23
+---- Used Cycle:      12300
+---- Get Return: C1( 3,13),C2( 7,13)
+---- cover =  18, optimum =  23
 == PATTERN img6.pattern
----- Used Cycle:       8200
----- Get Return: C1( 4,10),C2( 8, 8)
----- cover =  19, optimum =  30
+---- Used Cycle:      12300
+---- Get Return: C1( 4,10),C2(10, 2)
+---- cover =  16, optimum =  30
 
 *******************************
 **   Finish Simulation       **
-**   RUN CYCLE =      49455  **
-**   Cover total = 100/170   **
+**   RUN CYCLE =      74055  **
+**   Cover total = 117/170   **
 *******************************
-Simulation complete via $finish(1) at time 395636 NS + 0
+Simulation complete via $finish(1) at time 592436 NS + 0
 ./tb.sv:270                  $finish;
 xcelium> exit
-TOOL:	xrun(64)	22.03-s003: Exiting on Jun 07, 2023 at 19:37:20 CST  (total: 00:00:06)
+TOOL:	xrun(64)	22.03-s003: Exiting on Jun 07, 2023 at 19:44:00 CST  (total: 00:00:08)

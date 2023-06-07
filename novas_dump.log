@@ -93,9 +93,9 @@ argv[7]=-v
 argv[8]=/home/eda/CBDK_IC_Contest_v2.1/Verilog/tsmc13_neg.v
 argv[9]=+ncmaxdelays
 94 profile - 100
-          CPU/Mem usage: 0.060 sys,  0.190 user,  227.05M sys,  0.00M vm
+          CPU/Mem usage: 0.080 sys,  0.200 user,  227.03M sys,  0.00M vm
 95 VC callback profile - scalar:0 vector:0
-96 Wed Jun  7 19:37:15 2023
+96 Wed Jun  7 19:43:53 2023
 97 pliAppInit
 98 FSDB_GATE is disabled.
 99 Enable Parallel Dumping.
@@ -117,41 +117,41 @@ argv[9]=+ncmaxdelays
 115 *Verdi* : Create FSDB file 'LASER_SYN.fsdb'
 116 sps_call_fsdbDumpvars at 0 : /home/eda/new/2023-IC-Design-Contest/tb.sv(61)
 117 *Verdi* : Begin traversing the scopes, layer (0).
-118 Cell instance `testfixture.u_LASER.\cnt_reg[0] '.
+118 Cell instance `testfixture.u_LASER.\round_reg[9] '.
 119 *Verdi* : End of traversing.
 120 fsdbDumpvars traverse var: profile - 
-          CPU/Mem usage: 0.070 sys,  0.260 user,  330.89M sys,  0.00M vm
-                   incr: 0.000 sys,  0.060 user,  11.18M sys,  0.00M vm
-                   accu: 0.000 sys,  0.060 user,  11.18M sys,  0.00M vm
-              accu incr: 0.000 sys,  0.060 user,  11.18M sys,  0.00M vm
+          CPU/Mem usage: 0.090 sys,  0.270 user,  331.08M sys,  0.00M vm
+                   incr: 0.000 sys,  0.060 user,  11.34M sys,  0.00M vm
+                   accu: 0.000 sys,  0.060 user,  11.34M sys,  0.00M vm
+              accu incr: 0.000 sys,  0.060 user,  11.34M sys,  0.00M vm
 
-          Count usage: 12821 var,  4088 idcode,  4088 callback
-                 incr: 12821 var,  4088 idcode,  4088 callback
-                 accu: 12821 var,  4088 idcode,  4088 callback
-            accu incr: 12821 var,  4088 idcode,  4088 callback
+          Count usage: 12882 var,  4115 idcode,  4115 callback
+                 incr: 12882 var,  4115 idcode,  4115 callback
+                 accu: 12882 var,  4115 idcode,  4115 callback
+            accu incr: 12882 var,  4115 idcode,  4115 callback
 121 VC callback profile - scalar:0 vector:0
-122 Wed Jun  7 19:37:16 2023
+122 Wed Jun  7 19:43:54 2023
 123 fsdbDumpvars: profile - 
-          CPU/Mem usage: 0.070 sys,  0.260 user,  331.94M sys,  0.00M vm
+          CPU/Mem usage: 0.090 sys,  0.270 user,  332.14M sys,  0.00M vm
                    incr: 0.000 sys,  0.000 user,  1.05M sys,  0.00M vm
-                   accu: 0.000 sys,  0.060 user,  12.23M sys,  0.00M vm
+                   accu: 0.000 sys,  0.060 user,  12.39M sys,  0.00M vm
               accu incr: 0.000 sys,  0.000 user,  1.05M sys,  0.00M vm
 
-          Count usage: 12821 var,  4088 idcode,  4088 callback
+          Count usage: 12882 var,  4115 idcode,  4115 callback
                  incr: 0 var,  0 idcode,  0 callback
-                 accu: 12821 var,  4088 idcode,  4088 callback
+                 accu: 12882 var,  4115 idcode,  4115 callback
             accu incr: 0 var,  0 idcode,  0 callback
-124 VC callback profile - scalar:4067 vector:21
-125 Wed Jun  7 19:37:16 2023
-126 End of simulation at 395636000
-127 VC callback profile - scalar:14276100 vector:100391
-128 Wed Jun  7 19:37:19 2023
+124 VC callback profile - scalar:4094 vector:21
+125 Wed Jun  7 19:43:54 2023
+126 End of simulation at 592436000
+127 VC callback profile - scalar:23721036 vector:149597
+128 Wed Jun  7 19:43:58 2023
 129 Begin FSDB profile info:
-130 FSDB Writer : bc1(14276100) bcn(100391) mtf/stf(0/1)
-FSDB Writer elapsed time : flush(1.325805) io wait(0.000000) theadpool wait(0.000000) target functin(0.000000)
+130 FSDB Writer : bc1(23721036) bcn(149597) mtf/stf(0/1)
+FSDB Writer elapsed time : flush(2.204419) io wait(0.000000) theadpool wait(0.000000) target functin(0.000000)
 FSDB Writer cpu time : MT Compression : 0
 131 End FSDB profile info
-132 Parallel profile    -  Flush:3 Expand:0 ProduceWait:0 ConsumerWait:114 BlockUsed:136
-133                        ProduceTime:3.302656571 ConsumerTime:2.011544603 Buffer:64MB
+132 Parallel profile    -  Flush:3 Expand:2 ProduceWait:0 ConsumerWait:144 BlockUsed:226
+133                        ProduceTime:5.819494693 ConsumerTime:2.591999904 Buffer:128MB
 134 SimExit
 135 Sim process exit

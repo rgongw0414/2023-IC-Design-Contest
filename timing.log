@@ -6,7 +6,7 @@ Report : timing
         -max_paths 1
 Design : LASER
 Version: R-2020.09
-Date   : Wed Jun  7 19:37:13 2023
+Date   : Wed Jun  7 19:43:52 2023
 ****************************************
 
 Operating Conditions: slow   Library: slow
@@ -26,49 +26,48 @@ Wire Load Model Mode: top
   -----------------------------------------------------------
   clock CLK (rise edge)                    0.00       0.00
   clock network delay (ideal)              0.50       0.50
-  cnt_reg[5]/CK (DFFQX2)                   0.00       0.50 r
-  cnt_reg[5]/Q (DFFQX2)                    0.43       0.93 r
-  U1428/Y (INVX8)                          0.16       1.09 f
-  U1562/Y (NAND2X4)                        0.21       1.29 r
-  U1563/Y (NOR2X2)                         0.18       1.47 f
-  U1199/Y (BUFX4)                          0.36       1.84 f
-  U1162/Y (AOI22XL)                        0.48       2.32 r
-  U1645/Y (NAND4X1)                        0.26       2.58 f
-  U1049/Y (OAI21XL)                        0.54       3.12 r
-  U1650/Y (AND4X4)                         0.35       3.47 r
-  U1197/Y (NOR2X1)                         0.24       3.71 f
-  U1121/Y (OAI21X2)                        0.31       4.02 r
-  U1046/Y (OAI21X2)                        0.22       4.24 f
-  U1127/Y (AOI222X4)                       0.68       4.93 r
-  U1126/Y (INVX3)                          0.10       5.03 f
-  U1125/Y (OAI22X4)                        0.19       5.22 r
-  U1761/Y (AOI2BB2X2)                      0.27       5.49 r
-  U1767/S (ADDFHX2)                        0.38       5.87 f
-  U1766/Y (NOR2BX4)                        0.16       6.02 f
-  U1768/Y (OAI211X1)                       0.31       6.33 r
-  U1770/Y (NAND2X1)                        0.23       6.56 f
-  U1771/Y (AOI21X4)                        0.15       6.72 r
-  U1775/Y (NOR2X2)                         0.10       6.82 f
-  U1776/Y (AOI221X2)                       0.36       7.18 r
-  U1777/Y (NOR2X6)                         0.16       7.34 f
-  U1780/Y (NAND2X6)                        0.14       7.48 r
-  U1781/Y (NOR2X6)                         0.12       7.60 f
-  U1783/Y (NAND2X6)                        0.15       7.75 r
-  U1785/Y (NOR2X6)                         0.12       7.86 f
-  U1787/Y (NOR2X4)                         0.11       7.98 r
-  U1788/Y (AOI211X1)                       0.12       8.10 f
-  cover_current_reg[5]/D (DFFQX1)          0.00       8.10 f
-  data arrival time                                   8.10
+  cnt_reg[5]/CK (DFFHQX4)                  0.00       0.50 r
+  cnt_reg[5]/Q (DFFHQX4)                   0.27       0.77 r
+  U1075/Y (INVX6)                          0.14       0.91 f
+  U1256/Y (NAND2X2)                        0.26       1.17 r
+  U1599/Y (NOR2X1)                         0.23       1.40 f
+  U1051/Y (CLKBUFX3)                       0.63       2.03 f
+  U1671/Y (AO22X1)                         0.52       2.55 f
+  U1673/Y (OAI21XL)                        0.51       3.05 r
+  U1165/Y (AND4X4)                         0.35       3.40 r
+  U1675/Y (NAND2X1)                        0.31       3.71 f
+  U1704/Y (OAI21X4)                        0.23       3.94 r
+  U1705/Y (CLKINVX2)                       0.17       4.10 f
+  U1731/Y (OAI21X4)                        0.22       4.33 r
+  U1273/Y (AOI222X2)                       0.31       4.63 f
+  U1270/Y (OAI2BB2XL)                      0.48       5.12 r
+  U1167/Y (CLKBUFX3)                       0.27       5.38 r
+  U1733/Y (AOI2BB2X1)                      0.26       5.64 r
+  U1734/S (ADDFX2)                         0.43       6.07 r
+  U1735/Y (NOR2BX4)                        0.19       6.26 r
+  U1741/Y (OAI211X1)                       0.20       6.46 f
+  U1742/Y (NAND2X1)                        0.24       6.70 r
+  U1744/Y (NAND2BX4)                       0.18       6.88 r
+  U1777/Y (AOI2BB2X4)                      0.14       7.02 f
+  U1778/Y (NOR2X8)                         0.17       7.18 r
+  U1780/Y (NAND2X6)                        0.12       7.30 f
+  U1781/Y (NOR2X6)                         0.19       7.49 r
+  U1804/Y (NAND2X6)                        0.12       7.61 f
+  U1425/Y (NOR2X4)                         0.20       7.81 r
+  U1410/Y (NOR2X2)                         0.12       7.92 f
+  U1409/Y (AOI211X1)                       0.31       8.23 r
+  cover_current_reg[5]/D (DFFQX1)          0.00       8.23 r
+  data arrival time                                   8.23
 
   clock CLK (rise edge)                    8.00       8.00
   clock network delay (ideal)              0.50       8.50
   clock uncertainty                       -0.10       8.40
   cover_current_reg[5]/CK (DFFQX1)         0.00       8.40 r
-  library setup time                      -0.29       8.11
-  data required time                                  8.11
+  library setup time                      -0.16       8.24
+  data required time                                  8.24
   -----------------------------------------------------------
-  data required time                                  8.11
-  data arrival time                                  -8.10
+  data required time                                  8.24
+  data arrival time                                  -8.23
   -----------------------------------------------------------
   slack (MET)                                         0.01
 
