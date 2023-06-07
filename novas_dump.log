@@ -75,7 +75,6 @@ _XRUNROOT_=/usr/cad/cadence/XCELIUM/XCELIUM_22.03.003/tools
 _IRUNROOT_=/usr/cad/cadence/XCELIUM/XCELIUM_22.03.003/tools
 _HELIUMROOT_=/usr/cad/cadence/XCELIUM/XCELIUM_22.03.003/tools
 CDS_ARCH=lnx86
-ARG_V_Y_IS_USED=1
 XMRUNMODE=xrun:./xcelium.d/run.lnx8664.22.03.d
 XRUNBATCH=FALSE
 AMS_LOG_FILE_NAME=xrun.log
@@ -84,22 +83,21 @@ TCL_LIBRARY=/usr/cad/cadence/XCELIUM/XCELIUM_22.03.003/tools/inca/files/tcl/libr
 Runtime command line arguments:
 argv[0]=xrun
 argv[1]=tb.sv
-argv[2]=LASER_syn.v
-argv[3]=+define+USECOLOR+SDF+GATE
+argv[2]=LASER.v
+argv[3]=+define+USECOLOR
 argv[4]=+access+r
 argv[5]=-clean
 argv[6]=-createdebugdb
-argv[7]=-v
-argv[8]=/home/eda/CBDK_IC_Contest_v2.1/Verilog/tsmc13_neg.v
-argv[9]=+ncmaxdelays
-94 profile - 100
-          CPU/Mem usage: 0.070 sys,  0.170 user,  227.02M sys,  0.00M vm
-95 VC callback profile - scalar:0 vector:0
-96 Wed Jun  7 19:49:20 2023
-97 pliAppInit
-98 FSDB_GATE is disabled.
-99 Enable Parallel Dumping.
-100 pliAppMiscSet: New Sim Round
-101 pliEntryInit
-102 LIBSSCORE=found /usr/cad/synopsys/verdi/cur/share/PLI/IUS/LINUX64/libsscore_xcelium171.so through $LD_LIBRARY_PATH setting.
-103 Sim process exit
+argv[7]=-input
+argv[8]=xrun.tcl
+92 profile - 100
+          CPU/Mem usage: 0.070 sys,  0.170 user,  223.31M sys,  0.00M vm
+93 VC callback profile - scalar:0 vector:0
+94 Wed Jun  7 19:52:08 2023
+95 pliAppInit
+96 FSDB_GATE is disabled.
+97 Enable Parallel Dumping.
+98 pliAppMiscSet: New Sim Round
+99 pliEntryInit
+100 LIBSSCORE=found /usr/cad/synopsys/verdi/cur/share/PLI/IUS/LINUX64/libsscore_xcelium171.so through $LD_LIBRARY_PATH setting.
+101 Sim process exit

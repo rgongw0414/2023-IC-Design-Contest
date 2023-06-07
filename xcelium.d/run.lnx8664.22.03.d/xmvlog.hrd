@@ -2,11 +2,5 @@
 // File created by:  xrun
 // Do not modify this file
 //
--VFILE
-/home/eda/CBDK_IC_Contest_v2.1/Verilog/tsmc13_neg.v
 -DEFINE
 USECOLOR
--DEFINE
-SDF
--DEFINE
-GATE
