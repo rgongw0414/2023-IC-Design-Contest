@@ -12,6 +12,8 @@ output reg DONE);
 // For LFSR
 reg [4:0] q; // random value from 1 to 31 
 wire [3:0] step;
+// wire [3:0] testX;
+// wire [3:0] testY;
 
 // FSM
 reg [1:0] current_state;
@@ -31,26 +33,50 @@ reg [3:0] corX [39:0]; // coordinates array of all input points
 reg [3:0] corY [39:0];
 reg [3:0] x1, y1, x2, y2; // current x and y
 reg [3:0] tmpX1, tmpY1, tmpX2, tmpY2; 
-wire [3:0] dx1, dy1, dx2, dy2;
+reg [3:0] dx1, dy1, dx2, dy2;
 
 // reg round_flag;
 reg [9:0] round; // sub-rounds count
+
+// assign testX = corX[cnt];
+// assign testY = corY[cnt];
 
 // assign step = (q[1:0] == 2'b11)? {3'b000, q[0]}: {2'b0, q[1:0]};
 assign step = {2'b0, q[1:0]};
 
 // READ and store the inputs into array
 always @(posedge CLK) begin
+  if (current_state == INIT) begin
+    corX[cnt] <= X;
+    corY[cnt] <= Y;
+  end
   if (current_state == READ || next_state == READ) begin
     corX[cnt] <= X;
     corY[cnt] <= Y;
   end
 end
 
-assign  dx1 = (tmpX1 > corX[cnt])? tmpX1 - corX[cnt] : corX[cnt] - tmpX1;
-assign  dy1 = (tmpY1 > corY[cnt])? tmpY1 - corY[cnt] : corY[cnt] - tmpY1;
-assign  dx2 = (tmpX2 > corX[cnt])? tmpX2 - corX[cnt] : corX[cnt] - tmpX2;
-assign  dy2 = (tmpY2 > corY[cnt])? tmpY2 - corY[cnt] : corY[cnt] - tmpY2;
+always @(*) begin
+  if (cnt == 6'd40 || next_state == READ || RST) begin
+    dx1 = 4'd0; dy1 = 4'd0;
+    dx2 = 4'd0; dy2 = 4'd0;
+  end
+  else if (next_state == WALK) begin
+    dx1 = (tmpX1 > corX[cnt])? tmpX1 - corX[cnt] : corX[cnt] - tmpX1;
+    dy1 = (tmpY1 > corY[cnt])? tmpY1 - corY[cnt] : corY[cnt] - tmpY1;
+    dx2 = (tmpX2 > corX[cnt])? tmpX2 - corX[cnt] : corX[cnt] - tmpX2;
+    dy2 = (tmpY2 > corY[cnt])? tmpY2 - corY[cnt] : corY[cnt] - tmpY2;
+  end
+  else begin
+    dx1 = 4'd0; dy1 = 4'd0;
+    dx2 = 4'd0; dy2 = 4'd0;
+  end
+end
+
+// assign  dx1 = (tmpX1 > corX[cnt])? tmpX1 - corX[cnt] : corX[cnt] - tmpX1;
+// assign  dy1 = (tmpY1 > corY[cnt])? tmpY1 - corY[cnt] : corY[cnt] - tmpY1;
+// assign  dx2 = (tmpX2 > corX[cnt])? tmpX2 - corX[cnt] : corX[cnt] - tmpX2;
+// assign  dy2 = (tmpY2 > corY[cnt])? tmpY2 - corY[cnt] : corY[cnt] - tmpY2;
 
 /// vvvvvvvvvvv  FSM  vvvvvvvvvvv ///
 always @(posedge CLK or posedge RST) begin
@@ -132,21 +158,25 @@ always @(posedge CLK) begin
       tmpX1 <= x1+step; // keep it walking in the field
       // tmpX1 <= (x1+step < 16)? x1+step: 15; // keep it walking in the field
     else
+      // tmpX1 <= x1-step;
       tmpX1 <= (x1-step > 0)? x1-step: 0; 
     if (q[1])
       tmpY1 <= y1+step;
       // tmpY1 <= (y1+step < 16)? y1+step: 15; 
     else
+      // tmpY1 <= y1-step;
       tmpY1 <= (y1-step > 0)? y1-step: 0;  
     if (q[2])
       tmpX2 <= x2+step;
       // tmpX2 <= (x2+step < 16)? x2+step: 15; 
     else
+      // tmpX2 <= x2-step;  
       tmpX2 <= (x2-step > 0)? x2-step: 0;  
     if (q[3])
       tmpY2 <= y2+step;
       // tmpY2 <= (y2+step < 16)? y2+step: 15;  
     else
+      // tmpY2 <= y2-step;  
       tmpY2 <= (y2-step > 0)? y2-step: 0;  
   end
 end
@@ -173,19 +203,23 @@ end
 always @(posedge CLK) begin
   if(RST)
     cover_current <= 6'd0;
+  else if(next_state == OUTPUT)  // *** order of codes matter! Wrong order could generate 'unkonwn' *** //
+    cover_current <= 6'd0;
   else if(current_state == WALK) begin
     if(cnt > 0) begin
+      if (cnt == 6'd40)
+        cover_current <= 6'd0;
+      else begin
         cover_current <= cover_current +
         ((dx1 + dy1 <= 4) || (dx1 == 3 && dy1 == 2) || (dx1 == 2 && dy1 == 3) ||
-         (dx2 + dy2 <= 4) || (dx2 == 3 && dy2 == 2) || (dx2 == 2 && dy2 == 3));
+         (dx2 + dy2 <= 4) || (dx2 == 3 && dy2 == 2) || (dx2 == 2 && dy2 == 3));        
+      end
     end
     else 
-      cover_current <= 0;
+      cover_current <= 6'd0;
   end
-  else if(current_state == OUTPUT)
-    cover_current <= 0;
   else
-    cover_current <= 0;
+    cover_current <= 6'd0;
 end
 
 // cover_max
@@ -206,13 +240,13 @@ end
 
 // cnt, or Temperature for 5 ~ 15 round
 always @(posedge CLK) begin
-  if(RST)
+  if (RST)
     cnt <= 0;
-  else if(next_state == READ) // read input patterns
+  else if (current_state == OUTPUT || next_state == OUTPUT)
+    cnt <= 0;
+  else if (next_state == READ) // read input patterns
     cnt <= cnt + 1;
-  else if(current_state == OUTPUT)
-    cnt <= 0;
-  else if(current_state == WALK) begin
+  else if (current_state == WALK) begin
       cnt <= (cnt == 6'd40)? 0: cnt+1;
   end
   else

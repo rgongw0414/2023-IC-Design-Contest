@@ -3,10 +3,11 @@
 // Do not modify this file
 //
 tb.sv
-LASER.v
-+define+USECOLOR
+LASER_syn.v
++define+USECOLOR+SDF
 +access+r
 -clean
 -createdebugdb
--input
-xrun.tcl
+-v
+/home/eda/CBDK_IC_Contest_v2.1/Verilog/tsmc13_neg.v
++ncmaxdelays

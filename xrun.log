@@ -1,31 +1,258 @@
 xrun(64): 22.03-s003: (c) Copyright 1995-2022 Cadence Design Systems, Inc.
-TOOL:	xrun(64)	22.03-s003: Started on Jun 07, 2023 at 19:52:06 CST
+TOOL:	xrun(64)	22.03-s003: Started on Jun 07, 2023 at 22:39:04 CST
 xrun
 	tb.sv
-	LASER.v
-	+define+USECOLOR
+	LASER_syn.v
+	+define+USECOLOR+SDF
 	+access+r
 	-clean
 	-createdebugdb
-	-input xrun.tcl
+	-v /home/eda/CBDK_IC_Contest_v2.1/Verilog/tsmc13_neg.v
+	+ncmaxdelays
+xrun: *W,OPDEPRREN: Command Line Option (+ncmaxdelays) is deprecated. Use (+xmmaxdelays) instead.
 xrun: *N,CLEAN: Removing existing directory ./xcelium.d.
 file: tb.sv
 	module worklib.testfixture:sv
 		errors: 0, warnings: 0
-file: LASER.v
+file: LASER_syn.v
 	module worklib.LASER:v
 		errors: 0, warnings: 0
+file: /home/eda/CBDK_IC_Contest_v2.1/Verilog/tsmc13_neg.v
+	module tsmc13_neg.BUFX2:v
+		errors: 0, warnings: 0
+	module tsmc13_neg.BUFX4:v
+		errors: 0, warnings: 0
+	module tsmc13_neg.BUFX12:v
+		errors: 0, warnings: 0
+	module tsmc13_neg.INVXL:v
+		errors: 0, warnings: 0
+	module tsmc13_neg.INVX1:v
+		errors: 0, warnings: 0
+	module tsmc13_neg.INVX2:v
+		errors: 0, warnings: 0
+	module tsmc13_neg.INVX3:v
+		errors: 0, warnings: 0
+	module tsmc13_neg.INVX4:v
+		errors: 0, warnings: 0
+	module tsmc13_neg.INVX6:v
+		errors: 0, warnings: 0
+	module tsmc13_neg.AND2X1:v
+		errors: 0, warnings: 0
+	module tsmc13_neg.AND2X2:v
+		errors: 0, warnings: 0
+	module tsmc13_neg.AND2X4:v
+		errors: 0, warnings: 0
+	module tsmc13_neg.AND3X1:v
+		errors: 0, warnings: 0
+	module tsmc13_neg.AOI211XL:v
+		errors: 0, warnings: 0
+	module tsmc13_neg.AOI211X1:v
+		errors: 0, warnings: 0
+	module tsmc13_neg.AOI22XL:v
+		errors: 0, warnings: 0
+	module tsmc13_neg.AOI22X1:v
+		errors: 0, warnings: 0
+	module tsmc13_neg.AOI221XL:v
+		errors: 0, warnings: 0
+	module tsmc13_neg.AOI221X2:v
+		errors: 0, warnings: 0
+	module tsmc13_neg.AOI222XL:v
+		errors: 0, warnings: 0
+	module tsmc13_neg.AOI2BB2X1:v
+		errors: 0, warnings: 0
+	module tsmc13_neg.AOI2BB2X2:v
+		errors: 0, warnings: 0
+	module tsmc13_neg.AOI2BB2X4:v
+		errors: 0, warnings: 0
+	module tsmc13_neg.AO21X1:v
+		errors: 0, warnings: 0
+	module tsmc13_neg.AO21X4:v
+		errors: 0, warnings: 0
+	module tsmc13_neg.AO22X1:v
+		errors: 0, warnings: 0
+	module tsmc13_neg.NAND2XL:v
+		errors: 0, warnings: 0
+	module tsmc13_neg.NAND2X1:v
+		errors: 0, warnings: 0
+	module tsmc13_neg.NAND2X2:v
+		errors: 0, warnings: 0
+	module tsmc13_neg.NAND2X4:v
+		errors: 0, warnings: 0
+	module tsmc13_neg.NAND3XL:v
+		errors: 0, warnings: 0
+	module tsmc13_neg.NAND3X1:v
+		errors: 0, warnings: 0
+	module tsmc13_neg.NAND3X2:v
+		errors: 0, warnings: 0
+	module tsmc13_neg.NAND3X4:v
+		errors: 0, warnings: 0
+	module tsmc13_neg.NAND4XL:v
+		errors: 0, warnings: 0
+	module tsmc13_neg.NAND4X1:v
+		errors: 0, warnings: 0
+	module tsmc13_neg.NAND4X2:v
+		errors: 0, warnings: 0
+	module tsmc13_neg.NAND4X4:v
+		errors: 0, warnings: 0
+	module tsmc13_neg.NAND2BX1:v
+		errors: 0, warnings: 0
+	module tsmc13_neg.NAND2BX2:v
+		errors: 0, warnings: 0
+	module tsmc13_neg.NAND3BX1:v
+		errors: 0, warnings: 0
+	module tsmc13_neg.NAND4BX1:v
+		errors: 0, warnings: 0
+	module tsmc13_neg.NOR2XL:v
+		errors: 0, warnings: 0
+	module tsmc13_neg.NOR2X1:v
+		errors: 0, warnings: 0
+	module tsmc13_neg.NOR2X2:v
+		errors: 0, warnings: 0
+	module tsmc13_neg.NOR2X4:v
+		errors: 0, warnings: 0
+	module tsmc13_neg.NOR3XL:v
+		errors: 0, warnings: 0
+	module tsmc13_neg.NOR3X1:v
+		errors: 0, warnings: 0
+	module tsmc13_neg.NOR3X2:v
+		errors: 0, warnings: 0
+	module tsmc13_neg.NOR3X4:v
+		errors: 0, warnings: 0
+	module tsmc13_neg.NOR3X6:v
+		errors: 0, warnings: 0
+	module tsmc13_neg.NOR4XL:v
+		errors: 0, warnings: 0
+	module tsmc13_neg.NOR4X1:v
+		errors: 0, warnings: 0
+	module tsmc13_neg.NOR2BX1:v
+		errors: 0, warnings: 0
+	module tsmc13_neg.NOR2BX2:v
+		errors: 0, warnings: 0
+	module tsmc13_neg.NOR2BX4:v
+		errors: 0, warnings: 0
+	module tsmc13_neg.OR2X1:v
+		errors: 0, warnings: 0
+	module tsmc13_neg.OAI21XL:v
+		errors: 0, warnings: 0
+	module tsmc13_neg.OAI21X2:v
+		errors: 0, warnings: 0
+	module tsmc13_neg.OAI21X4:v
+		errors: 0, warnings: 0
+	module tsmc13_neg.OAI211XL:v
+		errors: 0, warnings: 0
+	module tsmc13_neg.OAI211X1:v
+		errors: 0, warnings: 0
+	module tsmc13_neg.OAI22XL:v
+		errors: 0, warnings: 0
+	module tsmc13_neg.OAI22X2:v
+		errors: 0, warnings: 0
+	module tsmc13_neg.OAI221XL:v
+		errors: 0, warnings: 0
+	module tsmc13_neg.OAI222X2:v
+		errors: 0, warnings: 0
+	module tsmc13_neg.OAI31XL:v
+		errors: 0, warnings: 0
+	module tsmc13_neg.OAI31X1:v
+		errors: 0, warnings: 0
+	module tsmc13_neg.OAI31X2:v
+		errors: 0, warnings: 0
+	module tsmc13_neg.OAI31X4:v
+		errors: 0, warnings: 0
+	module tsmc13_neg.OAI32XL:v
+		errors: 0, warnings: 0
+	module tsmc13_neg.OAI2BB1X2:v
+		errors: 0, warnings: 0
+	module tsmc13_neg.OAI2BB2XL:v
+		errors: 0, warnings: 0
+	module tsmc13_neg.OAI2BB2X2:v
+		errors: 0, warnings: 0
+	module tsmc13_neg.OAI2BB2X4:v
+		errors: 0, warnings: 0
+	module tsmc13_neg.OA21XL:v
+		errors: 0, warnings: 0
+	module tsmc13_neg.OA21X4:v
+		errors: 0, warnings: 0
+	module tsmc13_neg.XOR2X4:v
+		errors: 0, warnings: 0
+	module tsmc13_neg.CLKBUFX3:v
+		errors: 0, warnings: 0
+	module tsmc13_neg.CLKBUFX8:v
+		errors: 0, warnings: 0
+	module tsmc13_neg.CLKINVX1:v
+		errors: 0, warnings: 0
+	module tsmc13_neg.CLKINVX6:v
+		errors: 0, warnings: 0
+	module tsmc13_neg.ADDFXL:v
+		errors: 0, warnings: 0
+	module tsmc13_neg.DFFX1:v
+		errors: 0, warnings: 0
+	module tsmc13_neg.DFFQX1:v
+		errors: 0, warnings: 0
+	module tsmc13_neg.DFFQX2:v
+		errors: 0, warnings: 0
+	module tsmc13_neg.DFFQX4:v
+		errors: 0, warnings: 0
+	module tsmc13_neg.DFFRX1:v
+		errors: 0, warnings: 0
+	module tsmc13_neg.DFFRX2:v
+		errors: 0, warnings: 0
+	module tsmc13_neg.DFFHQX4:v
+		errors: 0, warnings: 0
+	primitive tsmc13_neg.udp_dff:v
+		errors: 0, warnings: 0
+		Caching library 'tsmc13_neg' ....... Done
 		Caching library 'worklib' ....... Done
 	Elaborating the design hierarchy:
+  DFFRX1 \current_state_reg[0]  ( .D(next_state[0]), .CK(CLK), .RN(n639), .Q(
+                              |
+xmelab: *W,CUVWSP (./LASER_syn.v,597|30): 1 output port was not connected:
+xmelab: (/home/eda/CBDK_IC_Contest_v2.1/Verilog/tsmc13_neg.v,18307): QN
+
 	Top level design units:
 		testfixture
 xmelab: *W,DSEMEL: This SystemVerilog design will be simulated as per IEEE 1800-2009 SystemVerilog simulation semantics. Use -disable_sem2009 option for turning off SV 2009 simulation semantics.
+	Reading SDF file from location "./LASER_syn.sdf"
+	Compiled SDF file "LASER_syn.sdf.X" older than source SDF file "./LASER_syn.sdf".
+	Recompiling.
+	Writing compiled SDF file to "LASER_syn.sdf.X".
+	Annotating SDF timing data:
+		Compiled SDF file:     LASER_syn.sdf.X
+		Log file:              
+		Backannotation scope:  testfixture.u_LASER
+		Configuration file:    
+		MTM control:           
+		Scale factors:         
+		Scale type:            
+	Annotation completed successfully...
+	SDF statistics: 
+		 No. of Pathdelays = 3977    	 No. of Disabled Pathdelays = 0        Annotated = 100.00% (3977/3977) 
+		 No. of Tchecks    = 1612    	 No. of Disabled Tchecks    = 0        Annotated = 100.00% (1612/1612) 
+				        Total(T) 	   Disabled(D) 	    Annotated(A)	  Percentage(A/(T-D))
+		 Path Delays	          3977	             0	              3977	                100.00
+		      $width	           806	             0	               806	                100.00
+		  $setuphold	           806	             0	               806	                100.00
 	Building instance overlay tables: .................... Done
 	Generating native compiled code:
-		worklib.LASER:v <0x2c7e545c>
-			streams:  40, words: 23335
-		worklib.testfixture:sv <0x3f232cdd>
-			streams:  34, words: 55744
+		worklib.testfixture:sv <0x052e4d57>
+			streams:  35, words: 57062
+		tsmc13_neg.XOR2X4:v <0x73529e69>
+			streams:   0, words:     0
+		tsmc13_neg.ADDFXL:v <0x1de999a4>
+			streams:   0, words:     0
+		tsmc13_neg.DFFQX2:v <0x38f44c71>
+			streams:   0, words:     0
+		tsmc13_neg.DFFX1:v <0x47e22036>
+			streams:   0, words:     0
+		tsmc13_neg.DFFRX2:v <0x41b7a524>
+			streams:   0, words:     0
+		tsmc13_neg.DFFQX4:v <0x3df77fd6>
+			streams:   0, words:     0
+		tsmc13_neg.DFFRX1:v <0x20778072>
+			streams:   0, words:     0
+		tsmc13_neg.DFFQX1:v <0x662be610>
+			streams:   0, words:     0
+		tsmc13_neg.DFFHQX4:v <0x07c74879>
+			streams:   0, words:     0
 	Building instance specific data structures.
 	Loading native compiled code:     .................... Done
 	Generating Debug Data:
@@ -38,36 +265,28 @@ xmelab: *W,DSEMEL: This SystemVerilog design will be simulated as per IEEE 1800-
 			PG Pins:	                  0
 			Liberty Pins:	                  0
 	Design hierarchy summary:
-		                  Instances  Unique
-		Modules:                  2       2
-		Registers:               68      68
-		Scalar wires:             3       -
-		Vectored wires:          13       -
-		Always blocks:           16      16
-		Initial blocks:          11      11
-		Cont. assignments:        7       7
-		Pseudo assignments:       1       1
-		Simulation timescale:  10ps
+		                    Instances  Unique
+		Modules:                 1551      92
+		UDPs:                     402       1
+		Primitives:              3612       7
+		Timing outputs:          1554      24
+		Registers:                447      53
+		Scalar wires:            1959       -
+		Expanded wires:             8       2
+		Vectored wires:             2       -
+		Always blocks:              3       3
+		Initial blocks:            13      13
+		Cont. assignments:          2       2
+		Pseudo assignments:         1       1
+		Timing checks:           2418     408
+		Interconnect:            4348       -
+		Delayed tcheck signals:   806     404
+		Simulation timescale:     1ps
 	Writing initial simulation snapshot: worklib.testfixture:sv
 Loading snapshot worklib.testfixture:sv .................... Done
 xmsim: *W,DSEM2009: This SystemVerilog design is simulated as per IEEE 1800-2009 SystemVerilog simulation semantics. Use -disable_sem2009 option for turning off SV 2009 simulation semantics.
 *Verdi* Loading libsscore_xcelium171.so
 xcelium> source /usr/cad/cadence/XCELIUM/XCELIUM_22.03.003/tools/xcelium/files/xmsimrc
-xcelium> ida_probe -log
-
-[INDAGO]: Multi-Core recording is enabled
-
-xcelium> ida_probe -wave -wave_probe_args="[scope -tops] -all -depth all -memories"
-database -open ida.db/ida.shm 
-Created SHM database ida.db/ida.shm
-
-database -setdefault ida.db/ida.shm
-ida.db/ida.shm is set as default SHM database
-
-probe testfixture -all -depth all -memories -emptyok
-xmsim: *W,PRLDYN: The design contains dynamic objects. The "-all" option excludes dynamic objects to improve performance. To enable probing of dynamic objects the "-all -dynamic" options should be added to the probe command.
-Created probe 1
-
 xcelium> run
 *******************************
 ** Simulation Start          **
@@ -105,4 +324,4 @@ xcelium> run
 Simulation complete via $finish(1) at time 592436 NS + 0
 ./tb.sv:270                  $finish;
 xcelium> exit
-TOOL:	xrun(64)	22.03-s003: Exiting on Jun 07, 2023 at 19:52:09 CST  (total: 00:00:03)
+TOOL:	xrun(64)	22.03-s003: Exiting on Jun 07, 2023 at 22:39:08 CST  (total: 00:00:04)

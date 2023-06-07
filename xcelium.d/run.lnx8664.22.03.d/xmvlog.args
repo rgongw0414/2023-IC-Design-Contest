@@ -6,9 +6,13 @@
 ./xcelium.d/run.lnx8664.22.03.d
 -RUNMODE
 tb.sv
-LASER.v
+LASER_syn.v
 -DEFINE
 USECOLOR
+-DEFINE
+SDF
+-VFILE
+/home/eda/CBDK_IC_Contest_v2.1/Verilog/tsmc13_neg.v
 -CDSLIB
 ./xcelium.d/run.lnx8664.22.03.d/cdsrun.lib
 -HDLVAR

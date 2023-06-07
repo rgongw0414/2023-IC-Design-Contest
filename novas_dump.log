@@ -31,7 +31,7 @@ QT_GRAPHICSSYSTEM_CHECKED=1
 USER=eda
 GROUP=eda
 HOSTTYPE=x86_64-linux
-PATH=/usr/cad/cadence/INNOVUS/INNOVUS_20.10.000/tools/bin/64bit:/usr/cad/cadence/INNOVUS/INNOVUS_20.10.000/tools/bin:/usr/cad/cadence/XCELIUM/XCELIUM_22.03.003/tools/bin/64bit:/usr/cad/cadence/XCELIUM/XCELIUM_22.03.003/tools/bin:/usr/cad/synopsys/lc/2020.09//bin:/usr/cad/synopsys/synthesis/2020.09//amd64/syn/bin:/cad/synopsys/lc/cur/bin:/usr/cad/synopsys/verdi/cur/bin:/usr/cad/synopsys/verdi/cur/nLint/bin:/home/eda/.vscode-server/bin/b3e4e68a0bc097f0ae7907b217c1119af9e03435/bin/remote-cli:/usr/lib64/qt-3.3/bin:/home/eda/perl5/bin:/usr/local/bin:/usr/bin
+PATH=/usr/cad/cadence/INNOVUS/INNOVUS_20.10.000/tools/bin/64bit:/usr/cad/cadence/INNOVUS/INNOVUS_20.10.000/tools/bin:/usr/cad/cadence/XCELIUM/XCELIUM_22.03.003/tools/bin/64bit:/usr/cad/cadence/XCELIUM/XCELIUM_22.03.003/tools/bin:/usr/cad/synopsys/lc/2020.09//bin:/usr/cad/synopsys/synthesis/2020.09//amd64/syn/bin:/cad/synopsys/lc/cur/bin:/usr/cad/synopsys/verdi/cur/bin:/usr/cad/synopsys/verdi/cur/nLint/bin:/usr/cad/cadence/INNOVUS/INNOVUS_20.10.000/tools/bin/64bit:/usr/cad/cadence/INNOVUS/INNOVUS_20.10.000/tools/bin:/usr/cad/cadence/XCELIUM/XCELIUM_22.03.003/tools/bin/64bit:/usr/cad/cadence/XCELIUM/XCELIUM_22.03.003/tools/bin:/usr/cad/synopsys/lc/2020.09//bin:/usr/cad/synopsys/synthesis/2020.09//amd64/syn/bin:/cad/synopsys/lc/cur/bin:/usr/cad/synopsys/verdi/cur/bin:/usr/cad/synopsys/verdi/cur/nLint/bin:/usr/cad/cadence/INNOVUS/INNOVUS_20.10.000/tools/bin/64bit:/usr/cad/cadence/INNOVUS/INNOVUS_20.10.000/tools/bin:/usr/cad/cadence/XCELIUM/XCELIUM_22.03.003/tools/bin/64bit:/usr/cad/cadence/XCELIUM/XCELIUM_22.03.003/tools/bin:/usr/cad/synopsys/lc/2020.09//bin:/usr/cad/synopsys/synthesis/2020.09//amd64/syn/bin:/cad/synopsys/lc/cur/bin:/usr/cad/synopsys/verdi/cur/bin:/usr/cad/synopsys/verdi/cur/nLint/bin:/home/eda/.vscode-server/bin/b3e4e68a0bc097f0ae7907b217c1119af9e03435/bin/remote-cli:/usr/lib64/qt-3.3/bin:/home/eda/perl5/bin:/usr/local/bin:/usr/bin
 MAIL=/var/spool/mail/eda
 PWD=/home/eda/new/2023-IC-Design-Contest
 LANG=en_US.UTF-8
@@ -66,15 +66,16 @@ TERM=xterm-256color
 LS_COLORS=rs=0:di=38;5;27:ln=38;5;51:mh=44;38;5;15:pi=40;38;5;11:so=38;5;13:do=38;5;5:bd=48;5;232;38;5;11:cd=48;5;232;38;5;3:or=48;5;232;38;5;9:mi=05;48;5;232;38;5;15:su=48;5;196;38;5;15:sg=48;5;11;38;5;16:ca=48;5;196;38;5;226:tw=48;5;10;38;5;16:ow=48;5;10;38;5;21:st=48;5;21;38;5;15:ex=38;5;34:*.tar=38;5;9:*.tgz=38;5;9:*.arc=38;5;9:*.arj=38;5;9:*.taz=38;5;9:*.lha=38;5;9:*.lz4=38;5;9:*.lzh=38;5;9:*.lzma=38;5;9:*.tlz=38;5;9:*.txz=38;5;9:*.tzo=38;5;9:*.t7z=38;5;9:*.zip=38;5;9:*.z=38;5;9:*.Z=38;5;9:*.dz=38;5;9:*.gz=38;5;9:*.lrz=38;5;9:*.lz=38;5;9:*.lzo=38;5;9:*.xz=38;5;9:*.bz2=38;5;9:*.bz=38;5;9:*.tbz=38;5;9:*.tbz2=38;5;9:*.tz=38;5;9:*.deb=38;5;9:*.rpm=38;5;9:*.jar=38;5;9:*.war=38;5;9:*.ear=38;5;9:*.sar=38;5;9:*.rar=38;5;9:*.alz=38;5;9:*.ace=38;5;9:*.zoo=38;5;9:*.cpio=38;5;9:*.7z=38;5;9:*.rz=38;5;9:*.cab=38;5;9:*.jpg=38;5;13:*.jpeg=38;5;13:*.gif=38;5;13:*.bmp=38;5;13:*.pbm=38;5;13:*.pgm=38;5;13:*.ppm=38;5;13:*.tga=38;5;13:*.xbm=38;5;13:*.xpm=38;5;13:*.tif=38;5;13:*.tiff=38;5;13:*.png=38;5;13:*.svg=38;5;13:*.svgz=38;5;13:*.mng=38;5;13:*.pcx=38;5;13:*.mov=38;5;13:*.mpg=38;5;13:*.mpeg=38;5;13:*.m2v=38;5;13:*.mkv=38;5;13:*.webm=38;5;13:*.ogm=38;5;13:*.mp4=38;5;13:*.m4v=38;5;13:*.mp4v=38;5;13:*.vob=38;5;13:*.qt=38;5;13:*.nuv=38;5;13:*.wmv=38;5;13:*.asf=38;5;13:*.rm=38;5;13:*.rmvb=38;5;13:*.flc=38;5;13:*.avi=38;5;13:*.fli=38;5;13:*.flv=38;5;13:*.gl=38;5;13:*.dl=38;5;13:*.xcf=38;5;13:*.xwd=38;5;13:*.yuv=38;5;13:*.cgm=38;5;13:*.emf=38;5;13:*.axv=38;5;13:*.anx=38;5;13:*.ogv=38;5;13:*.ogx=38;5;13:*.aac=38;5;45:*.au=38;5;45:*.flac=38;5;45:*.mid=38;5;45:*.midi=38;5;45:*.mka=38;5;45:*.mp3=38;5;45:*.mpc=38;5;45:*.ogg=38;5;45:*.ra=38;5;45:*.wav=38;5;45:*.axa=38;5;45:*.oga=38;5;45:*.spx=38;5;45:*.xspf=38;5;45:
 GIT_BRANCH_CMD=sh -c 'git branch --no-color 2> /dev/null' | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
 LM_LICENSE_FILE=5280@lstc:26585@lstc:
-LD_LIBRARY_PATH=/usr/cad/cadence/INNOVUS/INNOVUS_20.10.000/tools/lib/64bit:/usr/cad/cadence/INNOVUS/INNOVUS_20.10.000/tools/lib64:/usr/cad/cadence/INNOVUS/INNOVUS_20.10.000/tools/lib::/usr/cad/cadence/XCELIUM/XCELIUM_22.03.003/tools/lib/64bit:/usr/cad/cadence/XCELIUM/XCELIUM_22.03.003/tools/lib64:/usr/cad/cadence/XCELIUM/XCELIUM_22.03.003/tools/lib::::/usr/cad/synopsys/verdi/cur/etc/lib/libstdc++/LINUX64/:/usr/cad/synopsys/verdi/cur/share/PLI/IUS/LINUX64/
-SHLIB_PATH=/usr/cad/synopsys/verdi/cur/etc/lib/libstdc++/LINUX64/
+LD_LIBRARY_PATH=/usr/cad/cadence/INNOVUS/INNOVUS_20.10.000/tools/lib/64bit:/usr/cad/cadence/INNOVUS/INNOVUS_20.10.000/tools/lib64:/usr/cad/cadence/INNOVUS/INNOVUS_20.10.000/tools/lib::/usr/cad/cadence/XCELIUM/XCELIUM_22.03.003/tools/lib/64bit:/usr/cad/cadence/XCELIUM/XCELIUM_22.03.003/tools/lib64:/usr/cad/cadence/XCELIUM/XCELIUM_22.03.003/tools/lib::::/usr/cad/synopsys/verdi/cur/etc/lib/libstdc++/LINUX64/:/usr/cad/synopsys/verdi/cur/share/PLI/IUS/LINUX64/://usr/cad/cadence/INNOVUS/INNOVUS_20.10.000/tools/lib/64bit:/usr/cad/cadence/INNOVUS/INNOVUS_20.10.000/tools/lib64:/usr/cad/cadence/INNOVUS/INNOVUS_20.10.000/tools/lib::/usr/cad/cadence/XCELIUM/XCELIUM_22.03.003/tools/lib/64bit:/usr/cad/cadence/XCELIUM/XCELIUM_22.03.003/tools/lib64:/usr/cad/cadence/XCELIUM/XCELIUM_22.03.003/tools/lib::::/usr/cad/synopsys/verdi/cur/etc/lib/libstdc++/LINUX64/:/usr/cad/synopsys/verdi/cur/share/PLI/IUS/LINUX64/://usr/cad/cadence/INNOVUS/INNOVUS_20.10.000/tools/lib/64bit:/usr/cad/cadence/INNOVUS/INNOVUS_20.10.000/tools/lib64:/usr/cad/cadence/INNOVUS/INNOVUS_20.10.000/tools/lib::/usr/cad/cadence/XCELIUM/XCELIUM_22.03.003/tools/lib/64bit:/usr/cad/cadence/XCELIUM/XCELIUM_22.03.003/tools/lib64:/usr/cad/cadence/XCELIUM/XCELIUM_22.03.003/tools/lib::::/usr/cad/synopsys/verdi/cur/etc/lib/libstdc++/LINUX64/:/usr/cad/synopsys/verdi/cur/share/PLI/IUS/LINUX64/
+SHLIB_PATH=/usr/cad/synopsys/verdi/cur/etc/lib/libstdc++/LINUX64/:/usr/cad/synopsys/verdi/cur/etc/lib/libstdc++/LINUX64/:/usr/cad/synopsys/verdi/cur/etc/lib/libstdc++/LINUX64/
 SYN_MAN_DIR=/usr/cad/synopsys/lc/2020.09//doc/lc/man
-MANPATH=/usr/cad/synopsys/synthesis/2020.09//doc/syn/man:/usr/cad/synopsys/lc/2020.09//doc/lc/man
+MANPATH=/usr/cad/synopsys/synthesis/2020.09//doc/syn/man:/usr/cad/synopsys/lc/2020.09//doc/lc/man:/usr/cad/synopsys/synthesis/2020.09//doc/syn/man:/usr/cad/synopsys/lc/2020.09//doc/lc/man:/usr/cad/synopsys/synthesis/2020.09//doc/syn/man:/usr/cad/synopsys/lc/2020.09//doc/lc/man
 SYNOPSYS_LC_ROOT=/cad/synopsys/lc/cur
 _XRUNROOT_=/usr/cad/cadence/XCELIUM/XCELIUM_22.03.003/tools
 _IRUNROOT_=/usr/cad/cadence/XCELIUM/XCELIUM_22.03.003/tools
 _HELIUMROOT_=/usr/cad/cadence/XCELIUM/XCELIUM_22.03.003/tools
 CDS_ARCH=lnx86
+ARG_V_Y_IS_USED=1
 XMRUNMODE=xrun:./xcelium.d/run.lnx8664.22.03.d
 XRUNBATCH=FALSE
 AMS_LOG_FILE_NAME=xrun.log
@@ -83,21 +84,22 @@ TCL_LIBRARY=/usr/cad/cadence/XCELIUM/XCELIUM_22.03.003/tools/inca/files/tcl/libr
 Runtime command line arguments:
 argv[0]=xrun
 argv[1]=tb.sv
-argv[2]=LASER.v
-argv[3]=+define+USECOLOR
+argv[2]=LASER_syn.v
+argv[3]=+define+USECOLOR+SDF
 argv[4]=+access+r
 argv[5]=-clean
 argv[6]=-createdebugdb
-argv[7]=-input
-argv[8]=xrun.tcl
-92 profile - 100
-          CPU/Mem usage: 0.070 sys,  0.170 user,  223.31M sys,  0.00M vm
-93 VC callback profile - scalar:0 vector:0
-94 Wed Jun  7 19:52:08 2023
-95 pliAppInit
-96 FSDB_GATE is disabled.
-97 Enable Parallel Dumping.
-98 pliAppMiscSet: New Sim Round
-99 pliEntryInit
-100 LIBSSCORE=found /usr/cad/synopsys/verdi/cur/share/PLI/IUS/LINUX64/libsscore_xcelium171.so through $LD_LIBRARY_PATH setting.
-101 Sim process exit
+argv[7]=-v
+argv[8]=/home/eda/CBDK_IC_Contest_v2.1/Verilog/tsmc13_neg.v
+argv[9]=+ncmaxdelays
+94 profile - 100
+          CPU/Mem usage: 0.060 sys,  0.190 user,  226.18M sys,  0.00M vm
+95 VC callback profile - scalar:0 vector:0
+96 Wed Jun  7 22:39:06 2023
+97 pliAppInit
+98 FSDB_GATE is disabled.
+99 Enable Parallel Dumping.
+100 pliAppMiscSet: New Sim Round
+101 pliEntryInit
+102 LIBSSCORE=found /usr/cad/synopsys/verdi/cur/share/PLI/IUS/LINUX64/libsscore_xcelium171.so through $LD_LIBRARY_PATH setting.
+103 Sim process exit
