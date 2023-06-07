@@ -3,7 +3,7 @@
 Report : qor
 Design : LASER
 Version: R-2020.09
-Date   : Wed Jun  7 19:43:52 2023
+Date   : Wed Jun  7 19:49:17 2023
 ****************************************
 
 
@@ -64,7 +64,7 @@ Date   : Wed Jun  7 19:43:52 2023
   Compile CPU Statistics
   -----------------------------------------
   Resource Sharing:                    0.66
-  Logic Optimization:                  0.40
+  Logic Optimization:                  0.39
   Mapping Optimization:                1.72
   -----------------------------------------
   Overall Compile Time:                9.04

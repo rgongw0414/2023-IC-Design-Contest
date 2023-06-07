@@ -40,27 +40,27 @@ LASER u_LASER(
 
 always begin #(`CYCLE/2) CLK = ~CLK; end
 
-initial begin
-    // $fsdbDumpfile("LASER.fsdb");
-    // $fsdbDumpvars();
-    // $fsdbDumpMDA;
+// initial begin
+//     // $fsdbDumpfile("LASER.fsdb");
+//     // $fsdbDumpvars();
+//     // $fsdbDumpMDA;
 
-    `ifdef RTL
-    //    $fsdbDumpfile("LASER.fsdb");
-    $fsdbDumpfile("LASER.fsdb");
-    // $fsdbDumpvars(0,"+mda");
-    $fsdbDumpvars();
-    $fsdbDumpMDA;
-    `endif
+//     `ifdef RTL
+//     //    $fsdbDumpfile("LASER.fsdb");
+//     $fsdbDumpfile("LASER.fsdb");
+//     // $fsdbDumpvars(0,"+mda");
+//     $fsdbDumpvars();
+//     $fsdbDumpMDA;
+//     `endif
     
-    `ifdef GATE
-    $sdf_annotate("LASER_SYN.sdf");
-    $fsdbDumpfile("LASER_SYN.fsdb");
-    // $fsdbDumpvars(0,"+mda");
-    //    $fsdbDumpvars();
-    $fsdbDumpvars();    
-    `endif
-end
+//     `ifdef GATE
+//     $sdf_annotate("LASER_SYN.sdf");
+//     $fsdbDumpfile("LASER_SYN.fsdb");
+//     // $fsdbDumpvars(0,"+mda");
+//     //    $fsdbDumpvars();
+//     $fsdbDumpvars();    
+//     `endif
+// end
 
 // initial begin
 //    $dumpvars();
