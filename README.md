@@ -8,8 +8,11 @@
    * For example, we can simulate the possibility of 50% by dividing the number (0 to 31) into two group. If the number generated is greater than 15, then it is considered passed, otherwise failed.
 
 #### Results
-* Cell library: Cell-Based Design Kit for IC Contest (Artisan TSMC 0.13µm Process)
-* Area:
+* RTL simulation result: \
+  ![RTL result](https://github.com/rgongw0414/2023-IC-Design-Contest/assets/60060490/85a17110-fdc8-4496-b801-11e50a8b3e14)
+* Synthesis result:
+  * Cell library: Cell-Based Design Kit for IC Contest (Artisan TSMC 0.13µm Process)
+  * Area:
 ```bash
 ****************************************
 Report : area
@@ -39,9 +42,9 @@ Net Interconnect area:          203701.042175
 
 Total cell area:                 20538.540031
 Total area:                     224239.582206
-``` 
+```
 <br> <br> 
-* Timing:
+  * Timing:
 ``` txt
 ****************************************
 Report : timing
@@ -115,3 +118,7 @@ Wire Load Model Mode: top
   data arrival time                                  -8.23
   -----------------------------------------------------------
   slack (MET)                                         0.01
+```
+* Gate-level simulatino result: \
+![Gate-level result](https://github.com/rgongw0414/2023-IC-Design-Contest/assets/60060490/4f4eaef9-da91-4c02-a552-87c1a245a531)
+
