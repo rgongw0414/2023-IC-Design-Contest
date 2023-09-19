@@ -1,12 +1,15 @@
 # 2023-IC-Design-Contest Cell-Based Digital Circuit Design  \ (Graduate-Level)
-### Simulated Annealing (SA) algorithm
-* 5-bit LFSR (a pseudo-random number generator)
-  * For the control of possibility used in SA algorithm
-  * For example, we can simulate the possibility of 50% by dividing the number (0 to 31) into two group. If the number generated is greater than 15, then it is considered passed, otherwise failed.
+### [題目：111年初賽 - 研究所標準元件數位電路設計組](https://drive.google.com/file/d/1L6U6q_DS8KO-ufoZQarjWGYi9X9bYYlh/view)
 
-### Results
+#### Method
+* Simulated Annealing (SA) algorithm
+ * 5-bit LFSR (a pseudo-random number generator)
+   * For the control of possibility used in SA algorithm
+   * For example, we can simulate the possibility of 50% by dividing the number (0 to 31) into two group. If the number generated is greater than 15, then it is considered passed, otherwise failed.
+
+#### Results
 * Cell library: Cell-Based Design Kit for IC Contest (Artisan TSMC 0.13µm Process)
-* Area
+* Area:
 ```bash
 ****************************************
 Report : area
@@ -38,7 +41,7 @@ Total cell area:                 20538.540031
 Total area:                     224239.582206
 ``` 
 <br> <br> 
-* Timing
+* Timing:
 ``` txt
 ****************************************
 Report : timing
