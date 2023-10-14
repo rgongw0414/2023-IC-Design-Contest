@@ -1,8 +1,9 @@
 # 2023-IC-Design-Contest Cell-Based Digital Circuit Design  \ (Graduate-Level)
-### [題目：111年初賽 - 研究所標準元件數位電路設計組](https://drive.google.com/file/d/1L6U6q_DS8KO-ufoZQarjWGYi9X9bYYlh/view)
-
+### [Problem：2023 IC Design Contest: Cell-Based IC Design Graduate Level](https://drive.google.com/file/d/1L6U6q_DS8KO-ufoZQarjWGYi9X9bYYlh/view)
+  * Find the maximum covering points of two fixed-size circle
 #### Method
 * Simulated Annealing (SA) algorithm
+  * For searching the optimal center points of the two circles
  * 5-bit LFSR (a pseudo-random number generator)
    * For the control of possibility used in SA algorithm
    * For example, we can simulate the possibility of 50% by dividing the number (0 to 31) into two group. If the number generated is greater than 15, then it is considered passed, otherwise failed.
