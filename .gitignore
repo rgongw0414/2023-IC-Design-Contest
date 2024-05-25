@@ -14,7 +14,8 @@ BSSLib.lib++/
 csrc/
 ida.db/
 simv.daidir/
-
+*.log
+*.err
 *Log/
 # Prerequisites
 *.d
