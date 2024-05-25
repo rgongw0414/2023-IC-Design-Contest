@@ -1,1 +1,0 @@
-s1(08Jun2023:01:17:44):  xrun tb.sv LASER.v +define+USECOLOR+RTL +access+r -clean -createdebugdb -input xrun.tcl 

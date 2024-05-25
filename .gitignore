@@ -16,10 +16,11 @@ ida.db/
 simv.daidir/
 *.log
 *.err
+*.history
 *Log/
 # Prerequisites
 *.d
-
+*.out
 # Compiled Object files
 *.slo
 *.lo
