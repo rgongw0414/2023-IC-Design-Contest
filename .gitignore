@@ -6,6 +6,15 @@ test.v
 ida.db/
 novasLog/
 novas*
+alib-52/
+xcelium.d/
+nWaveLog/
+alib-52/
+BSSLib.lib++/
+csrc/
+ida.db/
+simv.daidir/
+
 *Log/
 # Prerequisites
 *.d
