@@ -11,7 +11,7 @@ output reg DONE);
 
 // For LFSR
 parameter LFSR_WIDTH = 10;
-parameter [LFSR_WIDTH-1:0] threshold = 100;
+parameter [LFSR_WIDTH-1:0] threshold = 10'd150;
 reg [LFSR_WIDTH-1:0] q; // random value from 1 to 31 
 
 wire feedback; // Feedback bit
@@ -27,9 +27,12 @@ always @(posedge CLK) begin
 end
 
 wire [3:0] step;
-assign step = (q[5:4] == 2'b11)? {3'b000, q[0]}: {2'b0, q[5:4]};  // step: {0,1,1,2}
+// assign step = (q[5:4] == 2'b11)? {3'b000, q[4]}: {2'b0, q[5:4]};  // step: {0,1,1,2}
 // assign step = {1'b0, q[9], q[3], q[7]};
 // assign step = {2'b0, q[3], q[7]};
+
+// step is either 1 or 2 with same chance
+assign step = (q[5])? 4'b0001: 4'b0010;  // step: {0,1,1,2}
 
 // wire [3:0] testX;
 // wire [3:0] testY;
@@ -55,7 +58,8 @@ reg [3:0] tmpX1, tmpY1, tmpX2, tmpY2;
 reg [3:0] dx1, dy1, dx2, dy2;
 
 // reg round_flag;
-reg [9:0] round; // sub-rounds count
+reg [19:0] round; // sub-rounds count
+parameter MAX_ROUND = 20'd100000;
 
 // assign testX = corX[cnt];
 // assign testY = corY[cnt];
@@ -106,7 +110,7 @@ always @(*) begin
     READ:
       next_state = (cnt == 6'd39)? WALK: READ;
     WALK: // check 40 points covering
-      next_state = (round == 10'd300)? OUTPUT: WALK;
+      next_state = (round == MAX_ROUND)? OUTPUT: WALK;
     OUTPUT:
       next_state = INIT;
     default:
@@ -118,12 +122,12 @@ end
 
 always @(posedge CLK) begin
   if (RST)
-    round <= 10'd0;
+    round <= 0;
   else if (current_state == OUTPUT)
-    round <= 10'd0;
+    round <= 0;
   else if (current_state == WALK) begin
     if (cnt == 6'd40)
-      round <= round + 10'd1;
+      round <= round + 1;
   end
 end
 
@@ -192,12 +196,12 @@ end
 // current best x1, y1, x2, y2
 always @(posedge CLK) begin
   if (RST) begin
-    x1 <= 4'd7; y1 <= 4'd7;
-    x2 <= 4'd7; y2 <= 4'd7;
+    x1 <= 4'd0; y1 <= 4'd0;
+    x2 <= 4'd8; y2 <= 4'd8;
   end
   else if (current_state == OUTPUT) begin
-    x1 <= 4'd7; y1 <= 4'd7;
-    x2 <= 4'd7; y2 <= 4'd7;
+    x1 <= 4'd0; y1 <= 4'd0;
+    x2 <= 4'd8; y2 <= 4'd8;
   end
   else if (current_state == WALK) begin
     if (cnt == 6'd40) begin      
