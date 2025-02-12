@@ -10,8 +10,27 @@ output reg [3:0] C2Y,
 output reg DONE);
 
 // For LFSR
-reg [4:0] q; // random value from 1 to 31 
+parameter LFSR_WIDTH = 10;
+parameter [LFSR_WIDTH-1:0] threshold = 100;
+reg [LFSR_WIDTH-1:0] q; // random value from 1 to 31 
+
+wire feedback; // Feedback bit
+
+// Taps from polynomial x^10 + x^7 + 1
+assign feedback = q[9] ^ q[6];
+
+always @(posedge CLK) begin
+    if (RST)
+        q <= 10'h1; // Non-zero seed (avoid all-zero state)
+    else
+        q <= {q[LFSR_WIDTH-2:0], feedback}; // Shift left with feedback
+end
+
 wire [3:0] step;
+assign step = (q[5:4] == 2'b11)? {3'b000, q[0]}: {2'b0, q[5:4]};  // step: {0,1,1,2}
+// assign step = {1'b0, q[9], q[3], q[7]};
+// assign step = {2'b0, q[3], q[7]};
+
 // wire [3:0] testX;
 // wire [3:0] testY;
 
@@ -41,8 +60,6 @@ reg [9:0] round; // sub-rounds count
 // assign testX = corX[cnt];
 // assign testY = corY[cnt];
 
-// assign step = (q[1:0] == 2'b11)? {3'b000, q[0]}: {2'b0, q[1:0]};
-assign step = {2'b0, q[1:0]};
 
 // READ and store the inputs into array
 always @(posedge CLK) begin
@@ -73,11 +90,6 @@ always @(*) begin
   end
 end
 
-// assign  dx1 = (tmpX1 > corX[cnt])? tmpX1 - corX[cnt] : corX[cnt] - tmpX1;
-// assign  dy1 = (tmpY1 > corY[cnt])? tmpY1 - corY[cnt] : corY[cnt] - tmpY1;
-// assign  dx2 = (tmpX2 > corX[cnt])? tmpX2 - corX[cnt] : corX[cnt] - tmpX2;
-// assign  dy2 = (tmpY2 > corY[cnt])? tmpY2 - corY[cnt] : corY[cnt] - tmpY2;
-
 /// vvvvvvvvvvv  FSM  vvvvvvvvvvv ///
 always @(posedge CLK or posedge RST) begin
   if (RST)
@@ -104,7 +116,6 @@ end
 /// ^^^^^^^^^^^  FSM  ^^^^^^^^^^^ ///
 
 
-// reg [3:0] round
 always @(posedge CLK) begin
   if (RST)
     round <= 10'd0;
@@ -112,7 +123,69 @@ always @(posedge CLK) begin
     round <= 10'd0;
   else if (current_state == WALK) begin
     if (cnt == 6'd40)
-      round <= round +10'd1;
+      round <= round + 10'd1;
+  end
+end
+
+// tmpX1, tmpY1, tmpX2, tmpY2
+// walk to new point
+always @(posedge CLK) begin
+  if (RST) begin
+    tmpX2 <= 4'd7; 
+  end
+  else if (current_state == OUTPUT) begin
+    tmpX2 <= 4'd7;
+  end
+  else if (current_state == WALK) begin
+    // take whatever 4 bits of q as direction, because q is pseudo-random
+    if (q[5]) tmpX2 <= (x2+step < 16)? x2+step : 15; 
+      // tmpX2 <= x2+step;
+    else      tmpX2 <= (x2 > step) ? x2-step : 0;  
+      // tmpX2 <= x2-step;  
+  end
+end
+
+always @(posedge CLK) begin
+  if (RST) begin
+    tmpY2 <= 4'd7;
+  end
+  else if (current_state == OUTPUT) begin
+    tmpY2 <= 4'd7;
+  end
+  else if (current_state == WALK) begin
+    // take whatever 4 bits of q as direction, because q is pseudo-random
+    if (q[9]) tmpY2 <= (y2+step < 16)? y2+step : 15;
+      //   tmpY2 <= y2+step;
+    else      tmpY2 <= (y2 > step)? y2-step : 0;  
+      // tmpY2 <= y2-step;  
+  end
+end
+
+always @(posedge CLK) begin
+  if (RST) begin
+    tmpX1 <= 4'd7;
+  end
+  else if (current_state == OUTPUT) begin
+    tmpX1 <= 4'd7;
+  end
+  else if (current_state == WALK) begin
+    // take whatever 4 bits of q as direction, because q is pseudo-random
+    if (q[0]) tmpX1 <= (x1+step < 16)? x1+step : 15; // keep it walking in the field
+    else      tmpX1 <= (x1 > step)? x1-step : 0; 
+  end
+end
+
+always @(posedge CLK) begin
+  if (RST) begin
+    tmpY1 <= 4'd7;
+  end
+  else if (current_state == OUTPUT) begin
+    tmpY1 <= 4'd7;
+  end
+  else if (current_state == WALK) begin
+    // take whatever 4 bits of q as direction, because q is pseudo-random
+    if (q[3]) tmpY1 <= (y1+step < 16)? y1+step : 15; 
+    else      tmpY1 <= (y1 > step)? y1-step : 0;  
   end
 end
 
@@ -133,51 +206,12 @@ always @(posedge CLK) begin
         x2 <= tmpX2; y2 <= tmpY2;
       end
       else begin // accept worse result with probability
-        if (q < 5'd4) begin // 10% acceptance
+        if (q < threshold) begin // 10% acceptance
           x1 <= tmpX1; y1 <= tmpY1;
           x2 <= tmpX2; y2 <= tmpY2;
         end
       end
     end
-  end
-end
-
-// tmpX1, tmpY1, tmpX2, tmpY2
-// walk to new point
-always @(posedge CLK) begin
-  if (RST) begin
-    tmpX1 <= 4'd7; tmpY1 <= 4'd7;
-    tmpX2 <= 4'd7; tmpY2 <= 4'd7;
-  end
-  else if (current_state == OUTPUT) begin
-    tmpX1 <= 4'd7; tmpY1 <= 4'd7;
-    tmpX2 <= 4'd7; tmpY2 <= 4'd7;
-  end
-  else if (current_state == WALK) begin
-    if (q[0])
-      tmpX1 <= x1+step; // keep it walking in the field
-      // tmpX1 <= (x1+step < 16)? x1+step: 15; // keep it walking in the field
-    else
-      // tmpX1 <= x1-step;
-      tmpX1 <= (x1-step > 0)? x1-step: 0; 
-    if (q[1])
-      tmpY1 <= y1+step;
-      // tmpY1 <= (y1+step < 16)? y1+step: 15; 
-    else
-      // tmpY1 <= y1-step;
-      tmpY1 <= (y1-step > 0)? y1-step: 0;  
-    if (q[2])
-      tmpX2 <= x2+step;
-      // tmpX2 <= (x2+step < 16)? x2+step: 15; 
-    else
-      // tmpX2 <= x2-step;  
-      tmpX2 <= (x2-step > 0)? x2-step: 0;  
-    if (q[3])
-      tmpY2 <= y2+step;
-      // tmpY2 <= (y2+step < 16)? y2+step: 15;  
-    else
-      // tmpY2 <= y2-step;  
-      tmpY2 <= (y2-step > 0)? y2-step: 0;  
   end
 end
 
@@ -192,7 +226,7 @@ always @(posedge CLK) begin
       if(cover_current > cover_prev)
         cover_prev <= cover_current;
       else begin // accept worse result with probability
-        if (q < 5'd4)  // 10% acceptance
+        if (q < threshold)  // 10% acceptance
           cover_prev <= cover_current;
       end
     end
@@ -279,22 +313,21 @@ always @(posedge CLK) begin
     DONE <= 1'b0;
 end
 
-// 5-bit maximal-length LFSR 
-always @(posedge CLK) begin
-  /* 
-    q = 1 ~ 31
-    if used as probability function, 
-    sampled q < 4 approximately equals to 10%
-  */
-  if (RST) 
-    q <= 5'h1;
-  else begin
-    q[4] <= 1'b0 ^ q[0];
-    q[3] <= q[4];
-    q[2] <= q[0] ^ q[3];
-    q[1] <= q[2];
-    q[0] <= q[1];
-  end
-end
-
+// // 5-bit maximal-length LFSR 
+// always @(posedge CLK) begin
+//   /* 
+//     q = 1 ~ 31
+//     if used as probability function, 
+//     sampled q < 4 approximately equals to 10%
+//   */
+//   if (RST) 
+//     q <= 5'h1;
+//   else begin
+//     q[4] <= 1'b0 ^ q[0];
+//     q[3] <= q[4];
+//     q[2] <= q[0] ^ q[3];
+//     q[1] <= q[2];
+//     q[0] <= q[1];
+//   end
+// end
 endmodule
