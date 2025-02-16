@@ -1,6 +1,6 @@
 `timescale 1ns/10ps
 `define CYCLE      8.0  
-`define SDFFILE    "./LASER_syn.sdf"
+`define SDFFILE    "./Netlist/LASER_syn.sdf"
 `define MAX_CYCLE_PER_PATTERN  50000
 //`define USECOLOR 
 //`define P1
@@ -34,31 +34,23 @@ LASER u_LASER(
 .C2Y(C2Y),
 .DONE(DONE));
 
-`ifdef SDF
-    initial $sdf_annotate(`SDFFILE, u_LASER);
-`endif
-
 always begin #(`CYCLE/2) CLK = ~CLK; end
 
 initial begin
-    // $fsdbDumpfile("LASER.fsdb");
-    // $fsdbDumpvars();
-    // $fsdbDumpMDA;
 
     `ifdef RTL
-    //    $fsdbDumpfile("LASER.fsdb");
-    $fsdbDumpfile("LASER.fsdb");
-    // $fsdbDumpvars(0,"+mda");
-    $fsdbDumpvars();
-    $fsdbDumpMDA;
+        $fsdbDumpfile("LASER.fsdb");
+        // $fsdbDumpvars(0,"+mda");
+        $fsdbDumpvars();
+        $fsdbDumpMDA;
     `endif
     
-    `ifdef GATE
-    $sdf_annotate("LASER_SYN.sdf");
-    $fsdbDumpfile("LASER_SYN.fsdb");
-    // $fsdbDumpvars(0,"+mda");
-    //    $fsdbDumpvars();
-    $fsdbDumpvars();    
+    `ifdef SDF
+        $sdf_annotate(`SDFFILE, u_LASER);
+        $fsdbDumpfile("LASER_SYN.fsdb");
+        // $fsdbDumpvars(0,"+mda");
+        //    $fsdbDumpvars();
+        $fsdbDumpvars();    
     `endif
 end
 
