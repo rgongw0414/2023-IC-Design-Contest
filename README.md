@@ -118,7 +118,7 @@ Wire Load Model Mode: top
   -----------------------------------------------------------
   slack (MET)                                         0.01
 ```
-* Post-sim simulatino result: \
+* Post-sim result: \
 ![image](https://github.com/user-attachments/assets/f16e3f50-c2f3-4b7c-ae11-ce93479087c6)
 
 
