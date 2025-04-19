@@ -7,6 +7,7 @@
 using namespace std;
 
 int main() {
+    // C++ simulation of the SA algo
     ios::sync_with_stdio(0);
     cin.tie(NULL);
     
